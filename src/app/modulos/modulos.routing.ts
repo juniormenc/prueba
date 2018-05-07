@@ -11,7 +11,6 @@ export const routes: Routes = [
             { path: 'inicio', component: GlobalInicioComponent },
             { path: 'paciente', loadChildren: './paciente/paciente.module#PacienteModule' },
             { path: 'consultorio', loadChildren: './consultorio/consultorio.module#ConsultorioModule' },
-            { path: 'medico', loadChildren: './medico/medico.module#MedicoModule' },
             { path:'horario', loadChildren: './horario/horario.module#HorarioModule'},
             { path: 'reporte', loadChildren: './reporte/reporte.module#ReporteModule'},
             { path:'especialidad', loadChildren: './especialidad/especialidad.module#EspecialidadModule'},
