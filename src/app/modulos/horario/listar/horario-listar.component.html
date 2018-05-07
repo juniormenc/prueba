@@ -1,0 +1,39 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="col-md-12">
+      <div class="card panel panel-azul">
+        <div class="panel-heading">
+          Listado de Horarios
+        </div>
+        <div class="content table-responsive table-full-width panel-body">
+          <div class="form-group col-md-8">
+            <button class="btn btn-azul btn-wd" (click)="gotoRegistrar()"><i class="fa fa-plus"></i> NUEVO HORARIO</button>
+          </div>
+
+          <table class="table col-md-12">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Hora de Entrada</th>
+                <th>Hora de Salida</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor = "let e of elemento">
+                <td>{{e.id}}</td>
+                <td>{{e.hora_entrada}}</td>
+                <td>{{e.hora_salida}}</td>
+                <td>
+                  <button (click)="gotoEditar(e.id)" class="btn btn-amarillo"><i class="fa fa-edit"></i></button>
+                  <button (click)="cambiarEstado(e.id, e.estado)" class="btn btn-verde"><i class="fa fa-trash"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

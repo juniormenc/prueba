@@ -1,0 +1,37 @@
+    <!--app-spinner *ngIf="bandera"></app-spinner-->
+
+    <div class="main-content">
+      <div class="container-fluid">
+        <div class="col-md-12">
+          <div class="card panel panel-azul">
+            <div class="panel-heading">
+              Pacientes por atender
+            </div>
+
+            <div class="content table-responsive table-full-width panel-body">
+                      
+                  <table class="table col-md-12">
+                      <thead>
+                          <tr>
+                              <th>Dni</th>
+                              <th>Nombre</th>
+                              <th>F.Nacimiento</th>
+                              <th>Acción</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor = "let e of e_pacientes">
+                              <td>{{e.dni}}</td>
+                              <td>{{e.paciente}}</td>
+                              <td>{{e.fecha_nacimiento}}</td>
+                              <td>
+                                  <button (click)="gotoHistoria(e.id, e.paciente_id)" class="btn btn-amarillo"><i class="fa fa-edit"></i></button>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,66 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="col-md-12">
+      <div class="card panel panel-azul">
+        <div class="panel-heading">
+          Reporte de Turnos Médicos
+        </div>
+
+        <div class="content table-responsive table-full-widht panel-body">
+          <div class="col-md-12">
+
+            <div class="form-group col-md-6">
+              <label class="">ESPECIALIDAD:</label>
+              <div class="">
+                <select class="form-control" placeholder="" (change)="cargarMedicos($event.target.value)" [(ngModel)]="especialidad">
+                  <option value="0">Seleccionar ...</option>
+                  <option *ngFor = "let es of e_especialidad" value="{{es.id}}">{{es.nombre}}</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-group col-md-6">
+              <label class="">MÉDICO:</label>
+              <div class="">
+                <select class="form-control" placeholder="Sexo" [(ngModel)] = "medico" (change)="cargarDatos()">
+                  <option value=0>Seleccionar...</option>
+                  <option *ngFor = "let me of e_medico" value="{{me.id}}">{{me.nombre_medico}}</option>
+                </select>
+              </div>
+            </div>
+
+
+            <div class="form-group col-md-6">
+              <label class="">Hasta:</label>
+              <input class="form-control" type="date" (change)="cargarDatos()" [(ngModel)] = "fecha">
+            </div>
+
+            <div class="form-group col-md-6" align="right">
+              <button class="btn btn-rojo" align=""><i class="fa fa-arrow-circle-down"></i></button>
+            </div>
+            
+          </div>
+        
+       
+        <table class="table col-md-12">
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Horario</th>
+              <th>Consultorio</th>
+            </tr> 
+          </thead>
+          <tbody>
+            <tr *ngFor = "let tu of e_turno">
+              <td>{{tu.fecha_turno}}</td>
+              <td>{{tu.hora_entrada}} - {{tu.hora_salida}}</td>
+              <td>{{tu.numero_consultorio}}</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

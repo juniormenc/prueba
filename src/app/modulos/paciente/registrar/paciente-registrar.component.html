@@ -1,0 +1,123 @@
+    <!--app-spinner *ngIf="bandera"></app-spinner-->
+
+    <div class="main-content">
+      <div class="container-fluid">
+        <div class="col-md-12">
+          <div class="card panel panel-azul">
+            <div class="panel-heading">
+              Registrar Paciente
+            </div>
+
+            <div class="content table-responsive table-full-width panel-body">
+              <div class="form-group col-md-4">
+                <label class="">DNI:</label>
+                <div class="">
+                  <input type="text" class="form-control" placeholder="" [(ngModel)]="dni">
+                </div>
+              </div>
+              
+              <div class="form-group col-md-4">
+                <label class="">NOMBRES:</label>
+                <div class="">
+                  <input type="text" class="form-control" placeholder="" [(ngModel)]="nombres">
+                </div>
+              </div>
+                      
+              <div class="form-group col-md-4">
+                <label class="">APELLIDO PATERNO:</label>
+                <div class="">
+                  <input type="text" class="form-control" placeholder="" [(ngModel)]="ap_paterno">
+                </div>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label class="">APELLIDO MATERNO:</label>
+                <div class="">
+                  <input type="text" class="form-control" placeholder="" [(ngModel)]="ap_materno">
+                </div>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label class="">F. NACIMIENTO:</label>
+                <input class="form-control" type="date" [(ngModel)]="fecha_nacimiento">
+              </div>
+
+              <div class="form-group col-md-4">
+                <label class="">SEXO:</label>
+                <div class="">
+                  <select  class="form-control" placeholder="Sexo" [(ngModel)]="sexo" >
+                    <option value=1>MASCULINO</option>
+                    <option value=2>FEMENINO</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label class="">DOMICILIO:</label>
+                <div class="">
+                  <input type="text" class="form-control" placeholder="" [(ngModel)]="domicilio">
+                </div>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label class="">ESTADO CIVIL:</label>
+                <div class="">
+                  <select  class="form-control" placeholder="estado_civil" [(ngModel)]="estado_civil" >
+                    <option value=1>SOLTER(O)(A)</option>
+                    <option value=2>CASAD(O)(A)</option>
+                    <option value=3>VIUD(O)(A)</option>
+                    <option value=4>DIVORCIAD(O)(A)</option>
+                    <option value=5>CONVIVIENTE</option>
+                    <option value=6>OTRO</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label class="">PROFESION:</label>
+                <div class="">
+                  <input type="text" class="form-control" placeholder="" [(ngModel)]="profesion">
+                </div>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label class="">T. SANGRE</label>
+                <div class="">
+                  <select  class="form-control" placeholder="tipo_sangre" [(ngModel)]="tipo_sangre" >
+                    <option value=1>A+</option>
+                    <option value=2>A-</option>
+                    <option value=3>B+</option>
+                    <option value=4>B-</option>
+                    <option value=5>AB+</option>
+                    <option value=6>AB-</option>
+                    <option value=7>O+</option>
+                    <option value=8>O-</option>
+                    <option value=9>NO SABE</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label class="">CORREO ELECTRÓNICO:</label>
+                <div class="">
+                  <input type="text" class="form-control" placeholder="" [(ngModel)]="email">
+                </div>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label class="">CELULAR:</label>
+                <div class="">
+                  <input type="text" class="form-control" placeholder="" [(ngModel)]="celular">
+                </div>
+              </div>
+
+              <div class="form-group col-md-12" align="right">
+                <button class="btn btn-azul" (click)="registrar()"><i class="fa fa-save"></i></button>
+                <button class="btn btn-cancelar" (click)="gotoPaciente()"><i class="fa fa-arrow-left"></i></button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

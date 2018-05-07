@@ -1,0 +1,47 @@
+<app-spinner *ngIf="bandera"></app-spinner>
+<div class="wrapper wrapper-full-page">
+    <div class="full-page login-page" filter-color="black">
+
+        <div class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <form (ngSubmit)="logIn()">
+                            <div class="card card-login">
+                                <div class="card-content" style="text-align:center;">
+                                    <img src="./assets/img/logo-healthinn-admin.png" style="width:50% !important;padding:20px 0px;">
+                                                                    
+                                    <div class="form-group">
+                                        <div class="fa fa-user input-icon"></div>
+                                        <input autofocus="true" type="text" class="form-control input-addon" 
+                                        placeholder="Usuario o email" name="vcUsuario" [(ngModel)]="vcUsuario"/>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="fa fa-key input-icon"></div>
+                                        <input type="{{typePassword}}" class="form-control input-addon from-clave" 
+                                        name="contraseña" placeholder="Contraseña" [(ngModel)]="vbClave"/>
+                                        <span *ngIf="!showPassword" class="password-eye fa fa-eye" (click)="mostrarContrasena()" title="Ver Contraseña"></span>
+                                        <span *ngIf="showPassword" class="password-eye fa fa-eye-slash" (click)="ocultarContrasena()" title="Ocultar Contraseña"></span>
+                                    </div>
+                                   
+                                    <button *ngIf="!usuarioIdentificado" class="btn btn-azul" [disabled]="iniciandoSesion"
+                                    type="submit">Iniciar sesión</button>
+
+                                </div>
+                            </div>
+                        </form>
+                        
+                    </div>
+                </div>
+                
+                <div class="copyright">
+                    {{anio}} Coded by <a href="http://livinn-tech.com" target="_blank">LIV-INN</a>
+                </div>
+            </div>
+        </div>
+        <div class="full-page-background" [ngStyle]="fondo"></div>
+    </div>
+</div>
+<toaster-container></toaster-container>

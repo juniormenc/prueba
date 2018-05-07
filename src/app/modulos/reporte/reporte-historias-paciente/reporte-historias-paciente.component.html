@@ -1,0 +1,43 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="col-md-12">
+            <div class="card panel panel-azul">
+                <div class="panel-heading">
+                    Reporte de Historias Clínicas
+                </div>
+
+                <div class="content table-responsive table-full-width panel-body">
+              
+                    <div class="form-group col-md-12" align="right">
+                        <input type="text" class="buscar" (keyup)="filtro($event.target.value)" placeholder="Buscar Paciente">
+                    </div>
+                  
+                    <table class="table col-md-12">
+                        <thead>
+                            <tr>
+                                <th>Dni</th>
+                                <th>Nombre</th>
+                                <th>F.Nacimiento</th>
+                                <th>Celular</th>
+                                <th>Domicilio</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor = "let pa of e_pacientes">
+                                <td>{{pa.dni}}</td>
+                                <td>{{pa.apellido_paterno}} {{pa.apellido_materno}}, {{pa.nombres}}</td>
+                                <td>{{pa.fecha_nacimiento}}</td>
+                                <td>{{pa.celular}}</td>
+                                <td>{{pa.domicilio}}</td>
+                                <td>
+                                    <button class="btn btn-rojo"><i class="fa fa-arrow-circle-down"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

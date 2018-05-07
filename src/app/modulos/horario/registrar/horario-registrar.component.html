@@ -1,0 +1,26 @@
+  <div class="main-content">
+    <div class="container-fluid">
+      <div class="col-md-12">
+        <div class="card panel panel-azul">
+          <div class="panel-heading"> 
+            Registrar horario
+          </div>
+  
+          <div class="content table-responsive table-full-widtg panel-body">
+            <div class="form-group col-md-6">
+              <label class="">Hora de Entrada</label>
+              <input class="form-control" type="time" [(ngModel)]="hora_entrada">
+            </div>
+            <div class="form-group col-md-6">
+              <label class="">Hora de Salida</label>
+              <input class="form-control" type="time" [(ngModel)]="hora_salida">
+            </div>
+            <div class="form-group col-md-12" align="right">
+              <button class="btn btn-azul" (click)="registrar()"><i class="fa fa-save"></i></button>
+              <button class="btn btn-cancelar" (click)="regresar()"><i class="fa fa-arrow-left"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

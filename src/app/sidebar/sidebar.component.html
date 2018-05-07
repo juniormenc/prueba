@@ -1,0 +1,56 @@
+<div class="sidebar-wrapper">
+    <div class="logo" (click)="mandaInicio()">
+        <a class="simple-text">
+            <div class="logo-img">
+                <img src="./assets/img/logo-healthinn-admin-blanco.png" />
+            </div>
+        </a>
+    </div>
+    <ul class="nav responsive-nav">
+        <li class="separator hidden-lg hidden-md" *ngIf="isMobileMenu()"></li>
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItems; let i = index;">
+            <a [routerLink]="[menuItem.path]" *ngIf="menuItem.children.length == 0">
+                <i class="{{menuItem.icon}}"></i>
+                <p>{{menuItem.title}}</p>
+            </a>
+            <a *ngIf="menuItem.children.length > 0" data-toggle="collapse" href="#padre-{{i}}" class="collapsed" aria-expanded="false">
+                <i class="{{menuItem.icon}}"></i>
+                <p>{{menuItem.title}}
+                    <i style="color:#083972; float:right;" class="fa fa-angle-down" *ngIf="menuItem.children.length > 0"></i>
+                </p>
+            </a>
+            <div class="collapse" id="padre-{{i}}">
+                <ul class="nav" style="margin-top:0px;">
+                    <li routerlinkactive="active" *ngFor="let children of menuItem.children; let j = index;">
+
+                        <a [routerLink]="[children.path]" *ngIf="!children.children" class="a-children">
+                            <span class="sidebar-normal span-children" style="margin-left: 0px !important;color:#ffffff !important;">{{children.title}}</span>
+                        </a>
+                        <a *ngIf="children.children && children.children.length > 0" data-toggle="collapse" href="#hijo-{{j}}" class="collapsed a-children"
+                            aria-expanded="false">
+                            <p style="margin-left: 0px !important;color:#083972 !important;">{{children.title}}
+                                <i style="color:#083972 !important; float:right;" class="fa fa-angle-down" *ngIf="menuItem.children.length > 0"></i>
+                            </p>
+                        </a>
+
+                        <div class="collapse" id="hijo-{{j}}">
+                            <ul class="nav" style="margin-top:0px;">
+                                <li routerlinkactive="active" *ngFor="let children2 of children.children">
+
+                                    <a [routerLink]="[children2.path]" class="a-children" *ngIf="children2.path.length > 0">
+                                        <span style="margin-left: 0px !important;color:#083972 !important;" class="sidebar-normal span-children ">{{children2.title}}</span>
+                                    </a>
+
+                                    <a href="{{children2.url}}" target="_blanck" class="a-children" *ngIf="children2.path.length == 0">
+                                        <span style="margin-left: 0px !important;color:#083972 !important;" class="sidebar-normal span-children ">{{children2.title}}</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,43 @@
+    <!--app-spinner *ngIf="bandera"></app-spinner-->
+
+    <div class="main-content">
+            <div class="container-fluid">
+              <div class="col-md-12">
+                <div class="card panel panel-azul">
+                  <div class="panel-heading">
+                    Listado de Consultorios
+                  </div>
+      
+                  <div class="content table-responsive table-full-width panel-body">
+                        <div class="form-group col-md-8">
+                            <button class="btn btn-azul btn-wd" (click)="gotoRegistrar()"><i class="fa fa-plus"></i> NUEVO CONSULTORIO</button>
+                        </div>
+
+                        <div class="form-group col-md-4" align="right">
+                            <input type="text" class="buscar" (keyup)="filtro($event.target.value)" placeholder="Buscar Consultorio">
+                        </div>
+                            
+                        <table class="table col-md-12">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Consultorio</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor = "let e of elemento">
+                                    <td>{{e.id}}</td>
+                                    <td>{{e.numero}}</td>
+                                    <td>
+                                        <button (click)="gotoEditar(e.id)" class="btn btn-amarillo"><i class="fa fa-edit"></i></button>
+                                        <button (click)="cambiarEstado(e.id, e.estado)" class="btn tbn-verde"><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
