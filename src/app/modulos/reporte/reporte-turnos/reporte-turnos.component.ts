@@ -5,6 +5,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 
+declare var jsPDF: any; // Important
+
 import { TurnoAtencionService } from '../../../servicios/modulos/turno-atencion.services';
 
 @Component({
@@ -18,6 +20,45 @@ export class ReporteTurnosComponent implements OnInit {
   e_turnos: Array<any>;
   
   constructor(private turnoService: TurnoAtencionService) { }
+
+  downloadPDF(){
+
+    //CABECERA
+    var header = ["FECHA", "CONSULTORIO", "HORARIO"];
+    
+    //DATA
+    var data = [];
+    for (let i = 0; i < this.e_turnos.length; i++) {
+       data[i] = [this.e_turnos[i].fecha_turno, this.e_turnos[i].numero_consultorio, this.e_turnos[i].hora_entrada+" - "+this.e_turnos[i].hora_salida];
+    }
+
+    //PDF
+    var doc = new jsPDF('p','pt','a4');
+
+    doc.setFontType("bolditalic");
+    doc.setTextColor(255, 0, 0);
+    doc.setFontSize(15);
+    doc.text("REPORTE DE MIS TURNOS", 200, 50);
+
+    doc.setTextColor(0, 0, 0);
+    doc.setFontSize(12);
+    doc.setFontType("normal");
+    doc.text("AÑO-MES: "+this.mes_anio, 50, 80);
+    
+    doc.autoTable(header, data, {
+      theme: 'striped',
+      headerStyles: {},
+      bodyStyles: {},
+      alternateRowStyles: {},
+      columnStyles: {
+        id: {fillColor: 255}
+      },
+      margin: {top: 100},
+      
+    });
+
+    doc.save("mis-turnos-"+this.mes_anio+".pdf");
+  }
 
   ngOnInit() {
     this.mes_anio = this.mes_anio_actual();

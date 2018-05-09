@@ -5,6 +5,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 
+declare var jsPDF: any; // Important
+
 import { CitaService } from '../../../servicios/modulos/cita.services';
 
 @Component({
@@ -22,6 +24,61 @@ export class ReporteIngresosCitasComponent implements OnInit {
   fecha_hasta: any;
 
   constructor(private citaService: CitaService) { }
+
+  downloadPDF(){
+
+    //CABECERA
+    var header = ["FECHA", "N° CITAS", "TOTAL (S/.)", "MÉDICO"];
+    
+    //DATA
+    var data = [];
+    for (let i = 0; i < this.e_citas.length; i++) {
+       data[i] = [this.e_citas[i].fecha, this.e_citas[i].cantidad_citas, this.e_citas[i].costo_final, this.e_citas[i].nombre_medico];
+    }
+
+    //PDF
+    var doc = new jsPDF('p','pt','a4');
+
+    doc.setFontType("bolditalic");
+    doc.setTextColor(255, 0, 0);
+    doc.setFontSize(15);
+    doc.text("REPORTE DE INGRESOS DE CITAS", 165, 50);
+
+    doc.setTextColor(0, 0, 0);
+    doc.setFontSize(12);
+    doc.setFontType("normal");
+    doc.text("Fecha: " + this.fecha_desde + " - " + this.fecha_hasta, 50, 80);
+    doc.text("Total de Citas: "+this.cantidad_citas, 50, 100);
+    
+    doc.setFontType("bold");
+    doc.text("Ingresos: S./ "+this.ingreso_citas, 50, 120);
+
+    doc.autoTable(header, data, {
+      theme: 'striped',
+      headerStyles: {},
+      bodyStyles: {},
+      alternateRowStyles: {},
+      columnStyles: {
+        id: {fillColor: 255}
+      },
+      margin: {top: 140},
+      
+    });
+
+    /*let specialElementHandlers = {
+      '#editor': function(element, renderer){
+        return true;
+      }
+    };*/
+
+    //let content = this.content.nativeElement;
+    /*doc.fromHTML(content.innerHTML, 15, 55, {
+      'width': 522,
+      'elementHandlers': specialElementHandlers
+    });*/
+
+    doc.save("ing-citas-"+this.fecha_desde+"-"+this.fecha_hasta+".pdf");
+  }
 
   fecha_actual(){
 

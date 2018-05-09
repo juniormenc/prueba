@@ -65,7 +65,7 @@ ngb-modal-window {
 
 .sidebar .nav li.active>a,
 .bootstrap-navbar .nav li.active>a {
-    background: #346391 !important;
+    background: #2987d6 !important;
     border-right: thick solid #fff;
     border-radius: 0px !important;
 }
@@ -581,7 +581,7 @@ button.btn-pdf {
 }
 .panel-azul>.panel-heading {
     color: #fff;
-    background-color: #0489B1;
+    background-color: #2987d6;
     border-color: #346391
 }
 .panel-azul>.panel-heading+.panel-collapse>.panel-body {

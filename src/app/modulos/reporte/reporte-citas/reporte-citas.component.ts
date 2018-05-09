@@ -5,6 +5,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 
+declare var jsPDF: any; // Important
+
 import { CitaService } from '../../../servicios/modulos/cita.services';
 
 @Component({
@@ -19,6 +21,45 @@ export class ReporteCitasComponent implements OnInit {
   fecha_hasta: any;
 
   constructor(private citaService: CitaService) { }
+
+  downloadPDF(){
+
+    //CABECERA
+    var header = ["FECHA", "HORARIO", "PACIENTE", "MÉDICO"];
+    
+    //DATA
+    var data = [];
+    for (let i = 0; i < this.e_citas.length; i++) {
+       data[i] = [this.e_citas[i].fecha, this.e_citas[i].hora_entrada + "-" + this.e_citas[i].hora_salida, this.e_citas[i].nombre_paciente, this.e_citas[i].nombre_medico];
+    }
+
+    //PDF
+    var doc = new jsPDF('p','pt','a4');
+
+    doc.setFontType("bolditalic");
+    doc.setTextColor(255, 0, 0);
+    doc.setFontSize(15);
+    doc.text("REPORTE DE CITAS POR ATENDER", 165, 50);
+
+    doc.setTextColor(0, 0, 0);
+    doc.setFontSize(12);
+    doc.setFontType("normal");
+    doc.text("Fecha: " + this.fecha_actual() + " - " + this.fecha_hasta, 50, 100);
+
+    doc.autoTable(header, data, {
+      theme: 'striped',
+      headerStyles: {},
+      bodyStyles: {},
+      alternateRowStyles: {},
+      columnStyles: {
+        id: {fillColor: 255}
+      },
+      margin: {top: 120},
+      
+    });
+
+    doc.save("citas-por-atend-"+this.fecha_actual()+"-"+this.fecha_hasta+".pdf");
+  }
 
   fecha_actual(){
 

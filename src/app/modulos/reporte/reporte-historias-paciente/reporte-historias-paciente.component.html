@@ -31,7 +31,7 @@
                                 <td>{{pa.celular}}</td>
                                 <td>{{pa.domicilio}}</td>
                                 <td>
-                                    <button class="btn btn-rojo"><i class="fa fa-arrow-circle-down"></i></button>
+                                    <button class="btn btn-rojo" (click)="downloadPDF(pa.id)"><i class="fa fa-arrow-circle-down"></i></button>
                                 </td>
                             </tr>
                         </tbody>
