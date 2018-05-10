@@ -47,11 +47,11 @@ export class ReporteIngresosCitasComponent implements OnInit {
     doc.setTextColor(0, 0, 0);
     doc.setFontSize(12);
     doc.setFontType("normal");
-    doc.text("Fecha: " + this.fecha_desde + " - " + this.fecha_hasta, 50, 80);
-    doc.text("Total de Citas: "+this.cantidad_citas, 50, 100);
+    doc.text("Fecha: " + this.fecha_desde + " - " + this.fecha_hasta, 50, 90);
+    doc.text("Total de Citas: "+this.cantidad_citas, 50, 110);
     
     doc.setFontType("bold");
-    doc.text("Ingresos: S./ "+this.ingreso_citas, 50, 120);
+    doc.text("Ingresos: S./ "+this.ingreso_citas, 50, 130);
 
     doc.autoTable(header, data, {
       theme: 'striped',
@@ -61,7 +61,7 @@ export class ReporteIngresosCitasComponent implements OnInit {
       columnStyles: {
         id: {fillColor: 255}
       },
-      margin: {top: 140},
+      margin: {top: 150},
       
     });
 
