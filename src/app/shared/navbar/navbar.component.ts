@@ -79,9 +79,9 @@ export class NavbarComponent implements OnInit {
             localStorage.removeItem('jwt');
             localStorage.removeItem('id');
             localStorage.removeItem('rolId');
-            localStorage.removeItem('usuario');
-            localStorage.removeItem('medico_id');
-            localStorage.removeItem('paciente_id');
+            //localStorage.removeItem('usuario');
+            //localStorage.removeItem('medico_id');
+            //localStorage.removeItem('paciente_id');
             this.router.navigate(['/login']);
         });
         

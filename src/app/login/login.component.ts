@@ -16,8 +16,10 @@ export class LoginComponent implements OnInit {
     }
     typePassword: string = "password";
     showPassword: boolean = false;
-    vcUsuario: string = "admin";
-    vbClave: string = "123";
+    vcUsuario: string;
+    vbClave: string;
+    //vcUsuario: string = "admin";
+    //vbClave: string = "123";
     bandera: boolean = false;
     anio: any = new Date().getFullYear();
     
