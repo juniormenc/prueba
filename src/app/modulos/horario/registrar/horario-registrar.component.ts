@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import { SettingsService } from '../../../servicios/global/settings.service';
 
 import { HorarioService } from '../../../servicios/modulos/horario.services';
 
@@ -13,7 +14,7 @@ export class HorarioRegistrarComponent implements OnInit {
   hora_entrada: string;
   hora_salida: string;
 
-  constructor(private router: Router, public horarioService:HorarioService) { }
+  constructor(private router: Router, private settingsService: SettingsService, public horarioService:HorarioService) { }
 
   ngOnInit() {
     
@@ -24,6 +25,7 @@ export class HorarioRegistrarComponent implements OnInit {
     .then((data) =>{
       //console.log(data);
       this.router.navigate(['/modulos/horario']);
+      this.settingsService.showNotification('top','right', this.settingsService.mensaje.registrar, 2);
     })
     .catch((error) => {
       console.log(error);

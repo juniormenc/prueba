@@ -11,6 +11,8 @@ import { routing } from './login.routing';
 import { LoginComponent } from './login.component';
 import { SpinerComponent } from '../recursos/spinner/spinner.component';
 
+import { SettingsService } from '../servicios/global/settings.service';
+
 @NgModule({
     imports: [CommonModule, routing, NavbarModule, FooterModule, SidebarModule, ToasterModule, FormsModule],
     declarations: [
@@ -18,7 +20,7 @@ import { SpinerComponent } from '../recursos/spinner/spinner.component';
         SpinerComponent,
     ],
     providers: [
-        
+        SettingsService
     ]
 })
 export class LoginModule { }

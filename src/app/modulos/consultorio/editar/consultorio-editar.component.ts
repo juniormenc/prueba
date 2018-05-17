@@ -5,6 +5,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 import {ConsultorioService} from '../../../servicios/modulos/consultorio.services';
 import { Router,ActivatedRoute } from '@angular/router';
+import { SettingsService } from '../../../servicios/global/settings.service';
 
 @Component({
   selector: 'consultorio-editar',
@@ -16,7 +17,7 @@ export class ConsultorioEditarComponent implements OnInit {
   id:number;
   numero:string;
 
-  constructor(private consultorioService: ConsultorioService, private route: ActivatedRoute,private router: Router) { }
+  constructor(private consultorioService: ConsultorioService, private route: ActivatedRoute,private router: Router, private settingsService: SettingsService) { }
 
   ngOnInit() {
     
@@ -36,6 +37,7 @@ export class ConsultorioEditarComponent implements OnInit {
     .then((data) =>{
       //console.log(data);
       this.router.navigate(['/modulos/consultorio']);
+      this.settingsService.showNotification('top','right', this.settingsService.mensaje.modificar, 3);
     })
     .catch((error) =>{
       console.log(error);

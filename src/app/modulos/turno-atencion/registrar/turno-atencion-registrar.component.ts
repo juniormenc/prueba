@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 import { Router } from '@angular/router';
+import { SettingsService } from '../../../servicios/global/settings.service';
 
 import { TurnoAtencionService } from '../../../servicios/modulos/turno-atencion.services';
 import { EspecialidadService } from '../../../servicios/modulos/especialidad.services';
@@ -36,7 +37,8 @@ export class TurnoAtencionRegistrarComponent implements OnInit {
     private medicoService: MedicoService,
     private consultorioService: ConsultorioService,
     private horarioService: HorarioService,
-    private router: Router
+    private router: Router,
+    private settingsService: SettingsService
   ) {
     this.especialidad = "0";
     this.medico = "0";
@@ -111,6 +113,7 @@ export class TurnoAtencionRegistrarComponent implements OnInit {
     .then((data) =>{
       //console.log(data);
       this.router.navigate(['/modulos/turno-atencion']);
+      this.settingsService.showNotification('top','right', this.settingsService.mensaje.registrar, 2);
     })
     .catch((error) => {
       console.log(error);

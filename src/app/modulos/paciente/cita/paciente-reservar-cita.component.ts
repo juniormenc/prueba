@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { SettingsService } from '../../../servicios/global/settings.service';
 
 //Servicios:
 import { EspecialidadService } from '../../../servicios/modulos/especialidad.services';
@@ -18,7 +19,8 @@ export class PacienteReservarCitaComponent implements OnInit {
     private turnoService: TurnoAtencionService,
     private citaService: CitaService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private settingsService: SettingsService
   ) {}
 
   id: number;
@@ -111,6 +113,7 @@ export class PacienteReservarCitaComponent implements OnInit {
     this.citaService.reservar(f, horario, parseFloat(this.costo), this.id, id).then((data:any)=>{
       //console.log(data);
       this.router.navigate(['/modulos/paciente']);
+      this.settingsService.showNotification('top','right', this.settingsService.mensaje.reservar, 3);
     })
   }
 
@@ -119,6 +122,7 @@ export class PacienteReservarCitaComponent implements OnInit {
     this.citaService.pagar(2, f, parseFloat(this.costo), parseFloat(this.costo), this.id, id).then((data:any)=>{
       //console.log(data);
       this.router.navigate(['/modulos/paciente']);
+      this.settingsService.showNotification('top','right', this.settingsService.mensaje.registrar, 2);
     })
   }
 

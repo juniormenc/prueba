@@ -21,6 +21,9 @@ export class GlobalInicioComponent {
     ) { }
 
     ngOnInit() {
-
+        /*if(localStorage.getItem('id') == null){
+            this.router.navigate(['/login']);
+        }
+        console.log(localStorage.getItem('id'));*/
     }
 }

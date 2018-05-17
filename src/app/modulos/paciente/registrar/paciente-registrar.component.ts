@@ -5,6 +5,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 import {PacienteService} from '../../../servicios/modulos/paciente.services';
 import {Router} from '@angular/router';
+import { SettingsService } from '../../../servicios/global/settings.service';
 
 @Component({
   selector: 'paciente-registrar',
@@ -28,7 +29,7 @@ export class PacienteRegistrarComponent implements OnInit {
   email: string;
   celular: string;
   
-  constructor(private pacienteService: PacienteService, private router: Router) {
+  constructor(private pacienteService: PacienteService, private settingsService: SettingsService, private router: Router) {
    }
 
   ngOnInit() {
@@ -67,6 +68,7 @@ export class PacienteRegistrarComponent implements OnInit {
       }
 
       this.router.navigate(['/modulos/paciente']);
+      this.settingsService.showNotification('top','right', this.settingsService.mensaje.registrar, 2);
     })
     .catch((error) => {
       console.log(error);

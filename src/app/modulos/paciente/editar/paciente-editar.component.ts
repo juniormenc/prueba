@@ -5,6 +5,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 import {PacienteService} from '../../../servicios/modulos/paciente.services';
 import { Router,ActivatedRoute } from '@angular/router';
+import { SettingsService } from '../../../servicios/global/settings.service';
 
 @Component({
   selector: 'paciente-editar',
@@ -28,7 +29,7 @@ export class PacienteEditarComponent implements OnInit {
   email:string;
   celular:string;
 
-  constructor(private pacienteService: PacienteService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private pacienteService: PacienteService, private route: ActivatedRoute, private router: Router, private settingsService: SettingsService) { }
 
   validar_fecha(fecha){
     var dia = fecha.substr(0,2);
@@ -83,6 +84,7 @@ export class PacienteEditarComponent implements OnInit {
     .then((data) =>{
       //console.log(data);
       this.router.navigate(['/modulos/paciente']);
+      this.settingsService.showNotification('top','right', this.settingsService.mensaje.modificar, 3);
     })
     .catch((error) =>{
       console.log(error);

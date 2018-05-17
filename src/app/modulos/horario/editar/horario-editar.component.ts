@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { SettingsService } from '../../../servicios/global/settings.service';
 
 import { HorarioService } from '../../../servicios/modulos/horario.services';
 
@@ -15,7 +16,7 @@ export class HorarioEditarComponent implements OnInit {
   hora_entrada: string;
   hora_salida: string;
 
-  constructor(private router:Router, private route: ActivatedRoute, public horarioService: HorarioService) { }
+  constructor(private router:Router, private route: ActivatedRoute, public horarioService: HorarioService, private settingsService: SettingsService) { }
 
   ngOnInit() {
     //Obtenemos el id de la ruta
@@ -37,6 +38,7 @@ export class HorarioEditarComponent implements OnInit {
     .then((data) =>{
       //console.log(data);
       this.router.navigate(['/modulos/horario']);
+      this.settingsService.showNotification('top','right', this.settingsService.mensaje.modificar, 3);
     })
     .catch((error) => {
       console.log(error);

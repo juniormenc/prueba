@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Http, Response} from '@angular/http';
 import { Router } from '@angular/router';
 //import { SpinerComponent } from '../../../recursos/spinner/spinner.component';
+import { SettingsService } from '../../../servicios/global/settings.service';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -37,7 +38,8 @@ export class PacienteListarComponent implements OnInit {
   constructor(
     private pacienteService: PacienteService,
     private citaService: CitaService,
-    private router: Router
+    private router: Router,
+    private settingsService: SettingsService
   ) { }
 
   ngOnInit() {
@@ -108,6 +110,7 @@ export class PacienteListarComponent implements OnInit {
     this.citaService.pagar(2, f, parseFloat(costo), parseFloat(costo), paciente_id, turno_id).then((data:any)=>{
       //console.log(data);
       bandera = true;
+      this.settingsService.showNotification('top','right', this.settingsService.mensaje.registrar, 2);
     })
 
     if(bandera = true){
@@ -123,6 +126,7 @@ export class PacienteListarComponent implements OnInit {
     this.citaService.eliminar_reserva(reserva_id).then((data:any)=>{
       //console.log(data);
       this.onCloseHandled();
+      this.settingsService.showNotification('top','right', this.settingsService.mensaje.eliminar, 4);
     })
   }
 

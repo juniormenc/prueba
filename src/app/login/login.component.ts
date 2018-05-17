@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { ToasterService } from 'angular2-toaster';
 import * as constantes from './../servicios/global/constantes';
 import { SesionService } from '../servicios/modulos/sesion.services';
+import { SettingsService } from '../servicios/global/settings.service';
+
 @Component({
     selector: 'login-root',
     templateUrl: './login.html',
@@ -26,6 +28,7 @@ export class LoginComponent implements OnInit {
     constructor(
         private router: Router, 
         private toaster: ToasterService,
+        private settingsService: SettingsService,
         private sesionService: SesionService) {
     }
 
@@ -44,8 +47,12 @@ export class LoginComponent implements OnInit {
                 localStorage.setItem("rolId", data.recordSet.element[0].rol_id);
                 this.bandera = true;
                 this.router.navigate(['modulos/inicio']);
+                this.settingsService.showNotification('top','right', this.settingsService.mensaje.usuario_correcto, 1);
             }else{
                 console.log("usuario o clave incorrecto");
+                this.settingsService.showNotification('top','right', this.settingsService.mensaje.usuario_error, 4);
+                this.vcUsuario = "";
+                this.vbClave = "";
             }
 
         });

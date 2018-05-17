@@ -297,6 +297,8 @@ export class ReporteHistoriasPacienteComponent implements OnInit {
     });
 
     doc.save("hc-"+this.dni+".pdf");
+
+    this.displayHC='none';
   }
 
   filtro(valor:string){
