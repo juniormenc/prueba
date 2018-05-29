@@ -115,6 +115,7 @@ export class PacienteReservarCitaComponent implements OnInit {
     */
    //PARA HEROKU
    var f = this.fecha;
+   
     this.citaService.reservar(f, horario, parseFloat(this.costo), this.id, id).then((data:any)=>{
       //console.log(data);
       this.router.navigate(['/modulos/paciente']);

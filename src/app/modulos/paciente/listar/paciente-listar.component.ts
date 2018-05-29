@@ -100,7 +100,7 @@ export class PacienteListarComponent implements OnInit {
     var dia = fecha.substr(0, 2);
     var mes = fecha.substr(3, 2);
     var anio =  fecha.substr(6, 4);
-    return dia + "-" + mes + "-" + anio;
+    return anio + "-" + mes + "-" + dia;
   }
 
   pagar(fecha, costo, paciente_id, turno_id, reserva_id){
