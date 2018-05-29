@@ -131,7 +131,7 @@ export class ReporteTurnosMedicoComponent implements OnInit {
     var dia = fecha.substr(8, 2);
     var mes = fecha.substr(5, 2);
     var anio =  fecha.substr(0, 4);
-    return dia + "-" + mes + "-" + anio;
+    return anio + "-" + mes + "-" + dia;
   }
 
   cargarMedicos(id){

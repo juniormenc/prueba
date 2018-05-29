@@ -105,7 +105,7 @@ export class ReporteTurnosComponent implements OnInit {
       v_dia = d;
     }
 
-    return v_dia + "-" + v_mes + "-" + v_anio;
+    return v_anio + "-" + v_mes + "-" + v_dia;
   }
 
   getUltimoDia(fecha){
@@ -131,7 +131,7 @@ export class ReporteTurnosComponent implements OnInit {
       v_dia = d;
     }
 
-    return v_dia + "-" + v_mes + "-" + v_anio;
+    return v_anio + "-" + v_mes + "-" + v_dia;
   }
 
   cargarDatos(){
