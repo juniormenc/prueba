@@ -109,7 +109,12 @@ export class PacienteReservarCitaComponent implements OnInit {
   }
 
   reservarCita(id, horario){
+    /*
+    //PARA LOCALHOST
     var f = this.validar_fecha(this.fecha);
+    */
+   //PARA HEROKU
+   var f = this.fecha;
     this.citaService.reservar(f, horario, parseFloat(this.costo), this.id, id).then((data:any)=>{
       //console.log(data);
       this.router.navigate(['/modulos/paciente']);
@@ -118,7 +123,13 @@ export class PacienteReservarCitaComponent implements OnInit {
   }
 
   pagarCita(id){
+    /*
+    //PARA LOCALHOST
     var f = this.validar_fecha(this.fecha);
+    */
+   //PARA HEROKU
+   var f = this.fecha;
+
     this.citaService.pagar(2, f, parseFloat(this.costo), parseFloat(this.costo), this.id, id).then((data:any)=>{
       //console.log(data);
       this.router.navigate(['/modulos/paciente']);
