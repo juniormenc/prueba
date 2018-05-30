@@ -16,6 +16,8 @@ import { TurnoAtencionService } from '../../../servicios/modulos/turno-atencion.
 })
 export class ReporteTurnosComponent implements OnInit {
 
+  loading: boolean;
+
   mes_anio: any;
   e_turnos: Array<any>;
   
@@ -141,10 +143,14 @@ export class ReporteTurnosComponent implements OnInit {
     var f_desde = this.getPrimerDia(fecha);
     var f_hasta = this.getUltimoDia(fecha);
     var id = localStorage.getItem("id");
+
+    this.loading = true;
+    this.e_turnos = null;
     
     this.turnoService.listar_mis_turnos(id, f_desde, f_hasta).then((data: any) => {
       this.e_turnos = data.recordSet.element;
       //console.log(data.recordSet.element);
+      this.loading = false;
     });
   }
 

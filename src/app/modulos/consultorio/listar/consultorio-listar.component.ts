@@ -17,7 +17,7 @@ import { ConsultorioService } from '../../../servicios/modulos/consultorio.servi
 })
 export class ConsultorioListarComponent implements OnInit {
 
-  //bandera: boolean = false;
+  loading: boolean;
 
   elemento: Array<any>;
   color: any;
@@ -40,16 +40,26 @@ export class ConsultorioListarComponent implements OnInit {
   }
 
   listar_todos(){
+
+    this.loading = true;
+    this.elemento = null;
+
     this.consultorioService.listar_todos().then((data: any) =>{
       this.elemento = data.recordSet.element;
       //console.log(this.elemento)
+      this.loading = false;
     });
   }
 
   listar(filtro){
+
+    this.loading = true;
+    this.elemento = null;
+
     this.consultorioService.listar(filtro).then((data: any) =>{
       this.elemento = data.recordSet.element;
       //console.log(this.elemento)
+      this.loading = false;
     });
   }
 

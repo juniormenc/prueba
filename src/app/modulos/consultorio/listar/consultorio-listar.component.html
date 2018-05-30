@@ -1,5 +1,3 @@
-    <!--app-spinner *ngIf="bandera"></app-spinner-->
-
     <div class="main-content">
             <div class="container-fluid">
               <div class="col-md-12">
@@ -17,7 +15,11 @@
                             <input type="text" class="buscar" (keyup)="filtro($event.target.value)" placeholder="Buscar Consultorio">
                         </div>
                             
-                        <table class="table col-md-12">
+                        <div class="loading col-md-12" *ngIf="loading" align="center">
+                            <img src="../../../../assets/img/loader.gif" />
+                        </div>
+                                     
+                        <table class="table col-md-12" *ngIf="elemento">
                             <thead>
                                 <tr>
                                     <th>Id</th>

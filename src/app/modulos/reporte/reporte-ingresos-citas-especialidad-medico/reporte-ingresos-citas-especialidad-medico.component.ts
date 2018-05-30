@@ -16,6 +16,8 @@ import { CitaService } from '../../../servicios/modulos/cita.services';
 })
 export class ReporteIngresosCitasEspecialidadMedicoComponent implements OnInit {
 
+  loading: boolean;
+
   e_citas: Array<any>;
   cantidad_citas: any;
   ingreso_citas: any;
@@ -110,9 +112,13 @@ export class ReporteIngresosCitasEspecialidadMedicoComponent implements OnInit {
     var f_desde = this.validar_fecha(this.fecha_desde);
     var f_hasta = this.validar_fecha(this.fecha_hasta)
 
+    this.loading = true;
+    this.e_citas = null;
+
     this.citaService.listar_ingresos_citas_especialidad(f_desde, f_hasta).then((data: any) => {
       this.e_citas = data.recordSet.element;
       //console.log(data.recordSet.element);
+      this.loading = false;
     });
 
     this.citaService.listar_suma_ingresos_citas(f_desde, f_hasta).then((data: any) => {

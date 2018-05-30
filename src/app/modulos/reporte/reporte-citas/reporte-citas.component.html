@@ -19,7 +19,12 @@
             </div>   
             
         </div>
-        <table class="table col-md-12">
+
+        <div class="loading col-md-12" *ngIf="loading" align="center">
+          <img src="../../../../assets/img/loader.gif" />
+        </div>
+
+        <table class="table col-md-12" *ngIf="e_citas">
           <thead>
             <tr>
               <th>Fecha</th>

@@ -17,6 +17,8 @@ import { CitaService } from '../../../servicios/modulos/cita.services';
 })
 export class ReporteHistoriasPacienteComponent implements OnInit {
 
+  loading: boolean;
+
   e_pacientes: Array<any>;
   e_cita: Array<any>;
   
@@ -317,16 +319,26 @@ export class ReporteHistoriasPacienteComponent implements OnInit {
   }
 
   listar_todos(){
+
+    this.loading = true;
+    this.e_pacientes = null;
+
     this.pacienteService.listar_todos().then((data: any) =>{
       this.e_pacientes = data.recordSet.element;
       //console.log(this.e_pacientes)
+      this.loading = false;
     });
   }
 
   listar(filtro){
+
+    this.loading = true;
+    this.e_pacientes = null;
+
     this.pacienteService.listar(filtro).then((data: any) =>{
       this.e_pacientes = data.recordSet.element;
       //console.log(this.elemento)
+      this.loading = false;
     });
   }
 

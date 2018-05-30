@@ -16,6 +16,8 @@ import { CitaService } from '../../../servicios/modulos/cita.services';
 
 export class CitaPacienteListarComponent implements OnInit {
 
+  loading: boolean;
+
   e_pacientes: Array<any>;
   id: any;
 
@@ -25,9 +27,13 @@ export class CitaPacienteListarComponent implements OnInit {
 
     this.id = localStorage.getItem('id');
 
+    this.loading = true;
+    this.e_pacientes = null;
+
     this.citaService.listar_citas_hoy(this.id).then((data:any) => {
       this.e_pacientes = data.recordSet.element;
       //console.log(this.e_pacientes);
+      this.loading = false;
     });
   }
 

@@ -10,7 +10,11 @@
 
             <div class="content table-responsive table-full-width panel-body">
                       
-                  <table class="table col-md-12">
+                    <div class="loading col-md-12" *ngIf="loading" align="center">
+                        <img src="../../../../assets/img/loader.gif" />
+                    </div>
+                                     
+                    <table class="table col-md-12" *ngIf="e_pacientes">
                       <thead>
                           <tr>
                               <th>Dni</th>

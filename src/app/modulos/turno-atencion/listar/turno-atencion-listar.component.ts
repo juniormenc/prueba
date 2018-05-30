@@ -17,7 +17,7 @@ import { TurnoAtencionService } from '../../../servicios/modulos/turno-atencion.
 })
 export class TurnoAtencionListarComponent implements OnInit {
 
-  //bandera: boolean = false;
+  loading: boolean;
 
   elemento: Array<any>;
 
@@ -39,16 +39,26 @@ export class TurnoAtencionListarComponent implements OnInit {
   }
 
   listar_todos(){
+
+    this.loading = true;
+    this.elemento = null;
+
     this.turnoAtencionService.listar_todos().then((data: any) =>{
       this.elemento = data.recordSet.element;
       //console.log(this.elemento)
+      this.loading = false;
     });
   }
 
   listar(filtro){
+
+    this.loading = true;
+    this.elemento = null;
+
     this.turnoAtencionService.listar(filtro).then((data: any) =>{
       this.elemento = data.recordSet.element;
       //console.log(this.elemento)
+      this.loading = false;
     });
   }
 

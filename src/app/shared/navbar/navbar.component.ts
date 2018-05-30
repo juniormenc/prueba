@@ -75,6 +75,12 @@ export class NavbarComponent implements OnInit {
 
     public salir(): void {
         sessionStorage.clear();
+        localStorage.removeItem('jwt');
+        localStorage.removeItem('id');
+        localStorage.removeItem('rolId');
+        this.router.navigate(['/login']);
+        
+        /*
         this.sesionService.cerrarSesion().then((data: any) => {
             localStorage.removeItem('jwt');
             localStorage.removeItem('id');
@@ -84,6 +90,7 @@ export class NavbarComponent implements OnInit {
             //localStorage.removeItem('paciente_id');
             this.router.navigate(['/login']);
         });
+        */
         
     }
 }

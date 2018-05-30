@@ -18,6 +18,8 @@ import { CitaService } from '../../../servicios/modulos/cita.services';
 })
 export class PacienteListarComponent implements OnInit {
 
+  loading: boolean;
+
   elemento: Array<any>;
   displayR = 'none';
   displayC = 'none';
@@ -47,16 +49,26 @@ export class PacienteListarComponent implements OnInit {
   }
 
   listar_todos(){
+
+    this.loading = true;
+    this.elemento = null;
+
     this.pacienteService.listar_todos().then((data: any) =>{
       this.elemento = data.recordSet.element;
       //console.log(this.elemento)
+      this.loading = false;
     });
   }
 
   listar(filtro){
+
+    this.loading = true;
+    this.elemento = null;
+
     this.pacienteService.listar(filtro).then((data: any) =>{
       this.elemento = data.recordSet.element;
       //console.log(this.elemento)
+      this.loading = false;
     });
   }
 

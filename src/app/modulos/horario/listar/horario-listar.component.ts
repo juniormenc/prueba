@@ -10,13 +10,19 @@ import { HorarioService } from '../../../servicios/modulos/horario.services';
 })
 export class HorarioListarComponent implements OnInit {
 
+  loading: boolean;
+
   elemento: Array<any>;
 
   constructor(private router:Router, public horarioService:HorarioService) { }
 
   ngOnInit() {
+    
+    this.loading = true;
+    
     this.horarioService.listar().then((data: any) =>{
       this.elemento = data.recordSet.element;
+      this.loading = false;
 
       for (let i = 0; i < this.elemento.length; i++) {
         if(this.elemento[i].estado == false){

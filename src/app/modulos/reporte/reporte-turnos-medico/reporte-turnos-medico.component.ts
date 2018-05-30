@@ -18,6 +18,8 @@ import { MedicoService } from '../../../servicios/modulos/medico.services';
 })
 export class ReporteTurnosMedicoComponent implements OnInit {
 
+  loading: boolean;
+
   e_especialidad: any;
   e_medico: any;
   e_turno:any;
@@ -31,7 +33,7 @@ export class ReporteTurnosMedicoComponent implements OnInit {
     private especialidadService: EspecialidadService,
     private medicoService: MedicoService,
     private router: Router
-  ) { }
+  ) {  }
 
   downloadPDF(){
 
@@ -151,10 +153,14 @@ export class ReporteTurnosMedicoComponent implements OnInit {
     var f_desde = this.validar_fecha(this.fecha_actual());
     var f_hasta = this.validar_fecha(this.fecha)
 
+    this.loading = true;
+    this.e_turno = null;
+
     if(parseInt(this.especialidad) > 0) {
       this.turnoService.reporte_turno_por_medico(parseInt(this.medico), f_desde, f_hasta).then((data:any)=>{
         this.e_turno = data.recordSet.element;
         //console.log(this.e_turno);
+        this.loading = false;
       });
     }
 

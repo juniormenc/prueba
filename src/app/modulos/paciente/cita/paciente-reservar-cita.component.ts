@@ -23,6 +23,8 @@ export class PacienteReservarCitaComponent implements OnInit {
     private settingsService: SettingsService
   ) {}
 
+  loading: boolean;
+
   id: number;
   costo: string;
   especialidad:string;
@@ -100,9 +102,14 @@ export class PacienteReservarCitaComponent implements OnInit {
   cargarTurnos(){
     
     if(parseInt(this.especialidad) > 0) {
+
+      this.loading = true;
+      this.e_turno = null;
+
       this.turnoService.listar_turno_medico_disponible(parseInt(this.especialidad), this.fecha).then((data:any)=>{
         this.e_turno = data.recordSet.element;
         //console.log(this.e_turno);
+        this.loading = false;
       });
     }
 
@@ -114,7 +121,7 @@ export class PacienteReservarCitaComponent implements OnInit {
     var f = this.validar_fecha(this.fecha);
     */
    //PARA HEROKU
-   var f = this.fecha;
+    var f = this.fecha;
    
     this.citaService.reservar(f, horario, parseFloat(this.costo), this.id, id).then((data:any)=>{
       //console.log(data);
@@ -129,7 +136,7 @@ export class PacienteReservarCitaComponent implements OnInit {
     var f = this.validar_fecha(this.fecha);
     */
    //PARA HEROKU
-   var f = this.fecha;
+    var f = this.fecha;
 
     this.citaService.pagar(2, f, parseFloat(this.costo), parseFloat(this.costo), this.id, id).then((data:any)=>{
       //console.log(data);

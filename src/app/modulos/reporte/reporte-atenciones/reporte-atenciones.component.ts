@@ -16,6 +16,8 @@ import { CitaService } from '../../../servicios/modulos/cita.services';
 })
 export class ReporteAtencionesComponent implements OnInit {
 
+  loading: boolean;
+
   e_citas:any;
 
   fecha_desde: any;
@@ -81,9 +83,13 @@ export class ReporteAtencionesComponent implements OnInit {
     var f_hasta = this.validar_fecha(this.fecha_hasta)
     var id = localStorage.getItem('id');
 
+    this.loading = true;
+    this.e_citas = null;
+
     this.citaService.listar_ingresos_citas_por_medico(id, f_desde, f_hasta).then((data: any) => {
       this.e_citas = data.recordSet.element;
       //console.log(data);
+      this.loading = false;
     });
 
     this.citaService.listar_suma_ingresos_citas_por_medico(id, f_desde, f_hasta).then((data: any) => {

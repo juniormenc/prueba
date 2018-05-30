@@ -18,7 +18,12 @@
               <button class="btn btn-rojo" (click)="downloadPDF()"><i class="fa fa-arrow-circle-down"></i></button>
             </div>
         </div>
-        <table class="table col-md-12">
+        
+        <div class="loading col-md-12" *ngIf="loading" align="center">
+          <img src="../../../../assets/img/loader.gif" />
+        </div>
+
+        <table class="table col-md-12" *ngIf="e_reservas">
           <thead>
             <tr>
               <th>Fecha</th>

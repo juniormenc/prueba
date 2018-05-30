@@ -16,11 +16,13 @@ import { CitaService } from '../../../servicios/modulos/cita.services';
 })
 export class ReporteReservasComponent implements OnInit {
 
+  loading: boolean;
+
   e_reservas: Array<any>;
 
   fecha_hasta: any;
 
-  constructor(private citaService: CitaService) { }
+  constructor(private citaService: CitaService) {   }
 
   downloadPDF(){
 
@@ -102,9 +104,13 @@ export class ReporteReservasComponent implements OnInit {
     var f_hoy = this.validar_fecha(this.fecha_actual());
     var f_hasta = this.validar_fecha(this.fecha_hasta)
 
+    this.e_reservas = null;
+    this.loading = true;
+
     this.citaService.listar_reservas_por_fecha(f_hoy, f_hasta).then((data: any) => {
       this.e_reservas = data.recordSet.element;
       //console.log(data.recordSet.element);
+      this.loading = false;
     });
 
   }

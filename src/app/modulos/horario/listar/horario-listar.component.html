@@ -10,7 +10,11 @@
             <button class="btn btn-azul btn-wd" (click)="gotoRegistrar()"><i class="fa fa-plus"></i> NUEVO HORARIO</button>
           </div>
 
-          <table class="table col-md-12">
+          <div class="loading col-md-12" *ngIf="loading" align="center">
+              <img src="../../../../assets/img/loader.gif" />
+          </div>
+                   
+          <table class="table col-md-12" *ngIf="elemento">
             <thead>
               <tr>
                 <th>Id</th>
