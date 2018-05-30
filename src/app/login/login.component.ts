@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
         .then((data: any) =>{
             //console.log(data);
             if(data.recordSet.count > 0){
-                console.log(data);
+                //console.log(data);
                 localStorage.setItem("id", data.recordSet.element[0].id);
                 localStorage.setItem("jwt", data.recordSet.element.token);
                 localStorage.setItem("rolId", data.recordSet.element[0].rol_id);
@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
                 this.router.navigate(['modulos/inicio']);
                 this.settingsService.showNotification('top','right', this.settingsService.mensaje.usuario_correcto, 1);
             }else{
-                console.log("usuario o clave incorrecto");
+                //console.log("usuario o clave incorrecto");
                 this.settingsService.showNotification('top','right', this.settingsService.mensaje.usuario_error, 4);
                 this.vcUsuario = "";
                 this.vbClave = "";

@@ -171,10 +171,10 @@ export class CitaPacienteRegistrarComponent implements OnInit {
       //console.log(data);
     })
 
-    console.log(this.talla, this.peso, this.presion, this.examenes_realizados, this.signos, this.sintomas, this.examenes_por_realizarse, this.diagnostico_medico, this.receta_tratamiento_medico, this.id);
+    //console.log(this.talla, this.peso, this.presion, this.examenes_realizados, this.signos, this.sintomas, this.examenes_por_realizarse, this.diagnostico_medico, this.receta_tratamiento_medico, this.id);
     
     this.citaService.registrar_evaluacion(this.talla, this.peso, this.presion, this.examenes_realizados, this.signos, this.sintomas, this.examenes_por_realizarse, this.diagnostico_medico, this.receta_tratamiento_medico, this.id).then((data: any) => {
-      console.log(data);
+      //console.log(data);
     })
 
     this.router.navigate(["modulos/cita-paciente"]);
