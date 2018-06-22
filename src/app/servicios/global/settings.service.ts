@@ -17,6 +17,7 @@ export class SettingsService {
     eliminar:"¡Ha sido eliminado correctamente!",
     cancelar:"¡Ha sido cancelado correctamente!",
     reservar:"¡Ha sido reservado correctamente!",
+    enlazar: "Reserva enlazada correctamente",
     aprobar:"¡Ha sido aprobado correctamente!",
     debaja:"¡Ha sido dado de baja correctamente!",
     usuario_correcto:"¡Bienvenido al sistema!",

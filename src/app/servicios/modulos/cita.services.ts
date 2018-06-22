@@ -17,6 +17,21 @@ export class CitaService {
         });
         return headers;
     }
+    
+    public enlazar(id_re, id_pac): Promise<any>{
+        let myData = {
+            id_re: id_re,
+            id_pac: id_pac
+        };
+        //console.log(myData)
+        return this.http.put(
+            constantes.urlServidor+'/cita/enlazar/'+id_re+'/'+id_pac,
+            myData,
+            {headers: this.getHeaders()}
+        ).toPromise()
+        .then((data) => data.json())
+        .catch((error)=>console.log(error));
+    }
 
     public pagar(nro_cita: any, fecha: any, costo_defecto: any, costo_final: any, paciente: any, turno: any){
         let myData = {
@@ -76,9 +91,39 @@ export class CitaService {
         .catch((error)=> console.log(error));
     }
 
+    public listar_reserva(){
+        return this.http.get(
+            constantes.urlServidor + '/cita/reserva',
+            {headers: this.getHeaders()}
+        )
+        .toPromise()
+        .then((data)=>data.json())
+        .catch((error)=> console.log(error));
+    }
+
+    public listar_reserva_filtro(filtro: number){
+        return this.http.get(
+            constantes.urlServidor + '/cita/reserva/'+filtro,
+            {headers: this.getHeaders()}
+        )
+        .toPromise()
+        .then((data)=>data.json())
+        .catch((error)=> console.log(error));
+    }
+
     public listar_reserva_por_paciente(id: number){
         return this.http.get(
             constantes.urlServidor + '/cita/reserva/paciente/'+id,
+            {headers: this.getHeaders()}
+        )
+        .toPromise()
+        .then((data)=>data.json())
+        .catch((error)=> console.log(error));
+    }
+
+    public listar_reserva_detalle(id: number){
+        return this.http.get(
+            constantes.urlServidor + '/cita/reserva/detalle/'+id,
             {headers: this.getHeaders()}
         )
         .toPromise()

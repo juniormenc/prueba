@@ -58,7 +58,8 @@ export class SidebarComponent implements OnInit {
                 //USUARIO RECEPCIONISTA
                 {
                     path: 'gestionar', title: 'G. Recepcionista', icon: 'fa fa-book', vcObjeto: 'modulo-gestionar', children: [
-                        { path: 'paciente', title: 'Pacientes y Citas', vcObjeto: 'paciente-listar', enabled: true }
+                        { path: 'paciente', title: 'Pacientes y Citas', vcObjeto: 'paciente-listar', enabled: true },
+                        { path: 'reserva', title: 'Reservas Pendientes', vcObjeto: 'reserva-listar', enabled: true }
                     ]
                 },
                 {
@@ -127,7 +128,8 @@ export class SidebarComponent implements OnInit {
                         //USUARIO RECEPCIONISTA
                         {
                             path: 'gestionar', title: 'Gestionar', icon: 'fa fa-book', vcObjeto: 'modulo-gestionar', children: [
-                                { path: 'paciente', title: 'Pacientes y Citas', vcObjeto: 'paciente-listar', enabled: true }
+                                { path: 'paciente', title: 'Pacientes y Citas', vcObjeto: 'paciente-listar', enabled: true },
+                                { path: 'reserva', title: 'Reservas Pendientes', vcObjeto: 'reserva-listar', enabled: true }
                             ]
                         },
                         {

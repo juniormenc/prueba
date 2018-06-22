@@ -1,0 +1,259 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="col-md-12">
+      <div class="card panel panel-azul">
+        <div class="panel-heading">
+          Enlazar Reservas Online
+        </div>
+
+        <div class="content table-responsive table-full-widht panel-body">
+
+          <div class="col-md-12" align="left">
+            <button (click)="goToReservasPendientes()" class="btn btn-amarillo"><i class="fa fa-arrow-left"></i></button>
+          </div>
+
+          <div class="col-md-12" align="center">
+            <p style="color:red" [hidden]="h_mensaje">Al parecer el <strong>DNI</strong> ingresado <strong>YA SE ENCUENTRA REGISTRADO</strong>, verifique los datos del paciente.</p>
+          </div>          
+          
+          <div class="col-md-12" align="right">
+            <button (click)="limpiar()" [disabled]="h_btn_nuevo_pac" class="btn btn-verde">NUEVO PACIENTE</button>
+          </div>
+
+          <div class="loading col-md-12" *ngIf="loading" align="center">
+            <img src="../../../../assets/img/loader.gif" />
+          </div>
+
+          <div class="col-md-12" *ngIf="paciente">
+            <div class="panel-heading">
+              DATOS DEL PACIENTE
+            </div>
+
+            <div class="content table-responsive table-full-width panel-body">
+              <div class="form-group col-md-4">
+                <label class="">DNI:</label>
+                <div class="">
+                  <input type="text" [disabled]=!h_nuevo_pac class="form-control" placeholder="" [(ngModel)]="dni">
+                </div>
+              </div>
+              
+              <div class="form-group col-md-4">
+                <label class="">NOMBRES:</label>
+                <div class="">
+                  <input type="text" [disabled]=!h_nuevo_pac class="form-control" placeholder="" [(ngModel)]="nombres">
+                </div>
+              </div>
+                      
+              <div class="form-group col-md-4">
+                <label class="">APELLIDO PATERNO:</label>
+                <div class="">
+                  <input type="text" [disabled]=!h_nuevo_pac class="form-control" placeholder="" [(ngModel)]="ap_paterno">
+                </div>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label class="">APELLIDO MATERNO:</label>
+                <div class="">
+                  <input type="text" [disabled]=!h_nuevo_pac class="form-control" placeholder="" [(ngModel)]="ap_materno">
+                </div>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label class="">F. NACIMIENTO:</label>
+                <input class="form-control" type="date" [disabled]=!h_nuevo_pac [(ngModel)]="fecha_nacimiento">
+              </div>
+
+              <div class="form-group col-md-4">
+                <label class="">SEXO:</label>
+                <div class="">
+                  <select  class="form-control" [disabled]=!h_nuevo_pac placeholder="Sexo" [(ngModel)]="sexo" >
+                    <option value=1>MASCULINO</option>
+                    <option value=2>FEMENINO</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label class="">DOMICILIO:</label>
+                <div class="">
+                  <input type="text" [disabled]=!h_nuevo_pac class="form-control" placeholder="" [(ngModel)]="domicilio">
+                </div>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label class="">ESTADO CIVIL:</label>
+                <div class="">
+                  <select  class="form-control" [disabled]=!h_nuevo_pac placeholder="estado_civil" [(ngModel)]="estado_civil" >
+                    <option value=1>SOLTER(O)(A)</option>
+                    <option value=2>CASAD(O)(A)</option>
+                    <option value=3>VIUD(O)(A)</option>
+                    <option value=4>DIVORCIAD(O)(A)</option>
+                    <option value=5>CONVIVIENTE</option>
+                    <option value=6>OTRO</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label class="">PROFESION:</label>
+                <div class="">
+                  <input type="text" [disabled]=!h_nuevo_pac class="form-control" placeholder="" [(ngModel)]="profesion">
+                </div>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label class="">T. SANGRE</label>
+                <div class="">
+                  <select  class="form-control" [disabled]=!h_nuevo_pac placeholder="tipo_sangre" [(ngModel)]="tipo_sangre" >
+                    <option value=1>A+</option>
+                    <option value=2>A-</option>
+                    <option value=3>B+</option>
+                    <option value=4>B-</option>
+                    <option value=5>AB+</option>
+                    <option value=6>AB-</option>
+                    <option value=7>O+</option>
+                    <option value=8>O-</option>
+                    <option value=9>NO SABE</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label class="">CORREO ELECTRÓNICO:</label>
+                <div class="">
+                  <input type="text" [disabled]=!h_nuevo_pac class="form-control" placeholder="" [(ngModel)]="email">
+                </div>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label class="">CELULAR:</label>
+                <div class="">
+                  <input type="text" [disabled]=!h_nuevo_pac class="form-control" placeholder="" [(ngModel)]="celular">
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-md-12" align="center">
+              <button (click)="goToCrear()" [hidden]="h_crear" class="btn-azul">CREAR Y ENLAZAR</button>
+              <button (click)="goToEnlazar()" [hidden]="h_enlazar" class="btn-azul">ENLAZAR</button>
+            </div>
+
+            <!--div *ngIf="e_reserva"-->
+            <div>
+              <div class="panel-heading">
+                DATOS DE LA CITA RESERVADA
+              </div>
+      
+              <div class="content table-responsive table-full-width panel-body">
+                <div class="form-group col-md-4">
+                  <label class="">FECHA:</label>
+                  <div class="">
+                    <input type="text" disabled class="form-control" placeholder="" [(ngModel)]="fecha">
+                  </div>
+                </div>
+                  
+                <div class="form-group col-md-4">
+                  <label class="">HORARIO:</label>
+                  <div class="">
+                    <input type="text" disabled class="form-control" placeholder="" [(ngModel)]="horario">
+                  </div>
+                </div>
+                          
+                <div class="form-group col-md-4">
+                  <label class="">ESPECIALIDAD:</label>
+                  <div class="">
+                    <input type="text" disabled class="form-control" placeholder="" [(ngModel)]="especialidad">
+                  </div>
+                </div>
+      
+                <div class="form-group col-md-4">
+                  <label class="">MÉDICO:</label>
+                  <div class="">
+                    <input type="text" disabled class="form-control" placeholder="" [(ngModel)]="medico">
+                  </div>
+                </div>
+      
+                <div class="form-group col-md-4">
+                  <label class="">CONSULTORIO</label>
+                  <input type="text" disabled class="form-control" [(ngModel)]="consultorio">
+                </div>
+      
+                <div class="form-group col-md-4">
+                  <label class="">COSTO: (S/.)</label>
+                  <input  type="text"  disabled class="form-control" placeholder="" [(ngModel)]="costo" >
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          
+
+          <div class="backdrop" [ngStyle]="{'display':displayCP}"></div>
+          <!-- /.modal !-->
+          <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':displayCP}">
+            <!-- /.modal-dialog -->
+            <div class="modal-dialog" role="document">
+              <!-- /.modal-content -->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Crear Paciente - Enlazar Cita</h4>
+                </div>
+                <div class="modal-body">
+                  <div align="center">
+                    <p><strong>¿Desea Agregar un Nuevo Paciente y enlazarlo con la Cita?</strong></p>
+                    <p>
+                      <button type="button" class="btn btn-azul" (click)="crear()" >Crear y Enlazar</button>
+                    </p>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-verde" (click)="onCloseHandled()" >Cerrar</button>
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+          <!-- /.modal CREAR PACIENTE!-->
+
+
+          <div class="backdrop" [ngStyle]="{'display':displayE}"></div>
+          <!-- /.modal !-->
+          <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':displayE}">
+            <!-- /.modal-dialog -->
+            <div class="modal-dialog" role="document">
+              <!-- /.modal-content -->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Enlazar Cita</h4>
+                </div>
+                <div class="modal-body">
+                  <div align="center">
+                    <p><strong>¿Desea enlazar el Paciente con la Cita?</strong></p>
+                    <p>
+                      <button type="button" class="btn btn-azul" (click)="enlazar()" >Enlazar Cita</button>
+                    </p>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-verde" (click)="onCloseHandled()" >Cerrar</button>
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+          <!-- /.modal ENLAZAR!-->
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

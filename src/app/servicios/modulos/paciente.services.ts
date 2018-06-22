@@ -110,6 +110,15 @@ export class PacienteService {
         .catch((error) => console.log(error));
     }
 
+    public detalle_dni(dni: string):Promise<any>{
+        return this.http.get(
+            constantes.urlServidor + '/paciente/dni/'+dni,
+            {headers: this.getHeaders()}
+        ).toPromise()
+        .then((data) => data.json())
+        .catch((error) => console.log(error));
+    }
+
     public registrar_antecedentes(id): Promise<any>{
         let myData = {
             paciente_id: id,

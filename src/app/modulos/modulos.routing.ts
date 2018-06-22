@@ -10,6 +10,7 @@ export const routes: Routes = [
         children: [
             { path: 'inicio', component: GlobalInicioComponent },
             { path: 'paciente', loadChildren: './paciente/paciente.module#PacienteModule' },
+            { path: 'reserva', loadChildren: './reserva/reserva.module#ReservaModule' },
             { path: 'consultorio', loadChildren: './consultorio/consultorio.module#ConsultorioModule' },
             { path:'horario', loadChildren: './horario/horario.module#HorarioModule'},
             { path: 'reporte', loadChildren: './reporte/reporte.module#ReporteModule'},
