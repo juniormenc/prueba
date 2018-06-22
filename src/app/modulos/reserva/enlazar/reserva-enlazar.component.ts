@@ -16,6 +16,8 @@ import { SettingsService } from '../../../servicios/global/settings.service';
 })
 export class ReservaEnlazarComponent implements OnInit {
 
+  loading: boolean;
+
   displayCP = 'none';
   displayE = 'none';
   paciente: Array<any>;
@@ -62,6 +64,8 @@ export class ReservaEnlazarComponent implements OnInit {
 
   ngOnInit() {
 
+    this.loading = true;
+
     this.cargarDatosReserva();
 
     this.route.params.subscribe(params => {
@@ -106,7 +110,9 @@ export class ReservaEnlazarComponent implements OnInit {
         this.email = data.recordSet.element.correo;
         this.celular = data.recordSet.element.celular;
 
-      }      
+      }
+
+      this.loading = false;
 
     })
   }
