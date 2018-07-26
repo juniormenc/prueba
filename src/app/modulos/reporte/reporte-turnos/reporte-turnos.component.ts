@@ -21,7 +21,11 @@ export class ReporteTurnosComponent implements OnInit {
   mes_anio: any;
   e_turnos: Array<any>;
   
-  constructor(private turnoService: TurnoAtencionService) { }
+  constructor(private turnoService: TurnoAtencionService, private router: Router) {
+    if (localStorage.getItem('id') == null) {
+      this.router.navigate(['login']);
+    }
+  }
 
   downloadPDF(){
 

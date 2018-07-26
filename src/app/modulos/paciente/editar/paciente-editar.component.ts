@@ -29,7 +29,11 @@ export class PacienteEditarComponent implements OnInit {
   email:string;
   celular:string;
 
-  constructor(private pacienteService: PacienteService, private route: ActivatedRoute, private router: Router, private settingsService: SettingsService) { }
+  constructor(private pacienteService: PacienteService, private route: ActivatedRoute, private router: Router, private settingsService: SettingsService) {
+    if (localStorage.getItem('id') == null) {
+      this.router.navigate(['login']);
+    }
+   }
 
   validar_fecha(fecha){
     var dia = fecha.substr(0,2);

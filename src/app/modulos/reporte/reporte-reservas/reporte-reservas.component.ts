@@ -22,7 +22,11 @@ export class ReporteReservasComponent implements OnInit {
 
   fecha_hasta: any;
 
-  constructor(private citaService: CitaService) {   }
+  constructor(private citaService: CitaService, private router: Router) {
+    if (localStorage.getItem('id') == null) {
+      this.router.navigate(['login']);
+    }
+  }
 
   downloadPDF(){
 

@@ -16,7 +16,11 @@ export class HorarioEditarComponent implements OnInit {
   hora_entrada: string;
   hora_salida: string;
 
-  constructor(private router:Router, private route: ActivatedRoute, public horarioService: HorarioService, private settingsService: SettingsService) { }
+  constructor(private router:Router, private route: ActivatedRoute, public horarioService: HorarioService, private settingsService: SettingsService) {
+    if (localStorage.getItem('id') == null) {
+      this.router.navigate(['login']);
+    }
+   }
 
   ngOnInit() {
     //Obtenemos el id de la ruta

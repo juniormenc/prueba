@@ -18,7 +18,11 @@ export class GlobalInicioComponent {
     constructor(
         private router: Router,
         private toasterService: ToasterService,
-    ) { }
+    ) {
+        if (localStorage.getItem('id') == null) {
+            this.router.navigate(['login']);
+        }
+     }
 
     ngOnInit() {
         /*if(localStorage.getItem('id') == null){

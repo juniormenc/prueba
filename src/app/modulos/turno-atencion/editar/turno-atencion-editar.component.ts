@@ -43,7 +43,11 @@ export class TurnoAtencionEditarComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private settingsService: SettingsService
-  ) { }
+  ) {
+    if (localStorage.getItem('id') == null) {
+      this.router.navigate(['login']);
+    }
+  }
 
   ngOnInit() {
     

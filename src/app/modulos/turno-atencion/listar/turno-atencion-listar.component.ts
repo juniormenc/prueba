@@ -32,7 +32,11 @@ export class TurnoAtencionListarComponent implements OnInit {
     }
   }
 
-  constructor(public turnoAtencionService: TurnoAtencionService, private router: Router) { }
+  constructor(public turnoAtencionService: TurnoAtencionService, private router: Router) {
+    if (localStorage.getItem('id') == null) {
+      this.router.navigate(['login']);
+    }
+  }
 
   ngOnInit() {
     this.listar_todos();

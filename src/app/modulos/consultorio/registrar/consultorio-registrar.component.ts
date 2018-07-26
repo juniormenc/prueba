@@ -17,6 +17,9 @@ export class ConsultorioRegistrarComponent implements OnInit {
   numero:string;
  
   constructor(private consultorioService: ConsultorioService, private settingsService: SettingsService, private router: Router) {
+    if (localStorage.getItem('id') == null) {
+      this.router.navigate(['login']);
+    }
    }
 
   ngOnInit() {

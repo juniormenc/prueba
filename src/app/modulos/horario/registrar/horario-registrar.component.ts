@@ -14,7 +14,11 @@ export class HorarioRegistrarComponent implements OnInit {
   hora_entrada: string;
   hora_salida: string;
 
-  constructor(private router: Router, private settingsService: SettingsService, public horarioService:HorarioService) { }
+  constructor(private router: Router, private settingsService: SettingsService, public horarioService:HorarioService) {
+    if (localStorage.getItem('id') == null) {
+      this.router.navigate(['login']);
+    }
+   }
 
   ngOnInit() {
     

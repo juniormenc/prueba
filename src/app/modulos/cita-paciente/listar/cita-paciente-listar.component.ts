@@ -21,7 +21,11 @@ export class CitaPacienteListarComponent implements OnInit {
   e_pacientes: Array<any>;
   id: any;
 
-  constructor(private citaService: CitaService, private router: Router) { }
+  constructor(private citaService: CitaService, private router: Router) {
+    if (localStorage.getItem('id') == null) {
+      this.router.navigate(['login']);
+    }
+   }
 
   ngOnInit() {
 

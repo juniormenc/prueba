@@ -3,7 +3,6 @@ import { ReportesComponent } from './reporte.component';
 import { ModuleWithProviders } from '@angular/core';
 
 //COMPONENTES
-import { } from './'; 
 import { ReporteAtencionesComponent } from './reporte-atenciones/reporte-atenciones.component';
 import { ReporteCitasComponent } from './reporte-citas/reporte-citas.component';
 import { ReporteHistoriasPacienteComponent } from './reporte-historias-paciente/reporte-historias-paciente.component';
@@ -12,7 +11,6 @@ import { ReporteIngresosCitasComponent } from './reporte-ingresos-citas/reporte-
 import { ReporteReservasComponent } from './reporte-reservas/reporte-reservas.component';
 import { ReporteTurnosMedicoComponent } from './reporte-turnos-medico/reporte-turnos-medico.component';
 import { ReporteTurnosComponent } from './reporte-turnos/reporte-turnos.component';
-import { } from './';
 
 let routes: Route[] = [
     {

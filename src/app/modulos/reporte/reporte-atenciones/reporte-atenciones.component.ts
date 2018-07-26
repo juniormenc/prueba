@@ -26,7 +26,11 @@ export class ReporteAtencionesComponent implements OnInit {
   cantidad_citas: any;
   ingreso_citas: any;
 
-  constructor(private citaService: CitaService) { }
+  constructor(private citaService: CitaService, private router: Router) {
+    if (localStorage.getItem('id') == null) {
+      this.router.navigate(['login']);
+    }
+  }
 
   downloadPDF(){
 

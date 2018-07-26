@@ -14,7 +14,11 @@ export class HorarioListarComponent implements OnInit {
 
   elemento: Array<any>;
 
-  constructor(private router:Router, public horarioService:HorarioService) { }
+  constructor(private router:Router, public horarioService:HorarioService) {
+    if (localStorage.getItem('id') == null) {
+      this.router.navigate(['login']);
+    }
+   }
 
   ngOnInit() {
     

@@ -30,7 +30,10 @@ export class PacienteRegistrarComponent implements OnInit {
   celular: string;
   
   constructor(private pacienteService: PacienteService, private settingsService: SettingsService, private router: Router) {
-   }
+    if (localStorage.getItem('id') == null) {
+      this.router.navigate(['login']);
+    }
+  }
 
   ngOnInit() {
     

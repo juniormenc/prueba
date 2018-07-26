@@ -25,7 +25,11 @@ export class ReservaListarComponent implements OnInit {
     private citaService: CitaService,
     private router: Router,
     private settingsService: SettingsService
-  ) {  }
+  ) {
+    if (localStorage.getItem('id') == null) {
+      this.router.navigate(['login']);
+    }
+  }
 
   ngOnInit() {
     this.listar_todos();

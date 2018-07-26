@@ -56,7 +56,11 @@ export class ReporteHistoriasPacienteComponent implements OnInit {
   ant_enfermedades_padecio: string;
   ant_otros_antecedentes: string;
 
-  constructor(public pacienteService: PacienteService, public citaService: CitaService) { }
+  constructor(public pacienteService: PacienteService, public citaService: CitaService, private router: Router) {
+    if (localStorage.getItem('id') == null) {
+      this.router.navigate(['login']);
+    }
+  }
 
   goToHC(id, apellido_paterno, apellido_materno, nombres){
 

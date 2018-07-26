@@ -33,7 +33,11 @@ export class ReporteTurnosMedicoComponent implements OnInit {
     private especialidadService: EspecialidadService,
     private medicoService: MedicoService,
     private router: Router
-  ) {  }
+  ) {
+    if (localStorage.getItem('id') == null) {
+      this.router.navigate(['login']);
+    }
+  }
 
   downloadPDF(){
 

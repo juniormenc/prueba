@@ -64,7 +64,11 @@ export class CitaPacienteRegistrarComponent implements OnInit {
 
   e_cita: Array<any>;
 
-  constructor(private citaService: CitaService, private pacienteService: PacienteService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private citaService: CitaService, private pacienteService: PacienteService, private router: Router, private route: ActivatedRoute) {
+    if (localStorage.getItem('id') == null) {
+      this.router.navigate(['login']);
+    }
+  }
 
   validar_fecha(fecha){
     var dia = fecha.substr(0,2);

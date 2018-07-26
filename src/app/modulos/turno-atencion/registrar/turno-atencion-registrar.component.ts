@@ -40,6 +40,10 @@ export class TurnoAtencionRegistrarComponent implements OnInit {
     private router: Router,
     private settingsService: SettingsService
   ) {
+    if (localStorage.getItem('id') == null) {
+      this.router.navigate(['login']);
+    }
+
     this.especialidad = "0";
     this.medico = "0";
     this.consultorio = "0";

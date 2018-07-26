@@ -17,7 +17,11 @@ export class ConsultorioEditarComponent implements OnInit {
   id:number;
   numero:string;
 
-  constructor(private consultorioService: ConsultorioService, private route: ActivatedRoute,private router: Router, private settingsService: SettingsService) { }
+  constructor(private consultorioService: ConsultorioService, private route: ActivatedRoute,private router: Router, private settingsService: SettingsService) {
+    if (localStorage.getItem('id') == null) {
+      this.router.navigate(['login']);
+    }
+   }
 
   ngOnInit() {
     

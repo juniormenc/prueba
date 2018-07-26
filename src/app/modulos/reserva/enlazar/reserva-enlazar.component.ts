@@ -60,7 +60,11 @@ export class ReservaEnlazarComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private settingsService: SettingsService
-  ) {  }
+  ) {
+    if (localStorage.getItem('id') == null) {
+      this.router.navigate(['login']);
+    }
+  }
 
   ngOnInit() {
 

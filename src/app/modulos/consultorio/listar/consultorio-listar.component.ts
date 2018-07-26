@@ -33,7 +33,11 @@ export class ConsultorioListarComponent implements OnInit {
     }
   }
 
-  constructor(private consultorioService: ConsultorioService, private router: Router) { }
+  constructor(private consultorioService: ConsultorioService, private router: Router) {
+    if (localStorage.getItem('id') == null) {
+      this.router.navigate(['login']);
+    }
+   }
 
   ngOnInit() {
     this.listar_todos();
