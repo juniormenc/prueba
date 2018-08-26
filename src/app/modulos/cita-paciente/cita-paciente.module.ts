@@ -13,7 +13,8 @@ import { CitaPacienteRegistrarComponent } from './registrar/cita-paciente-regist
 //SERVICES
 import { CitaService } from '../../servicios/modulos/cita.services';
 import { PacienteService } from '../../servicios/modulos/paciente.services';
-
+import { CieService } from '../../servicios/modulos/cie.services';
+import { UbigeoService } from '../../servicios/modulos/ubigeo.services';
 //COMPONENTES
 @NgModule({
     imports:[
@@ -31,7 +32,9 @@ import { PacienteService } from '../../servicios/modulos/paciente.services';
     entryComponents:[],
     providers:[
         CitaService,
-        PacienteService
+        PacienteService,
+        CieService,
+        UbigeoService
     ]
 })
 export class AtencionPacienteModule{}

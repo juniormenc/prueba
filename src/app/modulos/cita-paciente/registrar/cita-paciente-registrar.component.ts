@@ -3,6 +3,8 @@ import {Router, ActivatedRoute } from '@angular/router';
 
 import { PacienteService } from '../../../servicios/modulos/paciente.services';
 import { CitaService } from '../../../servicios/modulos/cita.services';
+import { CieService } from '../../../servicios/modulos/cie.services';
+import { UbigeoService } from '../../../servicios/modulos/ubigeo.services';
 
 @Component({
   selector: 'app-cita-paciente-registrar',
@@ -10,6 +12,8 @@ import { CitaService } from '../../../servicios/modulos/cita.services';
   styleUrls: ['./cita-paciente-registrar.component.scss']
 })
 export class CitaPacienteRegistrarComponent implements OnInit {
+
+  loading: boolean;
 
   id:number;
   paciente_id: number;
@@ -48,26 +52,127 @@ export class CitaPacienteRegistrarComponent implements OnInit {
   ant_enfermedades_padecio: string;
   ant_otros_antecedentes: string;
   
-  talla: any;
-  peso: any;
-  presion: any;
-  examenes_realizados: any;
-  signos: any;
-  sintomas: any;
-  examenes_por_realizarse: any;
-  diagnostico_medico: any;
-  receta_tratamiento_medico: any;
+  presion: number;
+  peso: number;
+  talla: number;
+  imc: any;
+  dmo: any;
 
+  intensidad_dolor: any;
+
+
+  examenes_realizados: string;
+  signos: string;
+  sintomas: any;
+  examenes_por_realizarse: string;
+  diagnostico_medico: string;
+  receta_tratamiento_medico: string;
+
+  
   hora_inicio_consulta: any;
 
   displayE = 'none';
 
   e_cita: Array<any>;
+  e_cie: Array<any>;
+  e_ubigeo: Array<any>;
+  diagnostico: any;
 
-  constructor(private citaService: CitaService, private pacienteService: PacienteService, private router: Router, private route: ActivatedRoute) {
+  cant_diag: any;
+
+  constructor(private citaService: CitaService, private pacienteService: PacienteService, private cieService: CieService, private ubigeoService: UbigeoService, private router: Router, private route: ActivatedRoute) {
     if (localStorage.getItem('id') == null) {
       this.router.navigate(['login']);
     }
+  }
+
+  filtro(valor:string){
+    valor = valor.trim();
+    valor = valor.toLocaleLowerCase();
+    
+    if(valor.length > 2){
+      this.listar(valor);
+    }else{
+      //this.listar_todos();
+      this.e_cie = null;
+    }
+  }
+
+
+
+  calcular_imc(){
+    this.imc = parseFloat((this.peso / (this.talla*this.talla)).toString()).toFixed(2);
+  }
+
+  /*listar_todos(){
+
+    this.loading = true;
+    this.elemento = null;
+
+    this.pacienteService.listar_todos().then((data: any) =>{
+      this.elemento = data.recordSet.element;
+      //console.log(this.elemento)
+      this.loading = false;
+    });
+  }*/
+
+  listar(filtro){
+
+    this.loading = true;
+    this.e_cie = null;
+
+    this.cieService.listar(filtro).then((data: any) =>{
+      this.e_cie = data.recordSet.element;
+      //console.log(this.e_cie)
+      this.loading = false;
+    });
+  }
+
+  total_diagnosticos(){
+    this.cant_diag = this.diagnostico.length
+  }
+
+  agregar_carrito(id, producto){
+    var prd = producto;
+    var bandera = 0;
+    var pos = 0;
+
+    for (let i = 0; i < this.diagnostico.length; i++) {
+      if(this.diagnostico[i].id == id){
+        pos = i;
+        bandera = 1;
+      }
+    }
+
+    if(bandera == 1){
+      //Reemplazamos
+      this.diagnostico.splice(pos, 1,{id: id, enfermedad: prd});
+    }else{
+      //Agregamos
+      this.diagnostico.push({id: id, enfermedad: prd});
+    }
+
+    //console.log(this.diagnostico)
+    this.total_diagnosticos();
+  }
+
+  quitar(id){
+    var pos = -1;
+    var bandera = 0;
+
+    for (let i = 0; i < this.diagnostico.length; i++) {
+      if(this.diagnostico[i].id == id){
+        pos = i;
+        bandera = 1;
+
+        if (bandera == 1) {
+          this.diagnostico.splice(pos, 1);
+          //console.log(pos)
+          //console.log(this.diagnostico)
+        }
+      }
+    }
+    this.total_diagnosticos();
   }
 
   validar_fecha(fecha){
@@ -86,6 +191,8 @@ export class CitaPacienteRegistrarComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.diagnostico = []
 
     this.hora_inicio_consulta = (new Date().getHours()) + ":" + (new Date().getMinutes()) + ":" + (new Date().getSeconds());
     //console.log(this.hora_inicio_consulta);
@@ -138,6 +245,21 @@ export class CitaPacienteRegistrarComponent implements OnInit {
       this.ant_enfermedades_padecio = data.recordSet.element.ant_enfermedades_padecio;
       this.ant_otros_antecedentes = data.recordSet.element.ant_otros_antecedentes;
     });
+
+    
+    this.talla = 0;
+    this.peso = 0;
+    this.presion = 0;
+
+    this.intensidad_dolor = 0;
+
+    this.examenes_realizados = "";
+    this.signos = "";
+    this.sintomas = "";
+    this.examenes_por_realizarse = "";
+    this.diagnostico_medico = "";
+    this.receta_tratamiento_medico = "";
+    
 
   }
 

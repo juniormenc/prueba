@@ -1,0 +1,30 @@
+
+//LISTA ENFERMEDADES (CIE 10)
+.list {
+    display: inline-block;
+    position: relative;
+    width: 600px;
+    height: 300px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
+    border: 1px solid #e8f8ff;
+}
+.list-item {
+    border-bottom: 1px solid #e8f8ff;
+    background-color: #ffffff;
+    box-sizing: border-box;
+}
+
+
+//CARRITO DIAGNÓSTICO
+.list-nro-diag {
+    display: inline-block;
+    position: relative;
+    width: 600px;
+    max-height: 335px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
+    border: 1px solid #e8f8ff;
+}

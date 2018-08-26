@@ -34,11 +34,35 @@ export class CitaPacienteListarComponent implements OnInit {
     this.loading = true;
     this.e_pacientes = null;
 
-    this.citaService.listar_citas_hoy(this.id).then((data:any) => {
+    this.citaService.listar_citas_hoy(this.id, this.fecha_actual()).then((data:any) => {
       this.e_pacientes = data.recordSet.element;
       //console.log(this.e_pacientes);
       this.loading = false;
     });
+  }
+
+  fecha_actual(){
+
+    var v_mes, v_dia, v_anio;
+
+    var m = new Date().getMonth()+1;
+    var d = new Date().getDate();
+
+    v_anio = new Date().getFullYear();
+
+    if(m < 10){
+      v_mes = "0" + (new Date().getMonth()+1);
+    } else {
+      v_mes = (new Date().getMonth()+1);
+    }
+
+    if(d < 10){
+      v_dia = "0" + (new Date().getDate());
+    } else {
+      v_dia = new Date().getDate();
+    }
+
+    return v_anio + "-" + v_mes + "-" + v_dia;
   }
 
   gotoHistoria(id, paciente_id){

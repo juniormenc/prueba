@@ -131,9 +131,9 @@ export class CitaService {
         .catch((error)=> console.log(error));
     }
 
-    public listar_citas_hoy(id: number){
+    public listar_citas_hoy(id: number, fecha_hoy: any){
         return this.http.get(
-            constantes.urlServidor + '/cita/hoy/'+id,
+            constantes.urlServidor + '/cita/hoy/'+id+'/'+fecha_hoy,
             {headers: this.getHeaders()}
         )
         .toPromise()
