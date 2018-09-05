@@ -51,7 +51,8 @@ export class ReporteAtencionesComponent implements OnInit {
     doc.setFontType("bolditalic");
     doc.setTextColor(255, 0, 0);
     doc.setFontSize(15);
-    doc.text("REPORTE DE CITAS ATENDIDAS E INGRESOS", 165, 50);
+    //doc.text("REPORTE DE CITAS ATENDIDAS E INGRESOS", 165, 50);
+    doc.text("REPORTE DE CITAS ATENDIDAS", 165, 50);
 
     doc.setTextColor(0, 0, 0);
     doc.setFontSize(12);
