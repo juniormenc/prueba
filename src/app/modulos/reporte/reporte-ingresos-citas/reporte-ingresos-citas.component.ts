@@ -60,7 +60,7 @@ export class ReporteIngresosCitasComponent implements OnInit {
     doc.text("Total de Citas: "+this.cantidad_citas, 50, 110);
     
     doc.setFontType("bold");
-    doc.text("Ingresos: S./ "+this.ingreso_citas, 50, 130);
+    //doc.text("Ingresos: S./ "+this.ingreso_citas, 50, 130);
 
     doc.autoTable(header, data, {
       theme: 'striped',

@@ -61,7 +61,7 @@ export class ReporteAtencionesComponent implements OnInit {
     doc.text("Total de Citas: "+this.cantidad_citas, 50, 100);
     
     doc.setFontType("bold");
-    doc.text("Ingresos: S/ "+this.ingreso_citas, 50, 120);
+    //doc.text("Ingresos: S/ "+this.ingreso_citas, 50, 120);
 
     doc.autoTable(header, data, {
       theme: 'striped',
