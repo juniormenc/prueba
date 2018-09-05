@@ -80,8 +80,8 @@ export class TurnoAtencionEditarComponent implements OnInit {
       this.cargarMedicos(this.especialidad);
       this.medico = data.recordSet.element.usuario_id;
       
-      var f_nacimiento = this.validar_fecha(data.recordSet.element.fecha_turno);
-      this.fecha = f_nacimiento;
+      var f_ = this.validar_fecha(data.recordSet.element.fecha_turno);
+      this.fecha = f_;
       
       this.total_citas = data.recordSet.element.total_citas;
       this.consultorio = data.recordSet.element.consultorio_id;
@@ -110,16 +110,9 @@ export class TurnoAtencionEditarComponent implements OnInit {
     return anio + "-" + mes + "-" + dia;
   }
 
-  validar_fecha_guardar(fecha){
-    var dia = fecha.substr(8, 2);
-    var mes = fecha.substr(5, 2);
-    var anio =  fecha.substr(0, 4);
-    return dia + "-" + mes + "-" + anio;
-  }
-
   modificar(){
     if(this.fecha != null){
-      var f_turno = this.validar_fecha_guardar(this.fecha);
+      var f_turno = this.validar_fecha(this.fecha);
     }
 
     if (this.especialidad == "0" || this.especialidad == null) {
