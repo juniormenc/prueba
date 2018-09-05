@@ -11,6 +11,7 @@ import { EspecialidadService } from '../../servicios/modulos/especialidad.servic
 import { MedicoService } from '../../servicios/modulos/medico.services';
 import { CitaService } from '../../servicios/modulos/cita.services';
 import { PacienteService } from '../../servicios/modulos/paciente.services';
+import { ExternoService } from '../../servicios/modulos/externo.services';
 
 //COMPONENTES
 import { ReportesComponent } from './reporte.component';
@@ -49,7 +50,8 @@ import { ReporteHistoriasPacienteComponent } from './reporte-historias-paciente/
         EspecialidadService,
         MedicoService,
         CitaService,
-        PacienteService
+        PacienteService,
+        ExternoService
     ]
 })
 

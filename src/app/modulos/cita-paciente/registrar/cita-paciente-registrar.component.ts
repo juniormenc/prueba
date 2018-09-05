@@ -863,8 +863,6 @@ export class CitaPacienteRegistrarComponent implements OnInit {
     this.router.navigate(["modulos/cita-paciente"]);
   }
 
-
-  //////////////////REVISAR
   gotoHistorialEpisodios(){
     this.citaService.listar_historial_citas_por_paciente(this.paciente_id).then((data: any) =>{
       this.e_cita = data.recordSet.element;
