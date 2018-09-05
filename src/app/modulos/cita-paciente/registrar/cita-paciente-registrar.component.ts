@@ -195,13 +195,13 @@ export class CitaPacienteRegistrarComponent implements OnInit {
   h_paciente: any;
   h_tipo_documento: any;
   h_doc_ide: any;
-  h_nacionalidad_id: any;
+  h_nacionalidad: any;
   h_fecha_nacimiento: any;
   h_edad: any;
   h_sexo:any;
-  h_departamento_dom_id: any;
-  h_provincia_dom_id: any;
-  h_distrito_dom_id: any;
+  h_departamento_dom: any;
+  h_provincia_dom: any;
+  h_distrito_dom: any;
   h_domicilio: any;
   h_estado_civil: any;
   h_profesion: any;
@@ -907,7 +907,12 @@ export class CitaPacienteRegistrarComponent implements OnInit {
       }
 
       this.h_doc_ide = data.recordSet.element.doc_ide;
-      this.h_nacionalidad_id= data.recordSet.element.nacionalidad;////////////////////////FALTA
+
+      this.externoService.listar_pais_detalle(data.recordSet.element.nacionalidad).then(data => {
+        this.h_nacionalidad = data.recordSet.element.pais;
+        //console.log(this.h_nacionalidad);
+      });
+
       this.h_fecha_nacimiento = data.recordSet.element.fecha_nacimiento;
       this.h_edad = data.recordSet.element.edad;
 
@@ -919,9 +924,22 @@ export class CitaPacienteRegistrarComponent implements OnInit {
         }
       }
       
-      this.h_departamento_dom_id = data.recordSet.element.departamento_dom;////////////////////////FALTA
-      this.h_provincia_dom_id = data.recordSet.element.provincia_dom;////////////////////////FALTA
-      this.h_distrito_dom_id = data.recordSet.element.distrito_dom;////////////////////////FALTA
+      this.externoService.listar_departamentos_detalle(data.recordSet.element.departamento_dom).then(data => {
+        this.h_departamento_dom = data.recordSet.element.departamento;
+        //console.log(this.h_departamento_dom);
+      });
+      
+      this.externoService.listar_provincias_detalle(data.recordSet.element.provincia_dom, data.recordSet.element.departamento_dom).then(data => {
+        this.h_provincia_dom = data.recordSet.element.provincia;
+        //console.log(this.h_provincia_dom);
+      });
+
+      this.externoService.listar_distritos_detalle(data.recordSet.element.distrito_dom, data.recordSet.element.provincia_dom, data.recordSet.element.departamento_dom).then(data => {
+        this.h_distrito_dom = data.recordSet.element.distrito;
+        //console.log(this.h_distrito_dom);
+      });
+
+      
       this.h_domicilio = data.recordSet.element.domicilio;
 
       if (data.recordSet.element.estado_civil == 1) {
@@ -1685,7 +1703,7 @@ export class CitaPacienteRegistrarComponent implements OnInit {
     doc.setFontType("bold");
     doc.text("País:", 380, 140);
     doc.setFontType("normal");
-    doc.text(""+this.h_nacionalidad_id, 410, 140);
+    doc.text(""+this.h_nacionalidad, 410, 140);
     
     
 
@@ -1709,17 +1727,17 @@ export class CitaPacienteRegistrarComponent implements OnInit {
     doc.setFontType("bold");
     doc.text("Dpto:", 70, 190);
     doc.setFontType("normal");
-    doc.text(this.h_departamento_dom_id, 100, 190);
+    doc.text(this.h_departamento_dom, 100, 190);
 
     doc.setFontType("bold");
     doc.text("Prov:", 250, 190);
     doc.setFontType("normal");
-    doc.text(this.h_provincia_dom_id, 280, 190);
+    doc.text(this.h_provincia_dom, 280, 190);
 
     doc.setFontType("bold");
     doc.text("Dist:", 410, 190);
     doc.setFontType("normal");
-    doc.text(this.h_distrito_dom_id, 440, 190);
+    doc.text(this.h_distrito_dom, 440, 190);
 
 
 

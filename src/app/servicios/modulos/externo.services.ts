@@ -20,79 +20,6 @@ export class ExternoService {
         return headers;
     }
 
-    public listar_todos_cie_1(){
-        return this.http.get(
-            constantes.urlServidor_1 + '/cie',
-            {headers:this.getHeaders()}
-        ).toPromise()
-        .then(
-            (data)=> data.json()
-        )
-        .catch((error)=> console.log(error));
-
-    }
-
-    public listar_todos_cie_2(){
-        return this.http.get(
-            constantes.urlServidor_2 + '/cie',
-            {headers:this.getHeaders()}
-        ).toPromise()
-        .then(
-            (data)=> data.json()
-        )
-        .catch((error)=> console.log(error));
-
-    }
-
-    public listar_cie_1(filtro: any){
-        return this.http.get(
-            constantes.urlServidor_1 + '/cie/listar/'+filtro,
-            {headers:this.getHeaders()}
-        ).toPromise()
-        .then(
-            (data)=> data.json()
-        )
-        .catch((error)=> console.log(error));
-
-    }
-
-    public listar_cie_2(filtro: any){
-        return this.http.get(
-            constantes.urlServidor_2 + '/cie/listar/'+filtro,
-            {headers:this.getHeaders()}
-        ).toPromise()
-        .then(
-            (data)=> data.json()
-        )
-        .catch((error)=> console.log(error));
-
-    }
-
-    //
-    public listar_todos(){
-        return this.http.get(
-            constantes.urlServidor + '/cie',
-            {headers:this.getHeaders()}
-        ).toPromise()
-        .then(
-            (data)=> data.json()
-        )
-        .catch((error)=> console.log(error));
-    }
-
-    //
-    public listar(filtro: any){
-        return this.http.get(
-            constantes.urlServidor + '/cie/listar/'+filtro,
-            {headers:this.getHeaders()}
-        ).toPromise()
-        .then(
-            (data)=> data.json()
-        )
-        .catch((error)=> console.log(error));
-
-    }
-
     //URL_3
     public listar_pais(){
         return this.http.get(
@@ -133,6 +60,55 @@ export class ExternoService {
     public listar_distritos(id_pro: any, id_dep: any){
         return this.http.get(
             constantes.urlServidor_3 + '/distrito/'+id_pro+'/'+id_dep,
+            {headers:this.getHeaders()}
+        ).toPromise()
+        .then(
+            (data)=> data.json()
+        )
+        .catch((error)=> console.log(error));
+
+    }
+
+
+    public listar_pais_detalle(id){
+        return this.http.get(
+            constantes.urlServidor_3 + '/pais/detalle/'+id,
+            {headers:this.getHeaders()}
+        ).toPromise()
+        .then(
+            (data)=> data.json()
+        )
+        .catch((error)=> console.log(error));
+
+    }
+
+    public listar_departamentos_detalle(id){
+        return this.http.get(
+            constantes.urlServidor_3 + '/departamento/detalle/'+id,
+            {headers:this.getHeaders()}
+        ).toPromise()
+        .then(
+            (data)=> data.json()
+        )
+        .catch((error)=> console.log(error));
+
+    }
+
+    public listar_provincias_detalle(id_pro: any, id_dep: any){
+        return this.http.get(
+            constantes.urlServidor_3 + '/provincia/detalle/'+id_pro+'/'+id_dep,
+            {headers:this.getHeaders()}
+        ).toPromise()
+        .then(
+            (data)=> data.json()
+        )
+        .catch((error)=> console.log(error));
+
+    }
+
+    public listar_distritos_detalle(id_dis: any, id_pro: any, id_dep: any){
+        return this.http.get(
+            constantes.urlServidor_3 + '/distrito/detalle/'+id_dis+'/'+id_pro+'/'+id_dep,
             {headers:this.getHeaders()}
         ).toPromise()
         .then(
