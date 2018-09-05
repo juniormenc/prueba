@@ -35,12 +35,14 @@ export class ReporteAtencionesComponent implements OnInit {
   downloadPDF(){
 
     //CABECERA
-    var header = ["FECHA", "N° CITAS", "INGRESO"];
+    //var header = ["FECHA", "N° CITAS", "INGRESO"];
+    var header = ["FECHA", "N° CITAS"];
     
     //DATA
     var data = [];
     for (let i = 0; i < this.e_citas.length; i++) {
-       data[i] = [this.e_citas[i].fecha, this.e_citas[i].cantidad, this.e_citas[i].ingreso];
+       //data[i] = [this.e_citas[i].fecha, this.e_citas[i].cantidad, this.e_citas[i].ingreso];
+       data[i] = [this.e_citas[i].fecha, this.e_citas[i].cantidad];
     }
 
     //PDF

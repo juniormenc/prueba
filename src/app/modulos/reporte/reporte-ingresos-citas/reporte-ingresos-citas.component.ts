@@ -34,12 +34,14 @@ export class ReporteIngresosCitasComponent implements OnInit {
   downloadPDF(){
 
     //CABECERA
-    var header = ["FECHA", "N° CITAS", "TOTAL (S/.)", "MÉDICO"];
+    //var header = ["FECHA", "N° CITAS", "TOTAL (S/.)", "MÉDICO"];
+    var header = ["FECHA", "N° CITAS", "MÉDICO"];
     
     //DATA
     var data = [];
     for (let i = 0; i < this.e_citas.length; i++) {
-       data[i] = [this.e_citas[i].fecha, this.e_citas[i].cantidad_citas, this.e_citas[i].costo_final, this.e_citas[i].nombre_medico];
+       //data[i] = [this.e_citas[i].fecha, this.e_citas[i].cantidad_citas, this.e_citas[i].costo_final, this.e_citas[i].nombre_medico];
+       data[i] = [this.e_citas[i].fecha, this.e_citas[i].cantidad_citas, this.e_citas[i].nombre_medico];
     }
 
     //PDF
