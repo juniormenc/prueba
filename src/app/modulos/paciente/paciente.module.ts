@@ -12,6 +12,7 @@ import { ConsultorioService } from '../../../app/servicios/modulos/consultorio.s
 import { HorarioService } from '../../../app/servicios/modulos/horario.services';
 import { CitaService } from '../../../app/servicios/modulos/cita.services';
 import { TurnoAtencionService } from '../../../app/servicios/modulos/turno-atencion.services';
+import { ExternoService } from '../../../app/servicios/modulos/externo.services';
 
 //COMPONENTES
 import { PacienteComponent } from './paciente.component';
@@ -44,7 +45,8 @@ import { PacienteReservarCitaComponent } from './cita/paciente-reservar-cita.com
         ConsultorioService,
         HorarioService,
         CitaService,
-        TurnoAtencionService
+        TurnoAtencionService,
+        ExternoService
     ]
 })
 

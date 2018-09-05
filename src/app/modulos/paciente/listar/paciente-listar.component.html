@@ -24,7 +24,7 @@
                         <table class="table col-md-12" *ngIf="elemento">
                             <thead>
                                 <tr>
-                                    <th>Dni</th>
+                                    <th>N° Documento</th>
                                     <th>Nombre</th>
                                     <th>Mis Datos</th>
                                     <th>Nueva Cita</th>
@@ -34,19 +34,19 @@
                             </thead>
                             <tbody>
                                 <tr *ngFor = "let e of elemento">
-                                    <td>{{e.dni}}</td>
+                                    <td>{{e.doc_ide}}</td>
                                     <td>{{e.apellido_paterno}} {{e.apellido_materno}}, {{e.nombres}}</td>
                                     <td>
-                                        <button (click)="goToEditar(e.id)" class="btn btn-amarillo"><i class="fa fa-edit"></i></button>
+                                        <button (click)="goToEditar(e.id)" class="btn-amarillo-icon"><i class="fa fa-edit"></i></button>
                                     </td>
                                     <td>
-                                        <button (click)="goToCita(e.id)" class="btn btn-azul"><i class="fa fa-medkit"></i></button>
+                                        <button (click)="goToCita(e.id)" class="btn-azul-icon"><i class="fa fa-medkit"></i></button>
                                     </td>
                                     <td>
-                                        <button (click)="goToReservaPendiente(e.id)" class="btn btn-rojo"><i class="fa fa-book"></i></button>
+                                        <button (click)="goToReservaPendiente(e.id)" class="btn-rojo-icon"><i class="fa fa-book"></i></button>
                                     </td>
                                     <td>
-                                        <button (click)="goToCitaPendiente(e.id)" class="btn btn-verde"><i class="fa fa-list"></i></button>
+                                        <button (click)="goToCitaPendiente(e.id)" class="btn-verde-icon"><i class="fa fa-list"></i></button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -72,7 +72,7 @@
                                             <p>{{e_c.especialidad}} - Dr. {{e_c.medico}}</p>
                                             <p>
                                                 <button type="button" class="btn btn-amarillo" (click)="pagar(e_c.fecha, e_c.costo, e_c.paciente_id, e_c.turno_id, e_c.reserva_id)" >Pagar Cita</button>
-                                                <button type="button" class="btn btn-rojo" (click)="eliminarReserva(e_c.reserva_id)" >Eliminar Reserva</button>
+                                                <button type="button" class="btn btn-rojo" (click)="eliminarReserva(e_c.reserva_id, e_c.turno_id)" >Eliminar Reserva</button>
                                             </p>
                                         </div>
                                     </div>

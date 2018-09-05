@@ -25,18 +25,28 @@
                 <th>Paciente</th>
                 <th>Celular</th>
                 <th>Médico</th>
-                <th>Acciones</th>
+                <th>Pagar</th>
+                <th>Enlazar</th>
               </tr> 
             </thead>
             <tbody>
               <tr *ngFor = "let e_r of e_reserva">
                 <td>{{e_r.fecha}}</td>
                 <td>{{e_r.horario}}</td>
-                <td>{{e_r.dni_re}}{{e_r.dni_pa}}</td>
+                <td>{{e_r.doc_ide_re}}{{e_r.doc_ide_pa}}</td>
                 <td>{{e_r.paciente}}</td>
                 <td>{{e_r.celular_re}}{{e_r.celular_pa}}</td>
                 <td>{{e_r.medico}}</td>
-                <td><button [hidden]="!e_r.reservar" [disabled] = "!e_r.reservar" (click)="goToReservaPendiente(e_r.id)" class="btn-rojo">Pagar</button> <button [hidden]="!e_r.enlazar" [disabled] = "!e_r.enlazar" (click)="goToEnlazar(e_r.id, e_r.dni_re, e_r)" class="btn-amarillo">Enlazar</button></td>
+                <td>
+                  <button [hidden]="!e_r.reservar" [disabled] = "!e_r.reservar" (click)="goToReservaPendiente(e_r.id)" class="btn-verde-icon">
+                    <i class="fa fa-money"></i>
+                  </button>
+                </td>
+                <td>
+                  <button [hidden]="!e_r.enlazar" [disabled] = "!e_r.enlazar" (click)="goToEnlazar(e_r.id, e_r.doc_ide_re, e_r.celular_re)" class="btn-amarillo-icon">
+                      <i class="fa fa-plus-square"></i>
+                  </button>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -60,7 +70,7 @@
                     <p>{{e_c.especialidad}} - Dr. {{e_c.medico}}</p>
                     <p>
                       <button type="button" class="btn btn-amarillo" (click)="pagar(e_c.fecha, e_c.costo, e_c.paciente_id, e_c.turno_id, e_c.id)" >Pagar Cita</button>
-                      <button type="button" class="btn btn-rojo" (click)="eliminarReserva(e_c.id)" >Eliminar Reserva</button>
+                      <button type="button" class="btn btn-rojo" (click)="eliminarReserva(e_c.id, e_c.turno_id)" >Eliminar Reserva</button>
                     </p>
                   </div>
                 </div>

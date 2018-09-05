@@ -6,7 +6,9 @@ import { routing } from './reserva.routing';
 
 //SERVICES
 import { CitaService } from '../../../app/servicios/modulos/cita.services';
+import { TurnoAtencionService } from '../../../app/servicios/modulos/turno-atencion.services';
 import { PacienteService } from '../../../app/servicios/modulos/paciente.services';
+import { ExternoService } from '../../../app/servicios/modulos/externo.services';
 
 //COMPONENTES
 import { ReservaComponent } from './reserva.component';
@@ -30,7 +32,9 @@ import { ReservaEnlazarComponent } from './enlazar/reserva-enlazar.component';
     ],
     providers: [
         CitaService,
+        TurnoAtencionService,
         PacienteService,
+        ExternoService,
     ]
 })
 

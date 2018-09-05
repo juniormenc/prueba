@@ -24,7 +24,7 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Consultorio</th>
-                                    <th>Acción</th>
+                                    <th>Editar</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -32,8 +32,7 @@
                                     <td>{{e.id}}</td>
                                     <td>{{e.numero}}</td>
                                     <td>
-                                        <button (click)="gotoEditar(e.id)" class="btn btn-amarillo"><i class="fa fa-edit"></i></button>
-                                        <button (click)="cambiarEstado(e.id, e.estado)" class="btn tbn-verde"><i class="fa fa-trash"></i></button>
+                                        <button (click)="gotoEditar(e.id)" class="btn-amarillo-icon"><i class="fa fa-edit"></i></button>
                                     </td>
                                 </tr>
                             </tbody>

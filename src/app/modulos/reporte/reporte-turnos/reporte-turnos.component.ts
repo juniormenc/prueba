@@ -63,7 +63,9 @@ export class ReporteTurnosComponent implements OnInit {
       
     });
 
-    doc.save("mis-turnos-"+this.mes_anio+".pdf");
+    //doc.save("mis-turnos-"+this.mes_anio+".pdf");
+    doc.output('datauri');
+
   }
 
   ngOnInit() {

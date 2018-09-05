@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Http, Response} from '@angular/http';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -78,28 +77,6 @@ export class ReporteHistoriasPacienteComponent implements OnInit {
       this.tipo_sangre = data.recordSet.element.tipo_sangre;
       this.email = data.recordSet.element.correo;
       this.celular = data.recordSet.element.celular;
-    });
-
-    this.pacienteService.listar_antecedentes_por_paciente(parseInt(id)).then((data:any)=>{
-      //console.log(data.recordSet.element);
-
-      this.ant_madre = data.recordSet.element.ant_madre;
-      this.ant_padre = data.recordSet.element.ant_padre;
-      this.ant_hermanos = data.recordSet.element.ant_hermanos;
-      this.ant_hijos = data.recordSet.element.ant_hijos;
-      this.ant_otros_familiares = data.recordSet.element.ant_otros_familiares;
-      this.ant_alcohol = data.recordSet.element.ant_alcohol;
-      this.ant_tabaco = data.recordSet.element.ant_tabaco;
-      this.ant_droga = data.recordSet.element.ant_droga;
-      this.ant_observaciones_toxicologicas = data.recordSet.element.ant_observaciones_toxicologicas;
-      this.ant_hospitalizaciones = data.recordSet.element.ant_hospitalizaciones;
-      this.ant_infartos = data.recordSet.element.ant_infartos;
-      this.ant_intervenciones = data.recordSet.element.ant_intervenciones;
-      this.ant_alergenos = data.recordSet.element.ant_alergenos;
-      this.ant_farmacos_consume = data.recordSet.element.ant_farmacos_consume;
-      this.ant_enfermedades_padece = data.recordSet.element.ant_enfermedades_padece;
-      this.ant_enfermedades_padecio = data.recordSet.element.ant_enfermedades_padecio;
-      this.ant_otros_antecedentes = data.recordSet.element.ant_otros_antecedentes;
     });
 
     this.citaService.listar_historial_citas_por_paciente(id).then((data: any) =>{
@@ -311,10 +288,12 @@ export class ReporteHistoriasPacienteComponent implements OnInit {
     valor = valor.trim();
     valor = valor.toLocaleLowerCase();
     
-    if(valor.length > 0){
+    if(valor.length > 2){
       this.listar(valor);
     }else{
-      this.listar_todos();
+      if(valor.length == 0){
+        this.listar_todos();
+      }
     }
   }
   

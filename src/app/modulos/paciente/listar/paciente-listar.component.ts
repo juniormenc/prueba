@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Http, Response} from '@angular/http';
 import { Router } from '@angular/router';
-//import { SpinerComponent } from '../../../recursos/spinner/spinner.component';
-import { SettingsService } from '../../../servicios/global/settings.service';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -10,6 +7,8 @@ import 'rxjs/add/operator/toPromise';
 
 import { PacienteService } from '../../../servicios/modulos/paciente.services';
 import { CitaService } from '../../../servicios/modulos/cita.services';
+import { TurnoAtencionService } from '../../../servicios/modulos/turno-atencion.services';
+import { SettingsService } from '../../../servicios/global/settings.service';
 
 @Component({
   selector: 'paciente-listar',
@@ -30,16 +29,19 @@ export class PacienteListarComponent implements OnInit {
     valor = valor.trim();
     valor = valor.toLocaleLowerCase();
     
-    if(valor.length > 0){
+    if(valor.length > 2){
       this.listar(valor);
     }else{
-      this.listar_todos();
+      if (valor.length == 0) {
+        this.listar_todos();
+      }
     }
   }
 
   constructor(
     private pacienteService: PacienteService,
     private citaService: CitaService,
+    private turnoService: TurnoAtencionService,
     private router: Router,
     private settingsService: SettingsService
   ) {
@@ -90,12 +92,36 @@ export class PacienteListarComponent implements OnInit {
   }
 
   goToReservaPendiente(id){
-    this.citaService.listar_reserva_por_paciente(id).then((data:any) => {
+    this.citaService.listar_reserva_por_paciente(id, this.fecha_actual()).then((data:any) => {
       this.e_reserva_paciente = data.recordSet.element
       //console.log(this.e_reserva_paciente);
     });
     
     this.displayR='block';
+  }
+
+  fecha_actual(){
+
+    var v_mes, v_dia, v_anio;
+
+    var m = new Date().getMonth()+1;
+    var d = new Date().getDate();
+
+    v_anio = new Date().getFullYear();
+
+    if(m < 10){
+      v_mes = "0" + (new Date().getMonth()+1);
+    } else {
+      v_mes = (new Date().getMonth()+1);
+    }
+
+    if(d < 10){
+      v_dia = "0" + (new Date().getDate());
+    } else {
+      v_dia = new Date().getDate();
+    }
+
+    return v_anio + "-" + v_mes + "-" + v_dia;
   }
 
   goToCitaPendiente(id){
@@ -138,12 +164,32 @@ export class PacienteListarComponent implements OnInit {
     
   }
 
-  eliminarReserva(reserva_id){
+  eliminarReserva(reserva_id, turno_id){
+
+    var bandera = false;
+    var ct = 0;
     this.citaService.eliminar_reserva(reserva_id).then((data:any)=>{
       //console.log(data);
+
+      bandera = true;
+    })
+
+    if(bandera = true){
+      this.turnoService.aumentar_citas_disponibles(turno_id).then((data: any) => {
+        //console.log(data);
+        ct = data.recordSet.element.upd_turno_aumentar_citas_disponibles;
+        //console.log(ct);
+
+        if(ct == 1 ){
+          this.turnoService.habilitar(turno_id).then((data: any) => {
+            //console.log(data);
+          })
+        }
+      })
+
       this.onCloseHandled();
       this.settingsService.showNotification('top','right', this.settingsService.mensaje.eliminar, 4);
-    })
+    }
   }
 
 

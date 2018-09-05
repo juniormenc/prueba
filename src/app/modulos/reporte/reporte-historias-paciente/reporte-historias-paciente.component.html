@@ -19,7 +19,7 @@
                     <table class="table col-md-12" *ngIf="e_pacientes">
                         <thead>
                             <tr>
-                                <th>Dni</th>
+                                <th>N° DOC</th>
                                 <th>Nombre</th>
                                 <th>F.Nacimiento</th>
                                 <th>Celular</th>
@@ -29,7 +29,7 @@
                         </thead>
                         <tbody>
                             <tr *ngFor = "let pa of e_pacientes">
-                                <td>{{pa.dni}}</td>
+                                <td>{{pa.doc_ide}}</td>
                                 <td>{{pa.apellido_paterno}} {{pa.apellido_materno}}, {{pa.nombres}}</td>
                                 <td>{{pa.fecha_nacimiento}}</td>
                                 <td>{{pa.celular}}</td>

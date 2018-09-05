@@ -81,13 +81,6 @@ export class PacienteReservarCitaComponent implements OnInit {
     return v_anio + "-" + v_mes + "-" + v_dia;
   }
 
-  validar_fecha(fecha){
-    var dia = fecha.substr(8, 2);
-    var mes = fecha.substr(5, 2);
-    var anio =  fecha.substr(0, 4);
-    return dia + "-" + mes + "-" + anio;
-  }
-
   //Listar Médicos según la Especialidad
   cargarDatos(){
 
@@ -119,34 +112,57 @@ export class PacienteReservarCitaComponent implements OnInit {
 
   }
 
-  reservarCita(id, horario){
-    /*
-    //PARA LOCALHOST
-    var f = this.validar_fecha(this.fecha);
-    */
+  reservarCita(id, horario, citas_disponibles){
    //PARA HEROKU
     var f = this.fecha;
+    var bandera = false;
    
     this.citaService.reservar(f, horario, parseFloat(this.costo), this.id, id).then((data:any)=>{
       //console.log(data);
+      bandera = true;
+    })
+
+    if(bandera = true){
+      this.turnoService.reducir_citas_disponibles(id).then((data: any) => {
+        //console.log(data);
+      })
+
+      if(citas_disponibles == 1){
+        this.turnoService.inhabilitar(id).then((data: any) => {
+          //console.log(data);
+        })
+      }
+
       this.router.navigate(['/modulos/paciente']);
       this.settingsService.showNotification('top','right', this.settingsService.mensaje.reservar, 3);
-    })
+    }
   }
 
-  pagarCita(id){
-    /*
-    //PARA LOCALHOST
-    var f = this.validar_fecha(this.fecha);
-    */
+  pagarCita(id, citas_disponibles){
    //PARA HEROKU
     var f = this.fecha;
+    var bandera = false;
 
     this.citaService.pagar(2, f, parseFloat(this.costo), parseFloat(this.costo), this.id, id).then((data:any)=>{
       //console.log(data);
+      bandera = true;
+      
+    })
+
+    if(bandera = true){
+      this.turnoService.reducir_citas_disponibles(id).then((data: any) => {
+        //console.log(data);
+      })
+
+      if(citas_disponibles == 1){
+        this.turnoService.inhabilitar(id).then((data: any) => {
+          //console.log(data);
+        })
+      }
+
       this.router.navigate(['/modulos/paciente']);
       this.settingsService.showNotification('top','right', this.settingsService.mensaje.registrar, 2);
-    })
+    }
   }
 
   gotoPaciente(){

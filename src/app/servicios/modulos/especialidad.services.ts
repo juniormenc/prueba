@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import * as constantes from '../../servicios/global/constantes';
+import * as constantes from '../global/constantes';
 
 @Injectable()
 export class EspecialidadService {

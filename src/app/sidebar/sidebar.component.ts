@@ -37,58 +37,33 @@ export class SidebarComponent implements OnInit {
 
         if(rolId == 1){
             this.sidebarPlantilla = [
-                //INICIO
-                /*{
-                    path: 'inicio', title: 'Inicio', icon: 'fa fa-home', vcObjeto: 'modulo-login',children: []
-                },*/
                 
-                //USUARIO MÉDICO
-                /*{
-                    path: 'gestionar', title: 'G. Médico', icon: 'fa fa-book', vcObjeto: 'modulo-gestionar', children: [
-                        { path: 'cita-paciente', title: 'Citas del día', vcObjeto: 'cita-paciente-listar', enabled: true }
-                    ]
-                },
+                //RECEPCIONISTA
                 {
-                    path: 'reporte', title: 'R. Médico', icon: 'fa fa-book', vcObjeto: 'modulo-reporte', children: [
-                        { path: 'reporte/reporte-turnos', title: 'Turnos de Atención', vcObjeto: 'reporte-turnos', enabled: true },
-                        { path: 'reporte/reporte-atenciones', title: 'Atenciones e Ingresos', vcObjeto: 'reporte-atenciones', enabled: true }
-                    ]
-                },*/
-                
-                //USUARIO RECEPCIONISTA
-                {
-                    path: 'gestionar', title: 'G. Recepcionista', icon: 'fa fa-book', vcObjeto: 'modulo-gestionar', children: [
+                    path: 'gestionar', title: 'Recepción', icon: 'fa fa-book', vcObjeto: 'modulo-gestionar', children: [
                         { path: 'paciente', title: 'Pacientes y Citas', vcObjeto: 'paciente-listar', enabled: true },
                         { path: 'reserva', title: 'Reservas Pendientes', vcObjeto: 'reserva-listar', enabled: true }
                     ]
                 },
-                {
-                    path: 'reporte', title: 'R. Recepcionista', icon: 'fa fa-book', vcObjeto: 'modulo-reporte', children: [
-                        { path: 'reporte/reporte-reservas', title: 'Reservas', vcObjeto: 'reporte-reservas', enabled: true },
-                        { path: 'reporte/reporte-citas', title: 'Citas', vcObjeto: 'reporte-citas', enabled: true }
-                    ]
-                },
         
-                //USUARIO ORGANIZADOR
+                //ORGANIZADOR
                 {
-                    path: 'gestionar', title: 'G. Organizador', icon: 'fa fa-book', vcObjeto: 'modulo-gestionar', children: [
+                    path: 'gestionar', title: 'Organización', icon: 'fa fa-book', vcObjeto: 'modulo-gestionar', children: [
                         { path: 'horario', title: 'Horarios', vcObjeto: 'horario-listar', enabled: true },
                         { path: 'consultorio', title: 'Consultorios', vcObjeto: 'consultorio-listar', enabled: true },
                         { path: 'turno-atencion', title: 'Turnos de atención', vcObjeto: 'turno-atencion-listar', enabled: true }
                     ]
                 },
-                {
-                    path: 'reporte', title: 'R. Organizador', icon: 'fa fa-book', vcObjeto: 'modulo-reporte', children: [
-                        { path: 'reporte/reporte-turnos-medico', title: 'Turnos Médicos', vcObjeto: 'reporte-turnos-medico', enabled: true }
-                    ]
-                },
         
-                //USUARIO SUPERVISOR
+                //REPORTES
                 {
-                    path: 'reporte', title: 'R. Supervisor', icon: 'fa fa-book', vcObjeto: 'modulo-reporte', children: [
+                    path: 'reporte', title: 'Reportes', icon: 'fa fa-book', vcObjeto: 'modulo-reporte', children: [
+                        { path: 'reporte/reporte-reservas', title: 'Reservas', vcObjeto: 'reporte-reservas', enabled: true },
+                        { path: 'reporte/reporte-citas', title: 'Citas', vcObjeto: 'reporte-citas', enabled: true },
                         { path: 'reporte/reporte-turnos-medico', title: 'Turnos Médicos', vcObjeto: 'reporte-turnos-medico', enabled: true },
-                        { path: 'reporte/reporte-ingresos-citas', title: 'Ingresos de Citas', vcObjeto: 'reporte-ingresos-citas', enabled: true },
-                        { path: 'reporte/reporte-ingresos-citas-especialidad-medico', title: 'Ingresos de Citas (Especialidad)', vcObjeto: 'reporte-ingresos-citas-especialidad-medico', enabled: true },
+                        { path: 'reporte/reporte-ingresos-citas', title: 'Atención de Citas', vcObjeto: 'reporte-ingresos-citas', enabled: true },
+                        //{ path: 'reporte/reporte-ingresos-citas', title: 'Ingresos de Citas', vcObjeto: 'reporte-ingresos-citas', enabled: true },
+                        //{ path: 'reporte/reporte-ingresos-citas-especialidad-medico', title: 'Ingresos de Citas (Especialidad)', vcObjeto: 'reporte-ingresos-citas-especialidad-medico', enabled: true },
                         { path: 'reporte/reporte-historias-paciente', title: 'Historias Clínicas', vcObjeto: 'reporte-historias-paciente', enabled: true }
                     ]
                 },
@@ -117,7 +92,7 @@ export class SidebarComponent implements OnInit {
                     {
                         path: 'reporte', title: 'Reportes', icon: 'fa fa-book', vcObjeto: 'modulo-reporte', children: [
                             { path: 'reporte/reporte-turnos', title: 'Turnos de Atención', vcObjeto: 'reporte-turnos', enabled: true },
-                            { path: 'reporte/reporte-atenciones', title: 'Atenciones e Ingresos', vcObjeto: 'reporte-atenciones', enabled: true }
+                            { path: 'reporte/reporte-atenciones', title: 'Atenciones', vcObjeto: 'reporte-atenciones', enabled: true }
                         ]
                     }
                 ];

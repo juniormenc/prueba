@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import * as constantes from '../../servicios/global/constantes';
+import * as constantes from '../global/constantes';
 
 @Injectable()
 export class TurnoAtencionService {
@@ -18,9 +18,9 @@ export class TurnoAtencionService {
         return headers;
     }
 
-    public listar_todos(){
+    public listar_todos_hoy(fecha: any){
         return this.http.get(
-            constantes.urlServidor + '/turno',
+            constantes.urlServidor + '/turno/'+fecha,
             {headers:this.getHeaders()}
         ).toPromise()
         .then(
@@ -30,9 +30,21 @@ export class TurnoAtencionService {
 
     }
 
-    public listar(filtro: any){
+    public listar_todos_hoy_segun_medico(med_id: any, fecha: any){
         return this.http.get(
-            constantes.urlServidor + '/turno/listar/'+filtro,
+            constantes.urlServidor + '/turno/'+med_id+'/'+fecha,
+            {headers:this.getHeaders()}
+        ).toPromise()
+        .then(
+            (data)=> data.json()
+        )
+        .catch((error)=> console.log(error));
+
+    }
+
+    public listar_hoy(filtro: any, fecha: any){
+        return this.http.get(
+            constantes.urlServidor + '/turno/listar/'+filtro+'/'+fecha,
             {headers:this.getHeaders()}
         ).toPromise()
         .then(
@@ -80,7 +92,7 @@ export class TurnoAtencionService {
 
     public detalle(id: number):Promise<any>{
         return this.http.get(
-            constantes.urlServidor + '/turno/'+id,
+            constantes.urlServidor + '/turno/detalle/detalle/'+id,
             {headers: this.getHeaders()}
         ).toPromise()
         .then((data) => data.json())
@@ -96,6 +108,62 @@ export class TurnoAtencionService {
           //console.log(myData)
          return this.http.put(
               constantes.urlServidor+'/turno/estado/'+id,
+              myData,
+              {headers: this.getHeaders()}
+            ).toPromise()
+            .then((data) => data.json())
+            .catch((error)=>console.log(error));
+    }
+
+    public inhabilitar(id): Promise<any>{
+        let myData = {
+            id: id
+          };
+          //console.log(myData)
+         return this.http.put(
+              constantes.urlServidor+'/turno/inh/'+id,
+              myData,
+              {headers: this.getHeaders()}
+            ).toPromise()
+            .then((data) => data.json())
+            .catch((error)=>console.log(error));
+    }
+
+    public habilitar(id): Promise<any>{
+        let myData = {
+            id: id
+          };
+          //console.log(myData)
+         return this.http.put(
+              constantes.urlServidor+'/turno/hab/'+id,
+              myData,
+              {headers: this.getHeaders()}
+            ).toPromise()
+            .then((data) => data.json())
+            .catch((error)=>console.log(error));
+    }
+
+    public reducir_citas_disponibles(id): Promise<any>{
+        let myData = {
+            id: id
+          };
+          //console.log(myData)
+         return this.http.put(
+              constantes.urlServidor+'/turno/redct/'+id,
+              myData,
+              {headers: this.getHeaders()}
+            ).toPromise()
+            .then((data) => data.json())
+            .catch((error)=>console.log(error));
+    }
+
+    public aumentar_citas_disponibles(id): Promise<any>{
+        let myData = {
+            id: id
+          };
+          //console.log(myData)
+         return this.http.put(
+              constantes.urlServidor+'/turno/aumct/'+id,
               myData,
               {headers: this.getHeaders()}
             ).toPromise()

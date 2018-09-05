@@ -13,11 +13,21 @@
                     <div class="loading col-md-12" *ngIf="loading" align="center">
                         <img src="../../../../assets/img/loader.gif" />
                     </div>
+
+                    <div class="form-group col-md-6">
+                        <label class="">TURNOS DE HOY:</label>
+                        <div class="">
+                          <select class="form-control" placeholder="" [(ngModel)]="turno_id" (change)="listarCitasHoy()">
+                            <option value="0">--SELECCIONAR--</option>
+                            <option *ngFor = "let e_t of e_turnos"  value="{{e_t.id}}">{{e_t.hora_entrada}} - {{e_t.hora_salida}}</option>
+                          </select>
+                        </div>
+                    </div>
                                      
                     <table class="table col-md-12" *ngIf="e_pacientes">
                       <thead>
                           <tr>
-                              <th>Dni</th>
+                              <th>N° Documento</th>
                               <th>Nombre</th>
                               <th>F.Nacimiento</th>
                               <th>Acción</th>
@@ -25,7 +35,7 @@
                       </thead>
                       <tbody>
                           <tr *ngFor = "let e of e_pacientes">
-                              <td>{{e.dni}}</td>
+                              <td>{{e.doc_identidad}}</td>
                               <td>{{e.paciente}}</td>
                               <td>{{e.fecha_nacimiento}}</td>
                               <td>

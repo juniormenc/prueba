@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Http, Response} from '@angular/http';
 import {Router} from '@angular/router';
 
 import 'rxjs/add/operator/map';
@@ -7,6 +6,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 
 import { CitaService } from '../../../servicios/modulos/cita.services';
+import { TurnoAtencionService } from '../../../servicios/modulos/turno-atencion.services';
 
 @Component({
   selector: 'cita-paciente-listar',
@@ -19,9 +19,15 @@ export class CitaPacienteListarComponent implements OnInit {
   loading: boolean;
 
   e_pacientes: Array<any>;
+  e_turnos: Array<any>;
+  turno_id: any;
   id: any;
 
-  constructor(private citaService: CitaService, private router: Router) {
+  constructor(
+    private citaService: CitaService,
+    private turnoAtencionService: TurnoAtencionService,
+    private router: Router
+  ) {
     if (localStorage.getItem('id') == null) {
       this.router.navigate(['login']);
     }
@@ -30,13 +36,31 @@ export class CitaPacienteListarComponent implements OnInit {
   ngOnInit() {
 
     this.id = localStorage.getItem('id');
+    this.turno_id = 0;
 
     this.loading = true;
     this.e_pacientes = null;
+    this.e_turnos = null;
 
-    this.citaService.listar_citas_hoy(this.id, this.fecha_actual()).then((data:any) => {
+    this.listarTurnosMedico();
+  }
+
+  listarCitasHoy(){
+    this.citaService.listar_citas_hoy(this.id, this.turno_id, this.fecha_actual()).then((data:any) => {
       this.e_pacientes = data.recordSet.element;
       //console.log(this.e_pacientes);
+      this.loading = false;
+    });
+  }
+
+  listarTurnosMedico(){
+
+    this.loading = true;
+    this.e_turnos = null;
+
+    this.turnoAtencionService.listar_todos_hoy_segun_medico(this.id, this.fecha_actual()).then((data: any) =>{
+      this.e_turnos = data.recordSet.element;
+      //console.log(this.e_turnos)
       this.loading = false;
     });
   }

@@ -12,7 +12,12 @@
                         </div>
 
                         <div class="form-group col-md-4" align="right">
-                            <input type="text" class="buscar" (keyup)="filtro($event.target.value)" placeholder="Buscar Médico/Consultorio">
+                            <input type="text" class="buscar" (keyup)="filtro($event.target.value)" [(ngModel)]="buscar" placeholder="Buscar Médico/Consultorio">
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label class="">FECHA:</label>
+                            <input class="form-control" type="date" [(ngModel)]="fecha" (change)="listar_segun_fecha()">
                         </div>
                             
                         <div class="loading col-md-12" *ngIf="loading" align="center">
@@ -26,7 +31,8 @@
                                     <th>Médico</th>
                                     <th>Consultorio</th>
                                     <th>Horario</th>
-                                    <th>Acción</th>
+                                    <th>Citas Disponibles</th>
+                                    <th>Editar</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -35,8 +41,9 @@
                                     <td>{{e.nombres}} {{e.apellido_paterno}} {{e.apellido_materno}}</td>
                                     <td>{{e.numero_consultorio}}</td>
                                     <td>{{e.hora_entrada}} - {{e.hora_salida}}</td>
+                                    <td>{{e.total_citas}}</td>
                                     <td>
-                                        <button (click)="gotoEditar(e.id)" class="btn btn-amarillo"><i class="fa fa-edit"></i></button>
+                                        <button [hidden]="!e.estado" (click)="gotoEditar(e.id)" class="btn-amarillo-icon"><i class="fa fa-edit"></i></button>
                                     </td>
                                 </tr>
                             </tbody>

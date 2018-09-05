@@ -27,16 +27,6 @@ export class HorarioListarComponent implements OnInit {
     this.horarioService.listar().then((data: any) =>{
       this.elemento = data.recordSet.element;
       this.loading = false;
-
-      for (let i = 0; i < this.elemento.length; i++) {
-        if(this.elemento[i].estado == false){
-          //CAMBIAR COLOR
-          //console.log(this.elemento[i].estado)
-        }
-        
-      }
-
-      //console.log(this.elemento)
     });
 
   }
@@ -47,27 +37,6 @@ export class HorarioListarComponent implements OnInit {
   
   gotoRegistrar(){
     this.router.navigate(["/modulos/horario/registrar"]);
-  }
-
-  cambiarEstado(id, estado){
-    
-    var v_estado;
-
-    if(estado){
-      v_estado = false;
-    }else{
-      v_estado = true;
-    }
-
-    console.log(v_estado);
-    this.horarioService.cambiar_estado(id, v_estado)
-    .then((data) =>{
-      console.log(data);
-      this.router.navigate(['/modulos/horario']);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
   }
 
 }

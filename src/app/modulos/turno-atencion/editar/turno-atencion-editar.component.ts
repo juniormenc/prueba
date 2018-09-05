@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Router,ActivatedRoute } from '@angular/router';
+
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
-import { Router,ActivatedRoute } from '@angular/router';
-import { SettingsService } from '../../../servicios/global/settings.service';
 
+import { SettingsService } from '../../../servicios/global/settings.service';
 import { TurnoAtencionService } from '../../../servicios/modulos/turno-atencion.services';
 import { EspecialidadService } from '../../../servicios/modulos/especialidad.services';
 import { MedicoService } from '../../../servicios/modulos/medico.services';
@@ -75,9 +75,8 @@ export class TurnoAtencionEditarComponent implements OnInit {
 
     //Cargamos la data en los inputs
     this.turnoAtencionService.detalle(this.id).then((data:any)=>{
-      //console.log(data.recordSet.element);
       this.especialidad = data.recordSet.element.especialidad_id;
-
+      
       this.cargarMedicos(this.especialidad);
       this.medico = data.recordSet.element.usuario_id;
       
@@ -123,23 +122,49 @@ export class TurnoAtencionEditarComponent implements OnInit {
       var f_turno = this.validar_fecha_guardar(this.fecha);
     }
 
+    if (this.especialidad == "0" || this.especialidad == null) {
+      this.settingsService.showNotification('top','right', this.settingsService.mensaje.campos_vacios, 4);
+    } else {
+      if (this.medico == "0" || this.medico == null) {
+        this.settingsService.showNotification('top','right', this.settingsService.mensaje.campos_vacios, 4);
+      } else {
+        if (this.fecha == "" || this.fecha == null) {
+          this.settingsService.showNotification('top','right', this.settingsService.mensaje.campos_vacios, 4);
+        } else {
+          if (this.total_citas == "" || this.total_citas == null) {
+            this.settingsService.showNotification('top','right', this.settingsService.mensaje.campos_vacios, 4);
+          } else {
+            if (this.consultorio == "0" || this.consultorio == null) {
+              this.settingsService.showNotification('top','right', this.settingsService.mensaje.campos_vacios, 4);
+            } else {
+              if (this.horario == "0" || this.horario == null) {
+                this.settingsService.showNotification('top','right', this.settingsService.mensaje.campos_vacios, 4);
+              } else {
+                this.turnoAtencionService.modificar(this.id, f_turno, this.total_citas, this.medico, this.consultorio, this.horario)
+                .then((data) =>{
+                  //console.log(data);
+                  this.router.navigate(['/modulos/turno-atencion']);
+                  this.settingsService.showNotification('top','right', this.settingsService.mensaje.modificar, 3);
+                })
+                .catch((error) =>{
+                  console.log(error);
+                })
+              } 
+            }
+          }
+        }
+      }
+    }
+
+    /*
     console.log(this.id);
     console.log(f_turno);
     console.log(this.total_citas);
     console.log(this.medico);
     console.log(this.consultorio);
     console.log(this.horario);
-
-    this.turnoAtencionService.modificar(this.id, f_turno, this.total_citas, this.medico, this.consultorio, this.horario)
-    .then((data) =>{
-      console.log(data);
-      this.router.navigate(['/modulos/turno-atencion']);
-      this.settingsService.showNotification('top','right', this.settingsService.mensaje.modificar, 3);
-    })
-    .catch((error) =>{
-      console.log(error);
-    })
-    console.log()
+    */
+    
   }
 
 

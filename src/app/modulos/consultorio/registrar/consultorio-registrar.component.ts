@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {Http, Response} from '@angular/http';
+import {Router} from '@angular/router';
+
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
-import {ConsultorioService} from '../../../servicios/modulos/consultorio.services';
-import {Router} from '@angular/router';
+
+import { ConsultorioService } from '../../../servicios/modulos/consultorio.services';
 import { SettingsService } from '../../../servicios/global/settings.service';
 
 @Component({
@@ -27,15 +28,20 @@ export class ConsultorioRegistrarComponent implements OnInit {
   }
 
   registrar(){
-    this.consultorioService.registrar(this.numero)
-    .then((data) =>{
-      //console.log(data);
-      this.router.navigate(['/modulos/consultorio']);
-      this.settingsService.showNotification('top','right', this.settingsService.mensaje.registrar, 2);
-    })
-    .catch((error) => {
-      console.log(error);
-    })
+    if (this.numero == null ||  this.numero == "") {
+      this.settingsService.showNotification('top','right', this.settingsService.mensaje.campos_vacios, 4);
+    }else{
+
+      this.consultorioService.registrar(this.numero)
+      .then((data) =>{
+        //console.log(data);
+        this.router.navigate(['/modulos/consultorio']);
+        this.settingsService.showNotification('top','right', this.settingsService.mensaje.registrar, 2);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+    }
   }
 
   gotoConsultorio(){

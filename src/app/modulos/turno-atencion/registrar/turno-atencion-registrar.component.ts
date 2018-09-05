@@ -113,15 +113,41 @@ export class TurnoAtencionRegistrarComponent implements OnInit {
   }
 
   registrar(){
-    this.turnoAtencionService.registrar(this.fecha, this.total_citas, this.medico, this.consultorio, this.horario)
-    .then((data) =>{
-      //console.log(data);
-      this.router.navigate(['/modulos/turno-atencion']);
-      this.settingsService.showNotification('top','right', this.settingsService.mensaje.registrar, 2);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+
+    if (this.especialidad == "0" || this.especialidad == null) {
+      this.settingsService.showNotification('top','right', this.settingsService.mensaje.campos_vacios, 4);
+    } else {
+      if (this.medico == "0" || this.medico == null) {
+        this.settingsService.showNotification('top','right', this.settingsService.mensaje.campos_vacios, 4);
+      } else {
+        if (this.fecha == "" || this.fecha == null) {
+          this.settingsService.showNotification('top','right', this.settingsService.mensaje.campos_vacios, 4);
+        } else {
+          if (this.total_citas == "" || this.total_citas == null) {
+            this.settingsService.showNotification('top','right', this.settingsService.mensaje.campos_vacios, 4);
+          } else {
+            if (this.consultorio == "0" || this.consultorio == null) {
+              this.settingsService.showNotification('top','right', this.settingsService.mensaje.campos_vacios, 4);
+            } else {
+              if (this.horario == "0" || this.horario == null) {
+                this.settingsService.showNotification('top','right', this.settingsService.mensaje.campos_vacios, 4);
+              } else {
+                this.turnoAtencionService.registrar(this.fecha, this.total_citas, this.medico, this.consultorio, this.horario)
+                .then((data) =>{
+                  //console.log(data);
+                  this.router.navigate(['/modulos/turno-atencion']);
+                  this.settingsService.showNotification('top','right', this.settingsService.mensaje.registrar, 2);
+                })
+                .catch((error) => {
+                  console.log(error);
+                });
+              } 
+            }
+          }
+        }
+      }
+    }
+    
 
     //console.log(this.especialidad);
     //console.log(this.medico);

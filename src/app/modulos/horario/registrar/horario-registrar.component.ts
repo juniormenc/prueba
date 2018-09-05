@@ -25,15 +25,22 @@ export class HorarioRegistrarComponent implements OnInit {
   }
 
   registrar(){
-    this.horarioService.registrar(this.hora_entrada, this.hora_salida)
-    .then((data) =>{
-      //console.log(data);
-      this.router.navigate(['/modulos/horario']);
-      this.settingsService.showNotification('top','right', this.settingsService.mensaje.registrar, 2);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+
+    if (this.hora_entrada == null || this.hora_salida == null || this.hora_entrada == "" || this.hora_salida == "") {
+      this.settingsService.showNotification('top','right', this.settingsService.mensaje.campos_vacios, 4);
+    }else{
+      this.horarioService.registrar(this.hora_entrada, this.hora_salida)
+      .then((data) =>{
+        //console.log(data);
+        this.router.navigate(['/modulos/horario']);
+        this.settingsService.showNotification('top','right', this.settingsService.mensaje.registrar, 2);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    }
+
+    
   }
 
   regresar(){

@@ -5,7 +5,6 @@ import { ModuleWithProviders } from '@angular/core';
 //COMPONENTES
 import { ReservaListarComponent } from './listar/reserva-listar.component';
 import { ReservaEnlazarComponent } from './enlazar/reserva-enlazar.component';
-import {} from './';
 
 let routes: Route[] = [
     {
@@ -13,7 +12,7 @@ let routes: Route[] = [
         component: ReservaComponent,
         children: [
             { path: '',  component: ReservaListarComponent },
-            { path: 'enlazar/:id/:dni',  component: ReservaEnlazarComponent }
+            { path: 'enlazar/:id/:doc_ide',  component: ReservaEnlazarComponent }
         ]
     }
 ];

@@ -3,7 +3,8 @@
     <div class="col-md-12">
       <div class="card panel panel-azul">
         <div class="panel-heading">
-          Reporte de Ingresos de Citas
+          Reporte de Citas Atendidas
+          <!--Reporte de Ingresos de Citas-->
         </div>
 
         <div class="content table-responsive table-full-widht panel-body">
@@ -26,9 +27,9 @@
               <strong>TOTAL DE CITAS:  {{cantidad_citas}}</strong>
             </div>
 
-            <div class="form-group col-md-12" align="left">
+            <!--div class="form-group col-md-12" align="left">
               <strong style="color:red">INGRESOS: S./ {{ingreso_citas}}</strong>
-            </div>
+            </div-->
           </div>
 
           <div>
@@ -41,7 +42,7 @@
                 <tr>
                   <th>Fecha</th>
                   <th>Cantidad de Citas</th>
-                  <th>Total (S/.)</th>
+                  <!--th>Total (S/.)</th-->
                   <th>Médico</th>
                 </tr> 
               </thead>
@@ -49,7 +50,7 @@
                 <tr *ngFor = "let ci of e_citas">
                   <td>{{ci.fecha}}</td>
                   <td>{{ci.cantidad_citas}}</td>
-                  <td>{{ci.costo_final}}</td>
+                  <!--td>{{ci.costo_final}}</td-->
                   <td>{{ci.nombre_medico}}</td>
                 </tr>
               </tbody>

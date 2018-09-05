@@ -43,7 +43,9 @@
                                 <th>Médico</th>
                                 <th>Consultorio</th>
                                 <th>Horario</th>
-                                <th>Seleccionar</th>
+                                <th>Citas Disponibles</th>
+                                <th>Reservar</th>
+                                <th>Pagar</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -51,9 +53,12 @@
                                 <td>{{tu.nombre_medico}}</td>
                                 <td>{{tu.consultorio}}</td>
                                 <td>{{tu.horario}}</td>
+                                <td>{{tu.total_citas}}</td>
                                 <td>
-                                    <button class="btn btn-azul" (click)="reservarCita(tu.id, tu.horario)"><i class="fa fa-book"></i></button>
-                                    <button class="btn" (click)="pagarCita(tu.id)"><i class="fa fa-money"></i> </button>            
+                                    <button class="btn btn-azul" (click)="reservarCita(tu.id, tu.horario, tu.total_citas)"><i class="fa fa-book"></i></button>
+                                </td>
+                                <td>
+                                    <button class="btn" (click)="pagarCita(tu.id, tu.total_citas)"><i class="fa fa-money"></i></button>            
                                 </td>
                             </tr>
                         </tbody>

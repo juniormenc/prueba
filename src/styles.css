@@ -348,7 +348,56 @@ button.btn-verde {
     color: white !important;
 }
 
+button.btn-verde-icon {
+    padding: 8px 8px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    width: 50px;
+    height: 40px;
+    border-radius: 5px;
+    background: rgb(12, 122, 18)!important;
+    border: 1px solid rgb(6, 109, 52) !important;
+    color: white !important;
+}
+
+
+button.btn-verde-large {
+    padding: 8px 8px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    background: rgb(12, 122, 18)!important;
+    border: 1px solid rgb(6, 109, 52) !important;
+    color: white !important;
+}
+
 button.btn-azul {
+    background: #0489B1 !important;
+    border: 1px solid #0489B1 !important;
+    color: white !important;
+}
+
+button.btn-azul-icon {
+    padding: 8px 8px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    width: 50px;
+    height: 40px;
+    border-radius: 5px;
+    background: #0489B1 !important;
+    border: 1px solid #0489B1 !important;
+    color: white !important;
+}
+
+button.btn-azul-large {
+    padding: 8px 8px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
     background: #0489B1 !important;
     border: 1px solid #0489B1 !important;
     color: white !important;
@@ -360,13 +409,49 @@ button.btn-amarillo {
     color: white !important;
 }
 
+button.btn-amarillo-icon {
+    padding: 8px 8px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    width: 50px;
+    height: 40px;
+    border-radius: 5px;
+    background: #F68D2C !important;
+    border: 1px solid #F68D2C !important;
+    color: white !important;
+}
+
 button.btn-rojo {
     background: #F60f00 !important;
     border: 1px solid #F68D2C !important;
     color: white !important;
 }
 
+button.btn-rojo-icon {
+    padding: 8px 8px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    width: 50px;
+    height: 40px;;
+    border-radius: 5px;
+    background: #F60f00 !important;
+    border: 1px solid #F68D2C !important;
+    color: white !important;
+}
+
 button.btn-cancelar {
+    background: #F68D2C !important;
+    border: 1px solid #F68D2C !important;
+    color: white !important;
+}
+
+button.btn-cancelar-icon {
+    padding: 8px 8px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    width: 50px;
+    height: 40px;;
+    border-radius: 5px;
     background: #F68D2C !important;
     border: 1px solid #F68D2C !important;
     color: white !important;
@@ -624,3 +709,5 @@ button.btn-pdf {
 .loading{
     margin: 0 auto;
 }
+
+.capitalize { text-transform: capitalize; } 

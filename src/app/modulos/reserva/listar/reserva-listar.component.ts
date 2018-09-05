@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Http, Response } from '@angular/http';
 import { Router } from '@angular/router';
+
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 
 import { CitaService } from '../../../servicios/modulos/cita.services';
+import { TurnoAtencionService } from '../../../servicios/modulos/turno-atencion.services';
 import { SettingsService } from '../../../servicios/global/settings.service';
 
 @Component({
@@ -23,6 +24,7 @@ export class ReservaListarComponent implements OnInit {
 
   constructor(
     private citaService: CitaService,
+    private turnoService: TurnoAtencionService,
     private router: Router,
     private settingsService: SettingsService
   ) {
@@ -39,10 +41,12 @@ export class ReservaListarComponent implements OnInit {
     valor = valor.trim();
     valor = valor.toLocaleLowerCase();
     
-    if(valor.length > 0){
-      this.listar(valor);
-    }else{
+    if(valor.length == 0 || valor.length == null){
       this.listar_todos();
+    }else{
+      if (valor.length > 2) {
+        this.listar(valor);
+      }
     }
   }
 
@@ -113,16 +117,34 @@ export class ReservaListarComponent implements OnInit {
     
   }
 
-  eliminarReserva(reserva_id){
+  eliminarReserva(reserva_id, turno_id){
+    var bandera = false;
+    var ct = 0;
+
     this.citaService.eliminar_reserva(reserva_id).then((data:any)=>{
       //console.log(data);
-      this.onCloseHandled();
-      this.settingsService.showNotification('top','right', this.settingsService.mensaje.eliminar, 4);
       this.listar_todos();
     })
+
+    if(bandera = true){
+      this.turnoService.aumentar_citas_disponibles(turno_id).then((data: any) => {
+        //console.log(data);
+        ct = data.recordSet.element.upd_turno_aumentar_citas_disponibles;
+        //console.log(ct);
+
+        if(ct == 1 ){
+          this.turnoService.habilitar(turno_id).then((data: any) => {
+            //console.log(data);
+          })
+        }
+      })
+
+      this.onCloseHandled();
+      this.settingsService.showNotification('top','right', this.settingsService.mensaje.eliminar, 4);
+    }
   }
 
-  goToEnlazar(id:number, dni: string){
+  goToEnlazar(id:number, doc_ide: string, celular_re){
     //console.log(id);
     this.citaService.listar_reserva_detalle(id).then((data:any) => {
       localStorage.setItem("fecha", data.recordSet.element[0].fecha);
@@ -131,8 +153,9 @@ export class ReservaListarComponent implements OnInit {
       localStorage.setItem("medico", data.recordSet.element[0].medico);
       localStorage.setItem("consultorio", data.recordSet.element[0].consultorio);
       localStorage.setItem("costo", data.recordSet.element[0].costo);
+      localStorage.setItem("celular", celular_re);
 
-      this.router.navigate(['modulos/reserva/enlazar',id, dni]);
+      this.router.navigate(['modulos/reserva/enlazar',id, doc_ide]);
     });
   }
 

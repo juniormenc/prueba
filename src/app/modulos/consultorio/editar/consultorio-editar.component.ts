@@ -37,15 +37,20 @@ export class ConsultorioEditarComponent implements OnInit {
   }
 
   modificar(){
-    this.consultorioService.modificar(this.id,this.numero)
-    .then((data) =>{
-      //console.log(data);
-      this.router.navigate(['/modulos/consultorio']);
-      this.settingsService.showNotification('top','right', this.settingsService.mensaje.modificar, 3);
-    })
-    .catch((error) =>{
-      console.log(error);
-    })
+
+    if (this.numero == null ||  this.numero == "") {
+      this.settingsService.showNotification('top','right', this.settingsService.mensaje.campos_vacios, 4);
+    }else{
+      this.consultorioService.modificar(this.id,this.numero)
+      .then((data) =>{
+        //console.log(data);
+        this.router.navigate(['/modulos/consultorio']);
+        this.settingsService.showNotification('top','right', this.settingsService.mensaje.modificar, 3);
+      })
+      .catch((error) =>{
+        console.log(error);
+      })
+    }
   }
 
   gotoConsultorio(){

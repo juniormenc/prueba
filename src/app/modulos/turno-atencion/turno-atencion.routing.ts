@@ -6,7 +6,6 @@ import { ModuleWithProviders } from '@angular/core';
 import { TurnoAtencionListarComponent } from './listar/turno-atencion-listar.component';
 import { TurnoAtencionEditarComponent } from './editar/turno-atencion-editar.component';
 import { TurnoAtencionRegistrarComponent } from './registrar/turno-atencion-registrar.component';
-import {} from './';
 
 let routes: Route[] = [
     {

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Http, Response} from '@angular/http';
 import { Router } from '@angular/router';
-//import { SpinerComponent } from '../../../recursos/spinner/spinner.component';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -26,10 +24,12 @@ export class ConsultorioListarComponent implements OnInit {
     valor = valor.trim();
     valor = valor.toLocaleLowerCase();
     
-    if(valor.length > 0){
+    if(valor.length > 1){
       this.listar(valor);
     }else{
-      this.listar_todos();
+      if (valor.length == 0) {
+        this.listar_todos();
+      }
     }
   }
 
@@ -75,29 +75,5 @@ export class ConsultorioListarComponent implements OnInit {
     //console.log(id);
     this.router.navigate(['modulos/consultorio/editar',id]);
   }
-
-  /*cambiarEstado(id, estado){
-    
-    var v_estado = estado;
-
-    if(estado){
-      v_estado = false;
-      this.color[id-1] = "btn-rojo";
-    }else{
-      v_estado = true;
-      this.color[id-1] = "btn-verde";
-    }
-
-    console.log(v_estado);
-
-    this.consultorioService.cambiar_estado(id, v_estado)
-    .then((data) =>{
-      console.log(data);
-    //  this.router.navigate(['/modulos/consultorio']);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  }*/
 
 }

@@ -4,7 +4,7 @@
     <div class="col-md-12">
       <div class="card panel panel-azul">
         <div class="panel-heading">
-          Historia Clínica N° {{dni}}
+          Historia Clínica N° {{doc_ide}}
         </div>
 
         <div class="content table-responsive table-full-width panel-body">
@@ -13,98 +13,135 @@
           </div>
           
           <div class="form-group col-md-6" align="right">
-            <button class="btn btn-verde" (click)="gotoHistorialEpisodios()">VER EPISODIOS <i class="fa fa-list"></i></button>
+            <button class="btn btn-verde" (click)="gotoHistorialEpisodios()">HISTORIAL <i class="fa fa-list"></i></button>
           </div>
 
           <div class="form-group col-md-12">
             <br>
-            <strong style="color:red">I. DATOS GENERALES</strong>
+            <strong style="color:red">I. DATOS GENERALES DEL PACIENTE</strong>
           </div>
 
-          <div class="form-group col-md-4">
-            <label class="">PACIENTE</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="" [(ngModel)]="paciente" disabled>
-            </div>
+          <div class="form-group col-md-12">
+            <br>
+            <strong>INFORMACIÓN GENERAL</strong>
           </div>
 
-          <div class="form-group col-md-2">
-            <label class="">DNI</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="" [(ngModel)]="dni" disabled>
+          <div class="col-md-12">
+            <div class="form-group col-md-3">
+              <label class="">PACIENTE</label>
+              <div class="">
+                <input type="text" class="form-control" placeholder="" [(ngModel)]="paciente" disabled>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group col-md-2">
-            <label class="">SEXO</label>
-            <div class="">
-              <select class="form-control" placeholder="Sexo" [(ngModel)]="sexo" disabled>
-                <option value=1>MASCULINO</option>
-                <option value=2>FEMENINO</option>
-              </select>
+            <div class="form-group col-md-3">
+              <label class="">TIPO DE DOCUMENTO:</label>
+              <div class="">
+                <select  class="form-control" placeholder="" [(ngModel)]="tipo_documento" disabled>
+                  <option value=0>--SELECCIONAR--</option>
+                  <option value=1>LIBRETA ELECTORAL O DNI</option>
+                  <option value=2>CARNET DE EXTRANJERIA</option>
+                  <option value=3>REG. UNICO DE CONTRIBUYENTES (RUC P. NATURAL)</option>
+                  <option value=4>PASAPORTE</option>
+                  <option value=5>PART. DE NACIMIENTO-IDENTIDAD</option>
+                  <option value=6>CÉDULA</option>
+                </select>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group col-md-2">
-            <label class="">F. NACIMIENTO</label>
-            <div class="">
-              <input type="date" class="form-control" placeholder="" [(ngModel)]="fecha_nacimiento" disabled>
+            <div class="form-group col-md-2">
+              <label class="">N° DOCUMENTO</label>
+              <div class="">
+                <input type="text" class="form-control" placeholder="" [(ngModel)]="doc_ide" disabled>
+              </div>
             </div>
-          </div>
-          
-          <div class="form-group col-md-2">
-            <label class="">EDAD</label>
-            <div class="">
-              <input type="number" class="form-control" placeholder="" [(ngModel)]="edad" disabled>
-            </div>
-          </div>
-          
-          <div class="form-group col-md-4">
-            <label class="">NACIONALIDAD</label>
-            <div class="">
-              <select  class="form-control" placeholder="pais" [(ngModel)]="pais">
-                <option value=0>--SELECCIONAR--</option>
-                <option value=1>MASCULINO</option>
-                <option value=2>FEMENINO</option>
-              </select>
-            </div>
-          </div>
 
-          <div class="form-group col-md-2">
-            <label class="">ESTADO CIVIL</label>
-            <div class="">
-              <select  class="form-control" placeholder="estado_civil" [(ngModel)]="estado_civil" >
-                <option value=1>SOLTER(O)(A)</option>
-                <option value=2>CASAD(O)(A)</option>
-                <option value=3>VIUD(O)(A)</option>
-                <option value=4>DIVORCIAD(O)(A)</option>
-                <option value=5>CONVIVIENTE</option>
-                <option value=6>OTRO</option>
-              </select>
+            <div class="form-group col-md-2">
+              <label class="">F. NACIMIENTO</label>
+              <div class="">
+                <input type="date" class="form-control" placeholder="" [(ngModel)]="fecha_nacimiento" disabled>
+              </div>
             </div>
-          </div>
-
-          <div class="form-group col-md-4">
-            <label class="">PROFESIÓN</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="" [(ngModel)]="profesion">
+            
+            <div class="form-group col-md-2">
+              <label class="">EDAD</label>
+              <div class="">
+                <input type="number" class="form-control" placeholder="" [(ngModel)]="edad" disabled>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group col-md-2">
-            <label class="">T. SANGRE</label>
-            <div class="">
-              <select  class="form-control" placeholder="tipo_sangre" [(ngModel)]="tipo_sangre">
-                <option value=1>A+</option>
-                <option value=2>A-</option>
-                <option value=3>B+</option>
-                <option value=4>B-</option>
-                <option value=5>AB+</option>
-                <option value=6>AB-</option>
-                <option value=7>O+</option>
-                <option value=8>O-</option>
-                <option value=9>NO SABE</option>
-              </select>
+            <div class="form-group col-md-3">
+              <label class="">NACIONALIDAD</label>
+              <div class="">
+                <select  class="form-control" placeholder="" [(ngModel)]="nacionalidad_id" disabled>
+                  <option value=0>--SELECCIONAR--</option>
+                  <option *ngFor = "let e_n of e_nacionalidad" [value]=e_n.id>{{e_n.pais}}</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group col-md-3">
+              <label class="">PROFESIÓN</label>
+              <div class="">
+                <input type="text" class="form-control" placeholder="" [(ngModel)]="profesion">
+              </div>
+            </div>
+
+            <div class="form-group col-md-2">
+              <label class="">SEXO</label>
+              <div class="">
+                <select class="form-control" placeholder="Sexo" [(ngModel)]="sexo" disabled>
+                  <option value=1>MASCULINO</option>
+                  <option value=2>FEMENINO</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group col-md-2">
+              <label class="">ESTADO CIVIL</label>
+              <div class="">
+                <select  class="form-control" placeholder="estado_civil" [(ngModel)]="estado_civil" >
+                  <option value=1>SOLTER(O)(A)</option>
+                  <option value=2>CASAD(O)(A)</option>
+                  <option value=3>VIUD(O)(A)</option>
+                  <option value=4>DIVORCIAD(O)(A)</option>
+                  <option value=5>CONVIVIENTE</option>
+                  <option value=6>OTRO</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group col-md-2">
+              <label class="">T. SANGRE</label>
+              <div class="">
+                <select  class="form-control" placeholder="tipo_sangre" [(ngModel)]="tipo_sangre">
+                  <option value=1>A+</option>
+                  <option value=2>A-</option>
+                  <option value=3>B+</option>
+                  <option value=4>B-</option>
+                  <option value=5>AB+</option>
+                  <option value=6>AB-</option>
+                  <option value=7>O+</option>
+                  <option value=8>O-</option>
+                  <option value=9>Rh+</option>
+                  <option value=10>Rh-</option>
+                  <option value=11>DESCONOCE</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group col-md-3">
+              <label class="">CORREO ELECTRÓNICO:</label>
+              <div class="">
+                <input type="text" class="form-control" placeholder="" [(ngModel)]="email">
+              </div>
+            </div>
+
+            <div class="form-group col-md-3">
+              <label class="">CELULAR:</label>
+              <div class="">
+                <input type="number" class="form-control" placeholder="" [(ngModel)]="celular">
+              </div>
             </div>
           </div>
 
@@ -113,43 +150,42 @@
             <strong>DOMICILIO</strong>
           </div>
 
-          <div class="form-group col-md-3">
-            <label class="">DEPARTAMENTO</label>
-            <div class="">
-              <select class="form-control" placeholder="departamento" [(ngModel)]="departamento">
-                <option value=0>--SELECCIONAR--</option>
-                <option value=1>MASCULINO</option>
-                <option value=2>FEMENINO</option>
-              </select>
+          <div class="col-md-12">
+            <div class="form-group col-md-3">
+              <label class="">DEPARTAMENTO</label>
+              <div class="">
+                <select  class="form-control" placeholder="" [(ngModel)]="departamento_dom_id" (change)="listarProvinciaChange()">
+                  <option value=0>--SELECCIONAR--</option>
+                  <option *ngFor = "let e_d of e_departamento_dom" [value]=e_d.id>{{e_d.departamento}}</option>
+                </select>
+              </div>
             </div>
-          </div>
-  
-          <div class="form-group col-md-3">
-            <label class="">PROVINCIA</label>
-            <div class="">
-              <select class="form-control" placeholder="provincia" [(ngModel)]="provincia">
-                <option value=0>--SELECCIONAR--</option>
-                <option value=1>MASCULINO</option>
-                <option value=2>FEMENINO</option>
-              </select>
+    
+            <div class="form-group col-md-3">
+              <label class="">PROVINCIA</label>
+              <div class="">
+                <select  class="form-control" placeholder="" [(ngModel)]="provincia_dom_id" (change)="listarDistrito()">
+                  <option value=0>--SELECCIONAR--</option>
+                  <option *ngFor = "let e_p of e_provincia_dom" [value]=e_p.provincia_id>{{e_p.provincia}}</option>
+                </select>
+              </div>
             </div>
-          </div>
-  
-          <div class="form-group col-md-3">
-            <label class="">DISTRITO</label>
-            <div class="">
-              <select class="form-control" placeholder="distrito" [(ngModel)]="distrito">
-                <option value=0>--SELECCIONAR--</option>
-                <option value=1>MASCULINO</option>
-                <option value=2>FEMENINO</option>
-              </select>
+    
+            <div class="form-group col-md-3">
+              <label class="">DISTRITO</label>
+              <div class="">
+                <select  class="form-control" placeholder="" [(ngModel)]="distrito_dom_id">
+                  <option value=0>--SELECCIONAR--</option>
+                  <option *ngFor = "let e_di of e_distrito_dom" [value]=e_di.distrito_id>{{e_di.distrito}}</option>
+                </select>
+              </div>
             </div>
-          </div>
-  
-          <div class="form-group col-md-3">
-            <label class="">DIRECCIÓN</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="" [(ngModel)]="domicilio">
+    
+            <div class="form-group col-md-3">
+              <label class="">DIRECCIÓN</label>
+              <div class="">
+                <input type="text" class="form-control" placeholder="" [(ngModel)]="domicilio">
+              </div>
             </div>
           </div>
 
@@ -158,64 +194,66 @@
             <strong style="color:red">II. SIGNOS VITALES</strong>
           </div>
 
-          <div class="form-group col-md-2">
-            <label class="">FC</label>
-            <div class="">
-              <input type="number" class="form-control" placeholder="min" [(ngModel)]="fc">
+          <div class="col-md-12">
+            <div class="form-group col-md-3">
+              <label class="">FC</label>
+              <div class="">
+                <input type="number" min="0" class="form-control" placeholder="min" [(ngModel)]="frecuencia_cardiaca">
+              </div>
             </div>
-          </div>
 
-          <div class="form-group col-md-2">
-            <label class="">FR</label>
-            <div class="">
-              <input type="number" class="form-control" placeholder="min" [(ngModel)]="fr">
+            <div class="form-group col-md-3">
+              <label class="">FR</label>
+              <div class="">
+                <input type="number" min="0" class="form-control" placeholder="min" [(ngModel)]="frecuencia_respiratoria">
+              </div>
             </div>
-          </div>
 
-          <div class="form-group col-md-2">
-            <label class="">P/A</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="a/b mmHg" [(ngModel)]="presion">
+            <div class="form-group col-md-3">
+              <label class="">P/A</label>
+              <div class="">
+                <input type="text" maxlength="10" class="form-control" placeholder="a/b mmHg" [(ngModel)]="presion_arterial">
+              </div>
             </div>
-          </div>
 
-          <div class="form-group col-md-2">
-            <label class="">Tª</label>
-            <div class="">
-              <input type="number" class="form-control" placeholder="Cª" [(ngModel)]="t">
+            <div class="form-group col-md-3">
+              <label class="">Tª</label>
+              <div class="">
+                <input type="number" min="0" class="form-control" placeholder="Cª" [(ngModel)]="temperatura">
+              </div>
             </div>
-          </div>
 
-          <div class="form-group col-md-2">
-            <label class="">PESO (KG)</label>
-            <div class="">
-              <input type="number" (keyup)="calcular_imc()" class="form-control" placeholder="Kg" [(ngModel)]="peso">
+            <div class="form-group col-md-3">
+              <label class="">PESO (KG)</label>
+              <div class="">
+                <input type="number" min="0" (keyup)="calcular_imc()" class="form-control" placeholder="Kg" [(ngModel)]="peso">
+              </div>
             </div>
-          </div>
-            
-          <div class="form-group col-md-2">
-            <label class="">TALLA (M)</label>
-            <div class="">
-              <input type="number" (keyup)="calcular_imc()" class="form-control" placeholder="m" [(ngModel)]="talla">
-            </div>
-          </div>
-
-          <div class="form-group col-md-2">
-            <label class="">IMC</label>
-            <div class="">
-              <input type="number" class="form-control" placeholder="Kg/m2" [(ngModel)]="imc">
-            </div>
-          </div>
               
-          <div class="form-group col-md-2">
-            <label class="">DMO</label>
-            <div class="">
-              <select class="form-control" placeholder="" [(ngModel)]="dmo">
-                <option value=0>--SELECCIONAR--</option>
-                <option value=1>NORMAL</option>
-                <option value=2>OSTEOPENIA</option>
-                <option value=3>OSTEOSPOROSIS</option>
-              </select>
+            <div class="form-group col-md-3">
+              <label class="">TALLA (M)</label>
+              <div class="">
+                <input type="number" min="0" (keyup)="calcular_imc()" class="form-control" placeholder="m" [(ngModel)]="talla">
+              </div>
+            </div>
+
+            <div class="form-group col-md-3">
+              <label class="">IMC</label>
+              <div class="">
+                <input type="number" min="0" class="form-control" placeholder="Kg/m2" [(ngModel)]="imc" disabled>
+              </div>
+            </div>
+                
+            <div class="form-group col-md-3">
+              <label class="">DMO</label>
+              <div class="">
+                <select class="form-control" placeholder="" [(ngModel)]="dmo">
+                  <option value=0>--SELECCIONAR--</option>
+                  <option value=1>NORMAL</option>
+                  <option value=2>OSTEOPENIA</option>
+                  <option value=3>OSTEOSPOROSIS</option>
+                </select>
+              </div>
             </div>
           </div>
     
@@ -224,17 +262,19 @@
             <strong style="color:red">III. MOTIVO CONSULTA</strong>
           </div>
 
-          <div class="form-group col-md-10">
-            <label class="">HISTORIA DE PADECIMIENTO ACTUAL</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="" [(ngModel)]="historia_padecimiento_actual">
+          <div class="col-md-12">
+            <div class="form-group col-md-10">
+              <label class="">HISTORIA DE PADECIMIENTO ACTUAL</label>
+              <div class="">
+                <input type="text" maxlength="800" class="form-control" placeholder="" [(ngModel)]="historial_padecimiento">
+              </div>
             </div>
-          </div>
 
-          <div class="form-group col-md-2">
-            <label class="">DOLOR (EVA: 0 - 10)</label>
-            <div class="">
-              <input type="number" class="form-control" placeholder="" [(ngModel)]="intensidad_dolor">
+            <div class="form-group col-md-2">
+              <label class="">DOLOR (EVA: 0 - 10)</label>
+              <div class="">
+                <input type="number" min="0" max="10" class="form-control" placeholder="" [(ngModel)]="intensidad_dolor">
+              </div>
             </div>
           </div>
 
@@ -242,46 +282,49 @@
             <br>
             <strong style="color:red">IV. ANTECEDENTES</strong>
           </div>
-  
-          <div class="form-group col-md-3">
-            <label class="">¿TRABAJA?</label>
-            <div class="">
-              <select class="form-control" placeholder="trabaja" [(ngModel)]="trabaja">
-                <option value=0>--SELECCIONAR--</option>
-                <option value=1>SÍ</option>
-                <option value=2>NO</option>
-              </select>
-            </div>
+
+          <div class="form-group col-md-12">
+            <br>
+            <strong>ANTECEDENTES LABORALES</strong>
           </div>
   
-          <div class="form-group col-md-3">
-            <label class="">OCUPACIÓN</label>
-            <div class="">
-              <select class="form-control" placeholder="ocupacion" [(ngModel)]="ocupacion">
-                <option value=0>--SELECCIONAR--</option>
-                <option value=1>ARQUITECTO</option>
-                <option value=2>INGENIERO</option>
-              </select>
+          <div class="col-md-12">
+            <div class="form-group col-md-3">
+              <label class="">¿TRABAJA?</label>
+              <div class="">
+                <select class="form-control" placeholder="trabaja" [(ngModel)]="trabaja">
+                  <option value=0>--SELECCIONAR--</option>
+                  <option value=1>SÍ</option>
+                  <option value=2>NO</option>
+                </select>
+              </div>
             </div>
-          </div>
-  
-          <div class="form-group col-md-3">
-            <label class="">TIEMPO DE ÚLTIMO TRABAJO</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="" [(ngModel)]="tiempo_trabajo">
+    
+            <div class="form-group col-md-3">
+              <label class="">LUGAR DE TRABAJO</label>
+              <div class="">
+                <input type="text" maxlength="100" class="form-control" placeholder="LUGAR" [(ngModel)]="lugar_trabajo">
+              </div>
             </div>
-          </div>
-            
-          <div class="form-group col-md-3">
-            <label class="">GRADO DE INSTRUCCIÓN</label>
-            <div class="">
-              <select class="form-control" placeholder="grado_instruccion" [(ngModel)]="grado_instruccion">
-                <option value=0>--SELECCIONAR--</option>
-                <option value=1>NINGUNO</option>
-                <option value=2>PRIMARIO</option>
-                <option value=3>SECUNDARIO</option>
-                <option value=4>SUPERIOR</option>
-              </select>
+    
+            <div class="form-group col-md-3">
+              <label class="">TIEMPO DE ÚLTIMO TRABAJO</label>
+              <div class="">
+                <input type="text" maxlength="15" class="form-control" placeholder="DIAS / MESES / AÑOS" [(ngModel)]="tiempo_trabajo">
+              </div>
+            </div>
+              
+            <div class="form-group col-md-3">
+              <label class="">GRADO DE INSTRUCCIÓN</label>
+              <div class="">
+                <select class="form-control" placeholder="grado_instruccion" [(ngModel)]="grado_instruccion">
+                  <option value=0>--SELECCIONAR--</option>
+                  <option value=1>NINGUNO</option>
+                  <option value=2>PRIMARIO</option>
+                  <option value=3>SECUNDARIO</option>
+                  <option value=4>SUPERIOR</option>
+                </select>
+              </div>
             </div>
           </div>
 
@@ -290,161 +333,163 @@
             <strong>ANTECEDENTES PATOLÓGICOS</strong>
           </div>
   
-          <div class="form-group col-md-2">
-            <label class="">ENF. CARDIOVASCULAR</label>
-            <div class="">
-              <select class="form-control" placeholder="" [(ngModel)]="enfermedad_cardiovascular_est">
-                <option value=0>--SELECCIONAR--</option>
-                <option value=1>NORMAL</option>
-                <option value=2>ANORMAL</option>
-                <option value=3>DESCONOCE</option>
-              </select>
+          <div class="col-md-12">
+            <div class="form-group col-md-2">
+              <label class="">ENF. CARDIOVASCULAR</label>
+              <div class="">
+                <select class="form-control" placeholder="" [(ngModel)]="ant_enf_cardiovascular">
+                  <option value=0>--SELECCIONAR--</option>
+                  <option value=1>NORMAL</option>
+                  <option value=2>ANORMAL</option>
+                  <option value=3>DESCONOCE</option>
+                </select>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group col-md-10">
-            <label class="">DETALLE</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="ENFERMEDAD CARDIOVASCULAR" [(ngModel)]="enfermedad_cardiovascular">
+            <div class="form-group col-md-10">
+              <label class="">DETALLE</label>
+              <div class="">
+                <input type="text" maxlength="90" class="form-control" placeholder="ENFERMEDAD CARDIOVASCULAR" [(ngModel)]="ant_enf_cardiovascular_detalle">
+              </div>
             </div>
-          </div>
 
-          <div class="form-group col-md-2">
-            <label class="">ENF. PULMONAR</label>
-            <div class="">
-              <select class="form-control" placeholder="" [(ngModel)]="enfermedad_pulmonar_est">
-                <option value=0>--SELECCIONAR--</option>
-                <option value=1>NORMAL</option>
-                <option value=2>ANORMAL</option>
-                <option value=3>DESCONOCE</option>
-              </select>
+            <div class="form-group col-md-2">
+              <label class="">ENF. PULMONAR</label>
+              <div class="">
+                <select class="form-control" placeholder="" [(ngModel)]="ant_enf_pulmonar">
+                  <option value=0>--SELECCIONAR--</option>
+                  <option value=1>NORMAL</option>
+                  <option value=2>ANORMAL</option>
+                  <option value=3>DESCONOCE</option>
+                </select>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group col-md-10">
-            <label class="">DETALLE</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="ENFERMEDAD PULMONAR" [(ngModel)]="enfermedad_pulmonar">
+            <div class="form-group col-md-10">
+              <label class="">DETALLE</label>
+              <div class="">
+                <input type="text" maxlength="90" class="form-control" placeholder="ENFERMEDAD PULMONAR" [(ngModel)]="ant_enf_pulmonar_detalle">
+              </div>
             </div>
-          </div>
 
-          <div class="form-group col-md-2">
-            <label class="">DIABETES MIELLITUS</label>
-            <div class="">
-              <select class="form-control" placeholder="" [(ngModel)]="diabetes_est">
-                <option value=0>--SELECCIONAR--</option>
-                <option value=1>NORMAL</option>
-                <option value=2>ANORMAL</option>
-                <option value=3>DESCONOCE</option>
-              </select>
+            <div class="form-group col-md-2">
+              <label class="">DIABETES MIELLITUS</label>
+              <div class="">
+                <select class="form-control" placeholder="" [(ngModel)]="ant_diabetes">
+                  <option value=0>--SELECCIONAR--</option>
+                  <option value=1>NORMAL</option>
+                  <option value=2>ANORMAL</option>
+                  <option value=3>DESCONOCE</option>
+                </select>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group col-md-10">
-            <label class="">DETALLE</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="DIABETES MIELLITUS" [(ngModel)]="diabetes">
+            <div class="form-group col-md-10">
+              <label class="">DETALLE</label>
+              <div class="">
+                <input type="text" maxlength="90" class="form-control" placeholder="DIABETES MIELLITUS" [(ngModel)]="ant_diabetes_detalle">
+              </div>
             </div>
-          </div>
 
-          <div class="form-group col-md-2">
-            <label class="">ALERGIAS ALIMENTARIAS</label>
-            <div class="">
-              <select class="form-control" placeholder="" [(ngModel)]="alergias_alimentarias_est">
-                <option value=0>--SELECCIONAR--</option>
-                <option value=1>NORMAL</option>
-                <option value=2>ANORMAL</option>
-                <option value=3>DESCONOCE</option>
-              </select>
+            <div class="form-group col-md-2">
+              <label class="">ALERGIAS ALIMENTARIAS</label>
+              <div class="">
+                <select class="form-control" placeholder="" [(ngModel)]="ant_ale_alimentarias">
+                  <option value=0>--SELECCIONAR--</option>
+                  <option value=1>NORMAL</option>
+                  <option value=2>ANORMAL</option>
+                  <option value=3>DESCONOCE</option>
+                </select>
+              </div>
             </div>
-          </div>
-  
-          <div class="form-group col-md-10">
-            <label class="">DETALLE</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="ALERGIAS ALIMENTARIAS" [(ngModel)]="alergias_alimentarias">
-            </div>
-          </div>
-
-          <div class="form-group col-md-2">
-            <label class="">ALERGIAS MEDICAMENTOSAS</label>
-            <div class="">
-              <select class="form-control" placeholder="" [(ngModel)]="alergias_medicamentosas_est">
-                <option value=0>--SELECCIONAR--</option>
-                <option value=1>NORMAL</option>
-                <option value=2>ANORMAL</option>
-                <option value=3>DESCONOCE</option>
-              </select>
-            </div>
-          </div>
     
-          <div class="form-group col-md-10">
-            <label class="">DETALLE</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="ALERGIAS MEDICAMENTOSAS" [(ngModel)]="alergias_medicamentosas">
+            <div class="form-group col-md-10">
+              <label class="">DETALLE</label>
+              <div class="">
+                <input type="text" maxlength="90" class="form-control" placeholder="ALERGIAS ALIMENTARIAS" [(ngModel)]="ant_ale_alimentarias_detalle">
+              </div>
             </div>
-          </div>
-          
-          <div class="form-group col-md-2">
-            <label class="">COLESTEROL</label>
-            <div class="">
-              <select class="form-control" placeholder="" [(ngModel)]="colesterol_est">
-                <option value=0>--SELECCIONAR--</option>
-                <option value=1>NORMAL</option>
-                <option value=2>ANORMAL</option>
-                <option value=3>DESCONOCE</option>
-              </select>
-            </div>
-          </div>
-    
-          <div class="form-group col-md-10">
-            <label class="">DETALLE</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="COLESTEROL" [(ngModel)]="colesterol">
-            </div>
-          </div>
-          
-          <div class="form-group col-md-2">
-            <label class="">T3, T4, TSH</label>
-            <div class="">
-              <select class="form-control" placeholder="" [(ngModel)]="tsh_est">
-                <option value=0>--SELECCIONAR--</option>
-                <option value=1>NORMAL</option>
-                <option value=2>ANORMAL</option>
-                <option value=3>DESCONOCE</option>
-              </select>
-            </div>
-          </div>
-    
-          <div class="form-group col-md-10">
-            <label class="">DETALLE</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="T3, T4, TSH" [(ngModel)]="tsh">
-            </div>
-          </div>
 
-          <div class="form-group col-md-2">
-            <label class="">QUIRÚRGICOS</label>
-            <div class="">
-              <select class="form-control" placeholder="" [(ngModel)]="quirurgicos_est">
-                <option value=0>--SELECCIONAR--</option>
-                <option value=1>SÍ</option>
-                <option value=2>NO</option>
-              </select>
+            <div class="form-group col-md-2">
+              <label class="">ALERGIAS MEDICAMENTOSAS</label>
+              <div class="">
+                <select class="form-control" placeholder="" [(ngModel)]="ant_ale_medicamentosas">
+                  <option value=0>--SELECCIONAR--</option>
+                  <option value=1>NORMAL</option>
+                  <option value=2>ANORMAL</option>
+                  <option value=3>DESCONOCE</option>
+                </select>
+              </div>
             </div>
-          </div>
       
-          <div class="form-group col-md-10">
-            <label class="">DETALLE</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="QUIRÚRGICOS" [(ngModel)]="quirurgicos">
+            <div class="form-group col-md-10">
+              <label class="">DETALLE</label>
+              <div class="">
+                <input type="text" maxlength="90" class="form-control" placeholder="ALERGIAS MEDICAMENTOSAS" [(ngModel)]="ant_ale_medicamentosas_detalle">
+              </div>
             </div>
-          </div>
+            
+            <div class="form-group col-md-2">
+              <label class="">COLESTEROL</label>
+              <div class="">
+                <select class="form-control" placeholder="" [(ngModel)]="ant_colesterol">
+                  <option value=0>--SELECCIONAR--</option>
+                  <option value=1>NORMAL</option>
+                  <option value=2>ANORMAL</option>
+                  <option value=3>DESCONOCE</option>
+                </select>
+              </div>
+            </div>
+      
+            <div class="form-group col-md-10">
+              <label class="">DETALLE</label>
+              <div class="">
+                <input type="text" maxlength="90" class="form-control" placeholder="COLESTEROL" [(ngModel)]="ant_colesterol_detalle">
+              </div>
+            </div>
+            
+            <div class="form-group col-md-2">
+              <label class="">T3, T4, TSH</label>
+              <div class="">
+                <select class="form-control" placeholder="" [(ngModel)]="ant_tsh">
+                  <option value=0>--SELECCIONAR--</option>
+                  <option value=1>NORMAL</option>
+                  <option value=2>ANORMAL</option>
+                  <option value=3>DESCONOCE</option>
+                </select>
+              </div>
+            </div>
+      
+            <div class="form-group col-md-10">
+              <label class="">DETALLE</label>
+              <div class="">
+                <input type="text" maxlength="90" class="form-control" placeholder="T3, T4, TSH" [(ngModel)]="ant_tsh_detalle">
+              </div>
+            </div>
 
-          <div class="form-group col-md-12">
-            <label class="">OTROS ANTECEDENTES</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="" [(ngModel)]="otros_antecedentes">
+            <div class="form-group col-md-2">
+              <label class="">QUIRÚRGICOS</label>
+              <div class="">
+                <select class="form-control" placeholder="" [(ngModel)]="ant_quirurgicos">
+                  <option value=0>--SELECCIONAR--</option>
+                  <option value=1>SÍ</option>
+                  <option value=2>NO</option>
+                </select>
+              </div>
+            </div>
+        
+            <div class="form-group col-md-10">
+              <label class="">DETALLE</label>
+              <div class="">
+                <input type="text" maxlength="90" class="form-control" placeholder="QUIRÚRGICOS" [(ngModel)]="ant_quirurgicos_detalle">
+              </div>
+            </div>
+
+            <div class="form-group col-md-12">
+              <label class="">OTROS ANTECEDENTES</label>
+              <div class="">
+                <input type="text" maxlength="120"class="form-control" placeholder="" [(ngModel)]="ant_otros">
+              </div>
             </div>
           </div>
 
@@ -453,77 +498,78 @@
             <strong style="color:red">V. EXAMEN</strong>
           </div>
 
-          <!--EXAMEN-->
-          <div class="form-group col-md-12">
-            <label class="">Piel, Integumentario, Linfatico</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="" [(ngModel)]="examen_piel">
+          <div class="col-md-12">
+            <!--EXAMEN-->
+            <div class="form-group col-md-12">
+              <label class="">Piel, Integumentario, Linfatico</label>
+              <div class="">
+                <input type="text" maxlength="300" class="form-control" placeholder="" [(ngModel)]="exa_piel">
+              </div>
+            </div>
+
+            <div class="form-group col-md-12">
+              <label class="">Cabeza, Cara, Cuello</label>
+              <div class="">
+                <input type="text" maxlength="300" class="form-control" placeholder="" [(ngModel)]="exa_cabeza">
+              </div>
+            </div>
+
+            <div class="form-group col-md-12">
+              <label class="">Ojo, Oido, Nariz, Garganta</label>
+              <div class="">
+                <input type="text" maxlength="300" class="form-control" placeholder="" [(ngModel)]="exa_ojo">
+              </div>
+            </div>
+
+            <div class="form-group col-md-12">
+              <label class="">Tórax , Mama</label>
+              <div class="">
+                <input type="text" maxlength="300" class="form-control" placeholder="" [(ngModel)]="exa_torax">
+              </div>
+            </div>
+
+            <div class="form-group col-md-12">
+              <label class="">Ap. Respiratorio</label>
+              <div class="">
+                <input type="text" maxlength="300" class="form-control" placeholder="" [(ngModel)]="exa_ap_respiratorio">
+              </div>
+            </div>
+
+            <div class="form-group col-md-12">
+              <label class="">Ap. Cardiovascular</label>
+              <div class="">
+                <input type="text" maxlength="300" class="form-control" placeholder="" [(ngModel)]="exa_ap_cardiovascular">
+              </div>
+            </div>
+
+            <div class="form-group col-md-12">
+              <label class="">Ap. Gastrointestinal</label>
+              <div class="">
+                <input type="text" maxlength="300" class="form-control" placeholder="" [(ngModel)]="exa_ap_gastrointestinal">
+              </div>
+            </div>
+
+            <div class="form-group col-md-12">
+              <label class="">Ap. Genitourinario</label>
+              <div class="">
+                <input type="text" maxlength="300" class="form-control" placeholder="" [(ngModel)]="exa_ap_genitourinario">
+              </div>
+            </div>
+
+            <div class="form-group col-md-12">
+              <label class="">Ap. Músculo - Esquelético</label>
+              <div class="">
+                <input type="text" maxlength="300" class="form-control" placeholder="" [(ngModel)]="exa_ap_musculo">
+              </div>
+            </div>
+
+            <div class="form-group col-md-12">
+              <label class="">Neurológico</label>
+              <div class="">
+                <input type="text" maxlength="300" class="form-control" placeholder="" [(ngModel)]="exa_ap_neurologico">
+              </div>
             </div>
           </div>
-
-          <div class="form-group col-md-12">
-            <label class="">Cabeza, Cara, Cuello</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="" [(ngModel)]="examen_cabeza">
-            </div>
-          </div>
-
-          <div class="form-group col-md-12">
-            <label class="">Ojo, Oido, Nariz, Garganta</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="" [(ngModel)]="examen_ojo">
-            </div>
-          </div>
-
-          <div class="form-group col-md-12">
-            <label class="">Tórax , Mama</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="" [(ngModel)]="examen_torax">
-            </div>
-          </div>
-
-          <div class="form-group col-md-12">
-            <label class="">Ap. Respiratorio</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="" [(ngModel)]="examen_ap_respiratorio">
-            </div>
-          </div>
-
-          <div class="form-group col-md-12">
-            <label class="">Ap. Cardiovascular</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="" [(ngModel)]="examen_ap_cardiovascular">
-            </div>
-          </div>
-
-          <div class="form-group col-md-12">
-            <label class="">Ap. Gastrointestinal</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="" [(ngModel)]="examen_ap_gastrointestinal">
-            </div>
-          </div>
-
-          <div class="form-group col-md-12">
-            <label class="">Ap. Genitourinario</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="" [(ngModel)]="examen_ap_genitourinario">
-            </div>
-          </div>
-
-          <div class="form-group col-md-12">
-            <label class="">Ap. Músculo - Esquelético</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="" [(ngModel)]="examen_ap_musculo">
-            </div>
-          </div>
-
-          <div class="form-group col-md-12">
-            <label class="">Neurológico</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="" [(ngModel)]="examen_neurologico">
-            </div>
-          </div>
-
 
           
           <div class="form-group col-md-12">
@@ -531,82 +577,96 @@
             <strong style="color:red">VI. AYUDA DIAGNÓSTICA</strong>
           </div>
 
-          <div class="form-group col-md-2">
-            <label class="">ANÁLISIS LABORATORIO</label>
-            <div class="">
-              <select class="form-control" placeholder="" [(ngModel)]="analisis_laboratorio_est">
-                <option value=0>--SELECCIONAR--</option>
-                <option value=1>NO</option>
-                <option value=2>SÍ</option>
-                <option value=3>NORMAL</option>
-                <option value=4>ANORMAL</option>
-              </select>
-            </div>
-          </div>
-      
-          <div class="form-group col-md-10">
-            <label class="">DETALLE</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="ANÁLISIS LABORATORIO" [(ngModel)]="analisis_laboratorio">
-            </div>
-          </div>
-
-          <div class="form-group col-md-3">
-            <label class="">RX</label>
-            <div class="">
-              <select class="form-control" placeholder="" [(ngModel)]="rayosx_est">
-                <option value=0>--SELECCIONAR--</option>
-                <option value=1>NO</option>
-                <option value=2>SÍ</option>
-                <option value=3>NORMAL</option>
-                <option value=4>ANORMAL</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group col-md-3">
-            <label class="">TOMOGRAFÍA</label>
-            <div class="">
-              <select class="form-control" placeholder="" [(ngModel)]="tomografia_est">
-                <option value=0>--SELECCIONAR--</option>
-                <option value=1>NO</option>
-                <option value=2>SÍ</option>
-                <option value=3>NORMAL</option>
-                <option value=4>ANORMAL</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group col-md-3">
-            <label class="">RESONANCIA MAGNÉTICA</label>
-            <div class="">
-              <select class="form-control" placeholder="" [(ngModel)]="resonancia_magnetica_est">
-                <option value=0>--SELECCIONAR--</option>
-                <option value=1>NO</option>
-                <option value=2>SÍ</option>
-                <option value=3>NORMAL</option>
-                <option value=4>ANORMAL</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group col-md-3">
-            <label class="">GAMMAGRAFÍA</label>
-            <div class="">
-              <select class="form-control" placeholder="" [(ngModel)]="gammagrafia_est">
-                <option value=0>--SELECCIONAR--</option>
-                <option value=1>NO</option>
-                <option value=2>SÍ</option>
-                <option value=3>NORMAL</option>
-                <option value=4>ANORMAL</option>
-              </select>
-            </div>
-          </div>
-        
           <div class="form-group col-md-12">
-            <label class="">DETALLE</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="IMAGENOLOGÍA" [(ngModel)]="imagenologia">
+            <br>
+            <strong>LABORATORIO</strong>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group col-md-2">
+              <label class="">ANÁLISIS LABORATORIO</label>
+              <div class="">
+                <select class="form-control" placeholder="" [(ngModel)]="analisis_laboratorio">
+                  <option value=0>--SELECCIONAR--</option>
+                  <option value=1>NO</option>
+                  <option value=2>SÍ</option>
+                  <option value=3>NORMAL</option>
+                  <option value=4>ANORMAL</option>
+                </select>
+              </div>
+            </div>
+        
+            <div class="form-group col-md-10">
+              <label class="">DETALLE</label>
+              <div class="">
+                <input type="text" maxlength="900" class="form-control" placeholder="ANÁLISIS LABORATORIO" [(ngModel)]="analisis_laboratorio_detalle">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group col-md-12">
+            <br>
+            <strong>IMAGENOLOGÍA</strong>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group col-md-3">
+              <label class="">RX</label>
+              <div class="">
+                <select class="form-control" placeholder="" [(ngModel)]="img_rx">
+                  <option value=0>--SELECCIONAR--</option>
+                  <option value=1>NO</option>
+                  <option value=2>SÍ</option>
+                  <option value=3>NORMAL</option>
+                  <option value=4>ANORMAL</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group col-md-3">
+              <label class="">TOMOGRAFÍA</label>
+              <div class="">
+                <select class="form-control" placeholder="" [(ngModel)]="img_tomografia">
+                  <option value=0>--SELECCIONAR--</option>
+                  <option value=1>NO</option>
+                  <option value=2>SÍ</option>
+                  <option value=3>NORMAL</option>
+                  <option value=4>ANORMAL</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group col-md-3">
+              <label class="">RESONANCIA MAGNÉTICA</label>
+              <div class="">
+                <select class="form-control" placeholder="" [(ngModel)]="img_resonancia">
+                  <option value=0>--SELECCIONAR--</option>
+                  <option value=1>NO</option>
+                  <option value=2>SÍ</option>
+                  <option value=3>NORMAL</option>
+                  <option value=4>ANORMAL</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group col-md-3">
+              <label class="">GAMMAGRAFÍA</label>
+              <div class="">
+                <select class="form-control" placeholder="" [(ngModel)]="img_gammagrafia">
+                  <option value=0>--SELECCIONAR--</option>
+                  <option value=1>NO</option>
+                  <option value=2>SÍ</option>
+                  <option value=3>NORMAL</option>
+                  <option value=4>ANORMAL</option>
+                </select>
+              </div>
+            </div>
+          
+            <div class="form-group col-md-12">
+              <label class="">DETALLE</label>
+              <div class="">
+                <input type="text" maxlength="2000" class="form-control" placeholder="IMAGENOLOGÍA" [(ngModel)]="imagenologia_detalle">
+              </div>
             </div>
           </div>
 
@@ -615,103 +675,105 @@
             <strong style="color:red">VII. DIAGNÓSTICO</strong>
           </div>
 
-          <!--DIAGNÓSTICO-->
-          <div class="col-md-6">
-            <div class="card col-md-12">
-              <br>
-              <div class="card-header" data-background-color="blue">
-                <h5 class="text-danger">ENFERMEDADES (CIE 10)</h5>
-              </div>
-              <div class="card-content table-responsive">
-                <div align="right">
-                  <form class="">
-                    <div class="col-md-12">
-                      <input type="text" class="form-control" (keyup)="filtro($event.target.value)" placeholder="CIE 10 / ENFERMEDAD">
-                      <span class="material-input"></span>
-                    </div>
-                    
-                    <div class="loading col-md-12" *ngIf="loading" align="center">
-                        <img src="../../../../assets/img/loader.gif" />
-                    </div>
-                    
-                  </form>             
+          <div class="col-md-12">
+            <!--DIAGNÓSTICO-->
+            <div class="col-md-6">
+              <div class="card col-md-12">
+                <br>
+                <div class="card-header" data-background-color="blue">
+                  <h5 class="text-danger">ENFERMEDADES (CIE 10)</h5>
                 </div>
-                <table class="table col-md-12 list" *ngIf="e_cie">
-                  <thead class="text-danger">
-                    <tr>
-                      <th class="col-md-2">CIE 10</th>
-                      <th>ENFERMEDAD</th>
-                      <th>AGREGAR</th>
-                    </tr>
-                  </thead>
-                  <tbody class="">
-                    <tr *ngFor="let e of e_cie" class="list-item">
-                      <td>{{e.id}}</td>
-                      <td>{{e.enfermedad}}</td>
-                      <td>
-                        <button class="btn btn-verde btn-round btn-fill btn-venta" (click)="agregar_carrito(e.id, e.enfermedad)">
-                          <i class="fa fa-check"></i>
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div class="card-content table-responsive">
+                  <div align="right">
+                    <form class="">
+                      <div class="col-md-12">
+                        <input type="text" class="form-control" (keyup)="filtro($event.target.value)" placeholder="CIE 10 / ENFERMEDAD">
+                        <span class="material-input"></span>
+                      </div>
+                      
+                      <div class="loading col-md-12" *ngIf="loading" align="center">
+                          <img src="../../../../assets/img/loader.gif" />
+                      </div>
+                      
+                    </form>             
+                  </div>
+                  <table class="table col-md-12 list" *ngIf="e_cie">
+                    <thead class="text-danger">
+                      <tr>
+                        <th class="col-md-2">CIE 10</th>
+                        <th>ENFERMEDAD</th>
+                        <th>AGREGAR</th>
+                      </tr>
+                    </thead>
+                    <tbody class="">
+                      <tr *ngFor="let e of e_cie" class="list-item">
+                        <td>{{e.id}}</td>
+                        <td>{{e.enfermedad}}</td>
+                        <td>
+                          <button class="btn btn-verde btn-round btn-fill btn-venta" (click)="agregar_carrito(e.id, e.enfermedad)">
+                            <i class="fa fa-check"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
-          </div>
-          <!--DIAGNÓSTICO-->
+            <!--DIAGNÓSTICO-->
 
-          <!--CARRITO DIAGNÓSTICO-->
-          <div class="col-md-6">
-            <div class="card col-md-12">
-              <br>
-              <div class="card-header" data-background-color="blue">
-                <h5 class="col-md-9 text-danger">DIAGNÓSTICOS</h5>
-                <h5 class="col-md-3 text-danger">CANT. {{cant_diag}}</h5>
-              </div>
+            <!--CARRITO DIAGNÓSTICO-->
+            <div class="col-md-6">
+              <div class="card col-md-12">
+                <br>
+                <div class="card-header" data-background-color="blue">
+                  <h5 class="col-md-9 text-danger">DIAGNÓSTICOS</h5>
+                  <h5 class="col-md-3 text-danger">CANT. {{cant_diag}}</h5>
+                </div>
 
-              <div class="card-content table-responsive">
-                <table class="table list-nro-diag">
-                  <thead class="text-danger">
-                    <tr>
-                      <th class="col-md-2">CIE 10</th>
-                      <th class="col-md-8">ENFERMEDAD</th>
-                      <th class="col-md-2">QUITAR</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let e_d of diagnostico" class="list-item">
-                      <td>{{e_d.id}}</td>
-                      <td>{{e_d.enfermedad}}</td>
-                      <td>
-                        <button class="btn btn-rojo btn-round btn-fill btn-default btn-just-icon" (click)="quitar(e_d.id)">
-                          <i class="fa fa-trash text-white"></i>
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div class="card-content table-responsive">
+                  <table class="table list-nro-diag">
+                    <thead class="text-danger">
+                      <tr>
+                        <th class="col-md-2">CIE 10</th>
+                        <th class="col-md-8">ENFERMEDAD</th>
+                        <th class="col-md-2">QUITAR</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let e_d of diagnostico" class="list-item">
+                        <td>{{e_d.id}}</td>
+                        <td>{{e_d.enfermedad}}</td>
+                        <td>
+                          <button class="btn btn-rojo btn-round btn-fill btn-default btn-just-icon" (click)="quitar(e_d.id)">
+                            <i class="fa fa-trash text-white"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
-          </div>
-          <!--CARRITO DIAGNÓSTICO-->
-  
-          <div class="form-group col-md-10">
-            <label class="">DETALLES DE DIAGNÓSTICO</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="DETALLES DE DIAGNÓSTICO" [(ngModel)]="diagnostico_detalle">
+            <!--CARRITO DIAGNÓSTICO-->
+    
+            <div class="form-group col-md-10">
+              <label class="">DETALLES DE DIAGNÓSTICO</label>
+              <div class="">
+                <input type="text" maxlength="2000" class="form-control" placeholder="DETALLES DE DIAGNÓSTICO" [(ngModel)]="diagnostico_detalle">
+              </div>
             </div>
-          </div>
-  
-          <div class="form-group col-md-2">
-            <label class="">PRONÓSTICO</label>
-            <div class="">
-              <select class="form-control" placeholder="" [(ngModel)]="quirurgicos_est">
-                <option value=0>--SELECCIONAR--</option>
-                <option value=1>BUENO PARA LA VIDA</option>
-                <option value=2>BUENO PARA LA FUNCIÓN</option>
-                <option value=3>RESERVADO</option>
-              </select>
+    
+            <div class="form-group col-md-2">
+              <label class="">PRONÓSTICO</label>
+              <div class="">
+                <select class="form-control" placeholder="" [(ngModel)]="pronostico">
+                  <option value=0>--SELECCIONAR--</option>
+                  <option value=1>BUENO PARA LA VIDA</option>
+                  <option value=2>BUENO PARA LA FUNCIÓN</option>
+                  <option value=3>RESERVADO</option>
+                </select>
+              </div>
             </div>
           </div>
 
@@ -720,23 +782,25 @@
             <strong style="color:red">VIII. INDICACIONES</strong>
           </div>
 
-          <div class="form-group col-md-2">
-            <label class="">ACTIVIDAD FÍSICA</label>
-            <div class="">
-              <select class="form-control" placeholder="" [(ngModel)]="actividad_fisica">
-                <option value=0>--SELECCIONAR--</option>
-                <option value=1>DESCANSO MÉDICO</option>
-                <option value=2>REPOSO RELATIVO</option>
-                <option value=3>NO ESFUERZO FÍSICO</option>
-                <option value=4>ACTIVIDAD NORMAL</option>
-              </select>
+          <div class="col-md-12">
+            <div class="form-group col-md-2">
+              <label class="">ACTIVIDAD FÍSICA</label>
+              <div class="">
+                <select class="form-control" placeholder="" [(ngModel)]="actividad_fisica">
+                  <option value=0>--SELECCIONAR--</option>
+                  <option value=1>DESCANSO MÉDICO</option>
+                  <option value=2>REPOSO RELATIVO</option>
+                  <option value=3>NO ESFUERZO FÍSICO</option>
+                  <option value=4>ACTIVIDAD NORMAL</option>
+                </select>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group col-md-2">
-            <label class="">N° DÍAS DE DESCANSO</label>
-            <div class="">
-              <input type="number" class="form-control" placeholder="" [(ngModel)]="dias_descanso">
+            <div class="form-group col-md-2">
+              <label class="">N° DÍAS DE DESCANSO</label>
+              <div class="">
+                <input type="number" min="0" class="form-control" placeholder="" [(ngModel)]="dias_descanso">
+              </div>
             </div>
           </div>
   
@@ -745,73 +809,75 @@
             <strong>MEDICAMENTOSA</strong>
           </div>
 
-          <div class="form-group col-md-3">
-            <label class="">MEDICAMENTO N° 01</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="MEDICAMENTO" [(ngModel)]="medicamento_1">
+          <div class="col-md-12">
+            <div class="form-group col-md-4">
+              <label class="">MEDICAMENTO N° 01</label>
+              <div class="">
+                <input type="text" maxlength="45" class="form-control" placeholder="MEDICAMENTO" [(ngModel)]="med_1">
+              </div>
             </div>
-          </div>
 
-          <div class="form-group col-md-9">
-            <label class="">FRECUENCIA Y DETALLE</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="DETALLE" [(ngModel)]="medicamento_1_detalle">
+            <div class="form-group col-md-8">
+              <label class="">FRECUENCIA Y DETALLE</label>
+              <div class="">
+                <input type="text" maxlength="50" class="form-control" placeholder="DETALLE" [(ngModel)]="med_1_detalle">
+              </div>
             </div>
-          </div>
 
-          <div class="form-group col-md-3">
-            <label class="">MEDICAMENTO N° 02</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="MEDICAMENTO" [(ngModel)]="medicamento_2">
+            <div class="form-group col-md-4">
+              <label class="">MEDICAMENTO N° 02</label>
+              <div class="">
+                <input type="text" maxlength="45" class="form-control" placeholder="MEDICAMENTO" [(ngModel)]="med_2">
+              </div>
             </div>
-          </div>
 
-          <div class="form-group col-md-9">
-            <label class="">FRECUENCIA Y DETALLE</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="DETALLE" [(ngModel)]="medicamento_2_detalle">
+            <div class="form-group col-md-8">
+              <label class="">FRECUENCIA Y DETALLE</label>
+              <div class="">
+                <input type="text" maxlength="50" class="form-control" placeholder="DETALLE" [(ngModel)]="med_2_detalle">
+              </div>
             </div>
-          </div>
 
-          <div class="form-group col-md-3">
-            <label class="">MEDICAMENTO N° 03</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="MEDICAMENTO" [(ngModel)]="medicamento_3">
+            <div class="form-group col-md-4">
+              <label class="">MEDICAMENTO N° 03</label>
+              <div class="">
+                <input type="text" maxlength="45" class="form-control" placeholder="MEDICAMENTO" [(ngModel)]="med_3">
+              </div>
             </div>
-          </div>
 
-          <div class="form-group col-md-9">
-            <label class="">FRECUENCIA Y DETALLE</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="DETALLE" [(ngModel)]="medicamento_3_detalle">
+            <div class="form-group col-md-8">
+              <label class="">FRECUENCIA Y DETALLE</label>
+              <div class="">
+                <input type="text" maxlength="50" class="form-control" placeholder="DETALLE" [(ngModel)]="med_3_detalle">
+              </div>
             </div>
-          </div>
 
-          <div class="form-group col-md-3">
-            <label class="">MEDICAMENTO N° 04</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="MEDICAMENTO" [(ngModel)]="medicamento_4">
+            <div class="form-group col-md-4">
+              <label class="">MEDICAMENTO N° 04</label>
+              <div class="">
+                <input type="text" maxlength="45" class="form-control" placeholder="MEDICAMENTO" [(ngModel)]="med_4">
+              </div>
             </div>
-          </div>
 
-          <div class="form-group col-md-9">
-            <label class="">FRECUENCIA Y DETALLE</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="DETALLE" [(ngModel)]="medicamento_4_detalle">
+            <div class="form-group col-md-8">
+              <label class="">FRECUENCIA Y DETALLE</label>
+              <div class="">
+                <input type="text" maxlength="50" class="form-control" placeholder="DETALLE" [(ngModel)]="med_4_detalle">
+              </div>
             </div>
-          </div>
 
-          <div class="form-group col-md-3">
-            <label class="">MEDICAMENTO N° 05</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="MEDICAMENTO" [(ngModel)]="medicamento_5">
+            <div class="form-group col-md-4">
+              <label class="">MEDICAMENTO N° 05</label>
+              <div class="">
+                <input type="text" maxlength="45" class="form-control" placeholder="MEDICAMENTO" [(ngModel)]="med_5">
+              </div>
             </div>
-          </div>
 
-          <div class="form-group col-md-9">
-            <label class="">FRECUENCIA Y DETALLE</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="DETALLE" [(ngModel)]="medicamento_5_detalle">
+            <div class="form-group col-md-8">
+              <label class="">FRECUENCIA Y DETALLE</label>
+              <div class="">
+                <input type="text" maxlength="50" class="form-control" placeholder="DETALLE" [(ngModel)]="med_5_detalle">
+              </div>
             </div>
           </div>
 
@@ -820,46 +886,48 @@
             <strong>MEDICINA RECUPERATIVA</strong>
           </div>
 
-          <div class="form-group col-md-3">
-            <label class="">FISIOTERAPIA</label>
-            <div class="">
-              <select class="form-control" placeholder="" [(ngModel)]="med_rec_fisioterapia">
-                <option value=0>--SELECCIONAR--</option>
-                <option value=1>NO</option>
-                <option value=2>SÍ</option>
-              </select>
+          <div class="col-md-12">
+            <div class="form-group col-md-3">
+              <label class="">FISIOTERAPIA</label>
+              <div class="">
+                <select class="form-control" placeholder="" [(ngModel)]="med_rec_fisioterapia">
+                  <option value=0>--SELECCIONAR--</option>
+                  <option value=1>NO</option>
+                  <option value=2>SÍ</option>
+                </select>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group col-md-3">
-            <label class="">TIPO DE FISIOTERAPIA</label>
-            <div class="">
-              <select class="form-control" placeholder="" [(ngModel)]="tipo_fisioterapia">
-                <option value=0>--SELECCIONAR--</option>
-                <option value=1>MAGNETO</option>
-                <option value=2>ULTRASONIDO</option>
-                <option value=3>ONDAS DE CHOQUE</option>
-                <option value=4>ELECTRO ESTIMULACIÓN</option>
-                <option value=5>OTROS</option>
-              </select>
+            <div class="form-group col-md-3">
+              <label class="">TIPO DE FISIOTERAPIA</label>
+              <div class="">
+                <select class="form-control" placeholder="" [(ngModel)]="med_rec_fis_tipo">
+                  <option value=0>--SELECCIONAR--</option>
+                  <option value=1>MAGNETO</option>
+                  <option value=2>ULTRASONIDO</option>
+                  <option value=3>ONDAS DE CHOQUE</option>
+                  <option value=4>ELECTRO ESTIMULACIÓN</option>
+                  <option value=5>OTROS</option>
+                </select>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group col-md-3">
-            <label class="">OTRO TIPO DE FISIOTERAPIA</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="OTRO TIPO DE FISIOTERAPIA" [(ngModel)]="tipo_fisioterapia_otros">
+            <div class="form-group col-md-3">
+              <label class="">OTRO TIPO DE FISIOTERAPIA</label>
+              <div class="">
+                <input type="text" maxlength="300" class="form-control" placeholder="OTRO TIPO DE FISIOTERAPIA" [(ngModel)]="med_rec_fis_otros">
+              </div>
             </div>
-          </div>
-          
-          <div class="form-group col-md-3">
-            <label class="">MEDICINA FÍSICA REHABILITACIÓN</label>
-            <div class="">
-              <select class="form-control" placeholder="" [(ngModel)]="med_rec_med_fis_reha">
-                <option value=0>--SELECCIONAR--</option>
-                <option value=1>NO</option>
-                <option value=2>SÍ</option>
-              </select>
+            
+            <div class="form-group col-md-3">
+              <label class="">MEDICINA FÍSICA REHABILITACIÓN</label>
+              <div class="">
+                <select class="form-control" placeholder="" [(ngModel)]="med_fisica_rehab">
+                  <option value=0>--SELECCIONAR--</option>
+                  <option value=1>NO</option>
+                  <option value=2>SÍ</option>
+                </select>
+              </div>
             </div>
           </div>
 
@@ -868,61 +936,63 @@
             <strong>MEDICINA ALTERNATIVA</strong>
           </div>
 
-          <div class="form-group col-md-2">
-            <label class="">FITOTERAPIA</label>
-            <div class="">
-              <select class="form-control" placeholder="" [(ngModel)]="med_alt_fitoterapia">
-                <option value=0>--SELECCIONAR--</option>
-                <option value=1>NO</option>
-                <option value=2>SÍ</option>
-              </select>
+          <div class="col-md-12">
+            <div class="form-group col-md-2">
+              <label class="">FITOTERAPIA</label>
+              <div class="">
+                <select class="form-control" placeholder="" [(ngModel)]="med_alt_fitoterapia">
+                  <option value=0>--SELECCIONAR--</option>
+                  <option value=1>NO</option>
+                  <option value=2>SÍ</option>
+                </select>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group col-md-2">
-            <label class="">FOTOHEMOTERAPIA</label>
-            <div class="">
-              <input type="number" class="form-control" placeholder="N° DE VECES REALIZADO" min="0" [(ngModel)]="med_alt_fotohemoterapia">
+            <div class="form-group col-md-2">
+              <label class="">FOTOHEMOTERAPIA</label>
+              <div class="">
+                <input type="number" class="form-control" placeholder="N° DE VECES REALIZADO" min="0" [(ngModel)]="med_alt_fotohemoterapia">
+              </div>
             </div>
-          </div>
 
-          <div class="form-group col-md-2">
-            <label class="">PRP</label>
-            <div class="">
-              <input type="number" class="form-control" placeholder="N° DE VECES REALIZADO" min="0" [(ngModel)]="med_alt_prp">
+            <div class="form-group col-md-2">
+              <label class="">PRP</label>
+              <div class="">
+                <input type="number" class="form-control" placeholder="N° DE VECES REALIZADO" min="0" [(ngModel)]="med_alt_prp">
+              </div>
             </div>
-          </div>
 
-          <div class="form-group col-md-2">
-            <label class="">CÉLULAS MADRE</label>
-            <div class="">
-              <input type="number" class="form-control" placeholder="N° DE VECES REALIZADO" min="0" [(ngModel)]="med_alt_cel_madre">
+            <div class="form-group col-md-2">
+              <label class="">CÉLULAS MADRE</label>
+              <div class="">
+                <input type="number" class="form-control" placeholder="N° DE VECES REALIZADO" min="0" [(ngModel)]="med_alt_cel_madres">
+              </div>
             </div>
-          </div>
 
-          <div class="form-group col-md-2">
-            <label class="">INFILTRACIÓN</label>
-            <div class="">
-              <select class="form-control" placeholder="" [(ngModel)]="med_alt_infiltracion">
-                <option value=0>--SELECCIONAR--</option>
-                <option value=1>NINGUNO</option>
-                <option value=2>MEDICAMENTOSO</option>
-                <option value=3>NO MEDICAN</option>
-              </select>
+            <div class="form-group col-md-2">
+              <label class="">INFILTRACIÓN</label>
+              <div class="">
+                <select class="form-control" placeholder="" [(ngModel)]="med_alt_infiltracion">
+                  <option value=0>--SELECCIONAR--</option>
+                  <option value=1>NINGUNO</option>
+                  <option value=2>MEDICAMENTOSO</option>
+                  <option value=3>NO MEDICAN</option>
+                </select>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group col-md-2">
-            <label class="">BARO CÁMARA</label>
-            <div class="">
-              <input type="number" class="form-control" placeholder="N° DE VECES REALIZADO" min="0" [(ngModel)]="med_alt_baro_camara">
+            <div class="form-group col-md-2">
+              <label class="">BARO CÁMARA</label>
+              <div class="">
+                <input type="number" class="form-control" placeholder="N° DE VECES REALIZADO" min="0" [(ngModel)]="med_alt_baro_camara">
+              </div>
             </div>
-          </div>
 
-          <div class="form-group col-md-2">
-            <label class="">OZONOTERAPIA</label>
-            <div class="">
-              <input type="number" class="form-control" placeholder="N° DE VECES REALIZADO" min="0" [(ngModel)]="med_alt_ozonoterapia">
+            <div class="form-group col-md-2">
+              <label class="">OZONOTERAPIA</label>
+              <div class="">
+                <input type="number" class="form-control" placeholder="N° DE VECES REALIZADO" min="0" [(ngModel)]="med_alt_ozonoterapia">
+              </div>
             </div>
           </div>
 
@@ -931,24 +1001,26 @@
             <strong>ESTILO DE VIDA</strong>
           </div>
 
-          <div class="form-group col-md-3">
-            <label class="">CAMBIO DE ESTILO DE VIDA</label>
-            <div class="">
-              <select class="form-control" placeholder="" [(ngModel)]="estilo_vida">
-                <option value=0>--SELECCIONAR--</option>
-                <option value=1>TROTE</option>
-                <option value=2>DANZA</option>
-                <option value=3>SPA</option>
-                <option value=4>NATACIÓN</option>
-                <option value=5>OTROS</option>
-              </select>
+          <div class="col-md-12">
+            <div class="form-group col-md-3">
+              <label class="">CAMBIO DE ESTILO DE VIDA</label>
+              <div class="">
+                <select class="form-control" placeholder="" [(ngModel)]="est_vida">
+                  <option value=0>--SELECCIONAR--</option>
+                  <option value=1>TROTE</option>
+                  <option value=2>DANZA</option>
+                  <option value=3>SPA</option>
+                  <option value=4>NATACIÓN</option>
+                  <option value=5>OTROS</option>
+                </select>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group col-md-6">
-            <label class="">OTRO CAMBIO DE ESTILO DE VIDA</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="OTRO CAMBIO DE ESTILO DE VIDA" [(ngModel)]="estilo_vida_otros">
+            <div class="form-group col-md-6">
+              <label class="">OTRO CAMBIO DE ESTILO DE VIDA</label>
+              <div class="">
+                <input type="text" maxlength="200" class="form-control" placeholder="OTRO CAMBIO DE ESTILO DE VIDA" [(ngModel)]="est_vida_otros">
+              </div>
             </div>
           </div>
 
@@ -957,54 +1029,124 @@
             <strong>INTERCONSULTAS</strong>
           </div>
 
-          <div class="form-group col-md-3">
-            <label class="">INTERCONSULTA N° 01</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="ESPECIALIDAD" [(ngModel)]="interconsulta_1">
+          <div class="col-md-12">
+            <div class="form-group col-md-3">
+              <label class="">INTERCONSULTA N° 01</label>
+              <div class="">
+                <input type="text" maxlength="30" class="form-control" placeholder="ESPECIALIDAD" [(ngModel)]="interc_1">
+              </div>
+            </div>
+
+            <div class="form-group col-md-9">
+              <label class="">DETALLE DE INTERCONSULTA</label>
+              <div class="">
+                <input type="text" maxlength="50" class="form-control" placeholder="DETALLE" [(ngModel)]="interc_1_detalle">
+              </div>
+            </div>
+
+            <div class="form-group col-md-3">
+              <label class="">INTERCONSULTA N° 02</label>
+              <div class="">
+                <input type="text" maxlength="30" class="form-control" placeholder="ESPECIALIDAD" [(ngModel)]="interc_2">
+              </div>
+            </div>
+
+            <div class="form-group col-md-9">
+              <label class="">DETALLE DE INTERCONSULTA</label>
+              <div class="">
+                <input type="text" maxlength="50" class="form-control" placeholder="DETALLE" [(ngModel)]="interc_2_detalle">
+              </div>
+            </div>
+
+            <div class="form-group col-md-3">
+              <label class="">INTERCONSULTA N° 03</label>
+              <div class="">
+                <input type="text" maxlength="30" class="form-control" placeholder="ESPECIALIDAD" [(ngModel)]="interc_3">
+              </div>
+            </div>
+
+            <div class="form-group col-md-9">
+              <label class="">DETALLE DE INTERCONSULTA</label>
+              <div class="">
+                <input type="text" maxlength="50" class="form-control" placeholder="DETALLE" [(ngModel)]="interc_3_detalle">
+              </div>
             </div>
           </div>
 
-          <div class="form-group col-md-9">
-            <label class="">DETALLE DE INTERCONSULTA</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="DETALLE" [(ngModel)]="interconsulta_1_detalle">
-            </div>
-          </div>
-
-          <div class="form-group col-md-3">
-            <label class="">INTERCONSULTA N° 02</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="ESPECIALIDAD" [(ngModel)]="interconsulta_2">
-            </div>
-          </div>
-
-          <div class="form-group col-md-9">
-            <label class="">DETALLE DE INTERCONSULTA</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="DETALLE" [(ngModel)]="interconsulta_2_detalle">
-            </div>
-          </div>
-
-          <div class="form-group col-md-3">
-            <label class="">INTERCONSULTA N° 03</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="ESPECIALIDAD" [(ngModel)]="interconsulta_3">
-            </div>
-          </div>
-
-          <div class="form-group col-md-9">
-            <label class="">DETALLE DE INTERCONSULTA</label>
-            <div class="">
-              <input type="text" class="form-control" placeholder="DETALLE" [(ngModel)]="interconsulta_3_detalle">
-            </div>
-          </div>
-
-          
 
           <div class="form-group col-md-12">
             <br>
             <strong>SOLICITUD DE ESTUDIOS</strong>
           </div>
+
+          <div class="form-group col-md-12">
+            <br>
+            <strong>- LABORATORIO</strong>
+          </div>
+
+          <div class="wrap">
+            <form action="" class="formulario">
+              <div class="checkbox col-md-12">
+                <input type="checkbox" name="chk1" id="chk1" [checked]="sol_estudios_hemograma" (change)="cambio_chk1()">
+                <label for="chk1">Hemograma</label>
+
+                <input type="checkbox" name="chk2" id="chk2" [checked]="sol_estudios_hemoglobina" (change)="cambio_chk2()">
+                <label for="chk2">Hemoglobina</label>
+
+                <input type="checkbox" name="chk3" id="chk3" [checked]="sol_estudios_glucosa" (change)="cambio_chk3()">
+                <label for="chk3">Glucosa</label>
+
+                <input type="checkbox" name="chk4" id="chk4" [checked]="sol_estudios_urea" (change)="cambio_chk4()">
+                <label for="chk4">Úrea</label>
+
+                <input type="checkbox" name="chk5" id="chk5" [checked]="sol_estudios_creatinina" (change)="cambio_chk5()">
+                <label for="chk5">Creatinina</label>
+
+                <input type="checkbox" name="chk6" id="chk6" [checked]="sol_estudios_ex_comp_orina" (change)="cambio_chk6()">
+                <label for="chk6">Ex. Comp. Orina</label>
+
+                <input type="checkbox" name="chk7" id="chk7" [checked]="sol_estudios_hormonales" (change)="cambio_chk7()">
+                <label for="chk7">Hormonales</label>
+
+                <input type="checkbox" name="chk8" id="chk8" [checked]="sol_estudios_cultivos" (change)="cambio_chk8()">
+                <label for="chk8">Cultivos</label>
+              </div>
+            </form>
+          </div>
+
+
+          <div class="form-group col-md-12">
+            <br>
+            <strong>- IMAGENOLOGÍA</strong>
+          </div>
+
+          <div class="wrap">
+            <form action="" class="formulario">
+              <div class="checkbox col-md-12">
+                <input type="checkbox" name="chk9" id="chk9" [checked]="sol_estudios_ecografia" (change)="cambio_chk9()">
+                <label for="chk9">Ecografia</label>
+  
+                <input type="checkbox" name="chk10" id="chk10" [checked]="sol_estudios_rx" (change)="cambio_chk10()">
+                <label for="chk10">Rx</label>
+  
+                <input type="checkbox" name="chk11" id="chk11" [checked]="sol_estudios_tomografia" (change)="cambio_chk11()">
+                <label for="chk11">Tomografia</label>
+  
+                <input type="checkbox" name="chk12" id="chk12" [checked]="sol_estudios_resonmagnetica" (change)="cambio_chk12()">
+                <label for="chk12">Resonancia Magnética</label>
+              </div>
+            </form>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group col-md-12">
+                <label class="">OTROS/ OBSERVACIÓN / DETALLES</label>
+              <div class="">
+              <input type="text" maxlength="200" class="form-control" placeholder="OTROS/ OBSERVACIÓN / DETALLES" [(ngModel)]="sol_estudios_otros">
+              </div>
+            </div>
+          </div>
+
 
           <div class="form-group col-md-12">
             <br>
@@ -1016,19 +1158,21 @@
             <strong>RECOMENDACIONES</strong>
           </div>
 
-          <div class="form-group col-md-3">
-            <label class="">¿QUIÉN LO RECOMENDÓ?</label>
-            <div class="">
-              <select class="form-control" placeholder="" [(ngModel)]="recomendacion">
-                <option value=0>--SELECCIONAR--</option>
-                <option value=1>FAMILIAR</option>
-                <option value=2>AMIGO</option>
-                <option value=3>MÉDICO</option>
-                <option value=4>FACEBOOK</option>
-                <option value=5>PÁGINA WEB</option>
-                <option value=6>PUBLICIDAD</option>
-                <option value=7>NADIE</option>
-              </select>
+          <div class="col-md-12">
+            <div class="form-group col-md-3">
+              <label class="">¿QUIÉN LO RECOMENDÓ?</label>
+              <div class="">
+                <select class="form-control" placeholder="" [(ngModel)]="recomendaciones">
+                  <option value=0>--SELECCIONAR--</option>
+                  <option value=1>FAMILIAR</option>
+                  <option value=2>AMIGO</option>
+                  <option value=3>MÉDICO</option>
+                  <option value=4>FACEBOOK</option>
+                  <option value=5>PÁGINA WEB</option>
+                  <option value=6>PUBLICIDAD</option>
+                  <option value=7>OTROS</option>
+                </select>
+              </div>
             </div>
           </div>
 
@@ -1038,19 +1182,74 @@
             <strong style="color:red">X. REMUNERACIÓN</strong>
           </div>
           
-          <div class="form-group col-md-3">
-            <label class="">TIPO</label>
-            <div class="">
-              <select class="form-control" placeholder="" [(ngModel)]="remuneracion">
-                <option value=0>--SELECCIONAR--</option>
-                <option value=1>AD HONOREM</option>
-                <option value=2>CONSULTA MÉDICA</option>
-                <option value=3>CONTROL MÉDICO</option>
-                <option value=4>CAMPAÑA MÉDICA</option>
-              </select>
+          <div class="col-md-3">
+            <div class="form-group col-md-12">
+              <label class="">TIPO</label>
+              <div class="">
+                <select class="form-control" placeholder="" [(ngModel)]="remuneracion">
+                  <option value=0>--SELECCIONAR--</option>
+                  <option value=1>AD HONOREM</option>
+                  <option value=2>CONSULTA MÉDICA</option>
+                  <option value=3>CONTROL MÉDICO</option>
+                  <option value=4>CAMPAÑA MÉDICA</option>
+                </select>
+              </div>
             </div>
           </div>
 
+          <div class="col-md-9">
+            <form action="" class="formulario">
+              <div class="checkbox col-md-12">
+                <input type="checkbox" name="chk13" id="chk13" (change)="solicitarRecibo()" [checked]="recibo_est">
+                <label for="chk13">Recibo</label>
+              </div>
+            </form>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group col-md-2">
+              <label class="">RUC</label>
+              <div class="">
+                <input type="number" class="form-control" placeholder="RUC" [(ngModel)]="pag_ruc" [disabled]="!recibo_est">
+              </div>
+            </div>
+
+            <div class="form-group col-md-3">
+              <label class="">EMPRESA</label>
+              <div class="">
+                <input type="text" maxlength="100" class="form-control" placeholder="EMPRESA" [(ngModel)]="pag_empresa" [disabled]="!recibo_est">
+              </div>
+            </div>
+
+            <div class="form-group col-md-2">
+              <label class="">FECHA DE RECIBO</label>
+              <div class="">
+                <input type="date" class="form-control" placeholder="" [(ngModel)]="pag_fecha" disabled>
+              </div>
+            </div>
+
+            <div class="form-group col-md-3">
+              <label class="">TIPO DE RECIBO</label>
+              <div class="">
+                <select class="form-control" placeholder="" [(ngModel)]="pag_t_doc_emitido" [disabled]="!recibo_est">
+                  <option value=0>--SELECCIONAR--</option>
+                  <option value=1>BOLETA</option>
+                  <option value=2>FACTURA</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-group col-md-2">
+              <label class="">N° RECIBO</label>
+              <div class="">
+                <input type="text" maxlength="20" class="form-control" placeholder="N° DOC" [(ngModel)]="pag_nro_doc_emitido" [disabled]="!recibo_est">
+              </div>
+            </div>
+          </div>
+
+
+          
+  
 
 
 
@@ -1085,26 +1284,26 @@
                       <thead>
                         <tr>
                           <th>Fecha</th>
-                          <th>Signos</th>
-                          <th>Síntomas</th>
-                          <th>Diagnóstico</th>
-                          <th>Receta/Tratamiento</th>
+                          <th>Especialidad</th>
+                          <th>Médico</th>
+                          <th>Visualizar</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr *ngFor = "let e_c of e_cita">
                           <td>{{e_c.fecha}}</td>
-                          <td>{{e_c.signos}}</td>
-                          <td>{{e_c.sintomas}}</td>
-                          <td>{{e_c.diagnostico_medico}}</td>
-                          <td>{{e_c.receta_tratamiento_medico}}</td>
+                          <td>{{e_c.especialidad}}</td>
+                          <td>{{e_c.medico}}</td>
+                          <td>
+                            <button type="button" class="btn btn-amarillo-icon" (click)="abrir_mod_pdf(e_c.cita_id, e_c.fecha)" ><i class="fa fa-list"></i></button>
+                          </td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-verde" (click)="onCloseHandled()" >Close</button>
+                  <button type="button" class="btn btn-verde" (click)="onCloseHandled()" >Cerrar</button>
                 </div>
               </div>
               <!-- /.modal-content -->
@@ -1112,6 +1311,50 @@
             <!-- /.modal-dialog -->
           </div>
           <!-- /.modal HISTORIAL!-->
+
+
+
+
+
+          <div class="backdrop" [ngStyle]="{'display':displayHPDF}"></div>
+          <!-- /.modal !-->
+          <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':displayHPDF}">
+            <!-- /.modal-dialog -->
+            <div class="modal-dialog" role="document">
+              <!-- /.modal-content -->
+              <div class="modal-content modal-contenido">
+                <div class="modal-header">
+                  <button type="button" class="close" aria-label="Close" (click)="onCloseHandledHPDF()"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">Historial de Citas</h4>
+                </div>
+                <div class="modal-body">
+                  <div>
+                    <table class="table col-md-12">
+                      <thead>
+                        <tr>
+                          <th>DESCARGAR PDF</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            {{e_cita_fecha}}
+                            <button type="button" class="btn btn-rojo-icon" (click)="downloadPDF()" ><i class="fa fa-arrow-down"></i></button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-verde" (click)="onCloseHandledHPDF()" >Cerrar</button>
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+          <!-- /.modal DESCARGAR HISTORIA PDF!-->
 
           
         </div>

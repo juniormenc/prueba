@@ -18,17 +18,20 @@ import { TurnoAtencionService } from '../../../servicios/modulos/turno-atencion.
 export class TurnoAtencionListarComponent implements OnInit {
 
   loading: boolean;
-
   elemento: Array<any>;
+  fecha: any;
+  buscar: any;
 
   filtro(valor:string){
     valor = valor.trim();
     valor = valor.toLocaleLowerCase();
     
-    if(valor.length > 0){
+    if(valor.length > 1){
       this.listar(valor);
     }else{
-      this.listar_todos();
+      if (valor.length == 0) {
+        this.listar_todos();
+      }
     }
   }
 
@@ -38,8 +41,47 @@ export class TurnoAtencionListarComponent implements OnInit {
     }
   }
 
+  fecha_actual(){
+
+    var v_mes, v_dia, v_anio;
+
+    var m = new Date().getMonth()+1;
+    var d = new Date().getDate();
+
+    v_anio = new Date().getFullYear();
+
+    if(m < 10){
+      v_mes = "0" + (new Date().getMonth()+1);
+    } else {
+      v_mes = (new Date().getMonth()+1);
+    }
+
+    if(d < 10){
+      v_dia = "0" + (new Date().getDate());
+    } else {
+      v_dia = new Date().getDate();
+    }
+
+    return v_anio + "-" + v_mes + "-" + v_dia;
+  }
+
   ngOnInit() {
+    this.fecha = this.fecha_actual();
     this.listar_todos();
+  }
+
+  listar_segun_fecha(){
+
+    if (this.buscar == null || this.buscar == "") {
+      this.listar_todos();
+    }else{
+      if(this.buscar.length > 1){
+        this.listar(this.buscar);
+      }else{
+        
+      }
+    }
+    
   }
 
   listar_todos(){
@@ -47,9 +89,8 @@ export class TurnoAtencionListarComponent implements OnInit {
     this.loading = true;
     this.elemento = null;
 
-    this.turnoAtencionService.listar_todos().then((data: any) =>{
+    this.turnoAtencionService.listar_todos_hoy(this.fecha).then((data: any) =>{
       this.elemento = data.recordSet.element;
-      //console.log(this.elemento)
       this.loading = false;
     });
   }
@@ -59,7 +100,7 @@ export class TurnoAtencionListarComponent implements OnInit {
     this.loading = true;
     this.elemento = null;
 
-    this.turnoAtencionService.listar(filtro).then((data: any) =>{
+    this.turnoAtencionService.listar_hoy(filtro, this.fecha).then((data: any) =>{
       this.elemento = data.recordSet.element;
       //console.log(this.elemento)
       this.loading = false;

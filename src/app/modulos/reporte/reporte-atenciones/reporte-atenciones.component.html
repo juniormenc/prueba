@@ -3,7 +3,8 @@
     <div class="col-md-12">
       <div class="card panel panel-azul">
         <div class="panel-heading">
-          Reporte de Citas atendidas e Ingresos
+          Reporte de Citas atendidas
+          <!--Reporte de Citas atendidas e Ingresos-->
         </div>
 
         <div class="content table-responsive table-full-widht panel-body">
@@ -26,9 +27,9 @@
               <strong>TOTAL DE CITAS:  {{cantidad_citas}}</strong>
             </div>
 
-            <div class="form-group col-md-12" align="left">
-              <strong style="color:red">INGRESOS: S./ {{ingreso_citas}}</strong>
-            </div>
+            <!--div class="form-group col-md-12" align="left">
+              <strong style="color:red">INGRESOS: S/ {{ingreso_citas}}</strong>
+            </div-->
           </div>
 
           <div class="loading col-md-12" *ngIf="loading" align="center">
@@ -40,14 +41,14 @@
               <tr>
                 <th>Fecha</th>
                 <th>Número de citas</th>
-                <th>Ingreso</th>
+                <!--th>Ingreso</th-->
               </tr> 
             </thead>
             <tbody>
               <tr *ngFor = "let ci of e_citas">
                 <td>{{ci.fecha}}</td>
                 <td>{{ci.cantidad}}</td>
-                <td>{{ci.ingreso}}</td>
+                <!--td>{{ci.ingreso}}</td-->
               </tr>
             </tbody>
           </table>

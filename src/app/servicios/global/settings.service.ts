@@ -11,6 +11,9 @@ export class SettingsService {
   public sidebarColorUpdate: EventEmitter<string> = new EventEmitter();
   public ruta_user_not_found = "iniciar-sesion";
   public mensaje: any = {
+    cita_finalizada:"¡Cita finalizada correctamente!",
+    campos_vacios: "¡Al parecer hay campos obligatorios vacíos!",
+    campo_doc_identidad: "Revise la cantidad de dígitos del Documento de Identidad",
     registrar_web:"¡Se ha registrado correctamente!",
     registrar:"¡Ha sido registrado correctamente!",
     modificar:"¡Ha sido modificado correctamente!",
