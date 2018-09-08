@@ -12,6 +12,7 @@ import { MedicoService } from '../../servicios/modulos/medico.services';
 import { CitaService } from '../../servicios/modulos/cita.services';
 import { PacienteService } from '../../servicios/modulos/paciente.services';
 import { ExternoService } from '../../servicios/modulos/externo.services';
+import { MensajeService } from '../../servicios/modulos/mensaje.services';
 
 //COMPONENTES
 import { ReportesComponent } from './reporte.component';
@@ -23,6 +24,7 @@ import { ReporteTurnosMedicoComponent } from './reporte-turnos-medico/reporte-tu
 import { ReporteIngresosCitasComponent } from './reporte-ingresos-citas/reporte-ingresos-citas.component';
 import { ReporteIngresosCitasEspecialidadMedicoComponent } from './reporte-ingresos-citas-especialidad-medico/reporte-ingresos-citas-especialidad-medico.component';
 import { ReporteHistoriasPacienteComponent } from './reporte-historias-paciente/reporte-historias-paciente.component';
+import { MensajeComponent } from './reporte-mensaje/reporte-mensaje.component';
 
 @NgModule({
     imports:[
@@ -42,7 +44,8 @@ import { ReporteHistoriasPacienteComponent } from './reporte-historias-paciente/
         ReporteTurnosMedicoComponent,
         ReporteIngresosCitasComponent,
         ReporteIngresosCitasEspecialidadMedicoComponent,
-        ReporteHistoriasPacienteComponent
+        ReporteHistoriasPacienteComponent,
+        MensajeComponent
     ],
     entryComponents:[],
     providers:[
@@ -51,7 +54,8 @@ import { ReporteHistoriasPacienteComponent } from './reporte-historias-paciente/
         MedicoService,
         CitaService,
         PacienteService,
-        ExternoService
+        ExternoService,
+        MensajeService
     ]
 })
 

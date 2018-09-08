@@ -64,7 +64,8 @@ export class SidebarComponent implements OnInit {
                         { path: 'reporte/reporte-ingresos-citas', title: 'Atención de Citas', vcObjeto: 'reporte-ingresos-citas', enabled: true },
                         //{ path: 'reporte/reporte-ingresos-citas', title: 'Ingresos de Citas', vcObjeto: 'reporte-ingresos-citas', enabled: true },
                         //{ path: 'reporte/reporte-ingresos-citas-especialidad-medico', title: 'Ingresos de Citas (Especialidad)', vcObjeto: 'reporte-ingresos-citas-especialidad-medico', enabled: true },
-                        { path: 'reporte/reporte-historias-paciente', title: 'Historias Clínicas', vcObjeto: 'reporte-historias-paciente', enabled: true }
+                        { path: 'reporte/reporte-historias-paciente', title: 'Historias Clínicas', vcObjeto: 'reporte-historias-paciente', enabled: true },
+                        { path: 'reporte/reporte-mensaje', title: 'Mensajes', vcObjeto: 'reporte-mensaje', enabled: true }
                     ]
                 },
         

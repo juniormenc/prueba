@@ -11,6 +11,7 @@ import { ReporteIngresosCitasComponent } from './reporte-ingresos-citas/reporte-
 import { ReporteReservasComponent } from './reporte-reservas/reporte-reservas.component';
 import { ReporteTurnosMedicoComponent } from './reporte-turnos-medico/reporte-turnos-medico.component';
 import { ReporteTurnosComponent } from './reporte-turnos/reporte-turnos.component';
+import { MensajeComponent } from './reporte-mensaje/reporte-mensaje.component';
 
 let routes: Route[] = [
     {
@@ -24,7 +25,8 @@ let routes: Route[] = [
             { path:'reporte-ingresos-citas', component:ReporteIngresosCitasComponent },
             { path:'reporte-reservas', component:ReporteReservasComponent },
             { path:'reporte-turnos-medico', component:ReporteTurnosMedicoComponent },
-            { path:'reporte-turnos', component:ReporteTurnosComponent }
+            { path:'reporte-turnos', component:ReporteTurnosComponent },
+            { path:'reporte-mensaje', component:MensajeComponent }
         ]
     }
 ];
