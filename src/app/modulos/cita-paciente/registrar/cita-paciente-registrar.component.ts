@@ -18,6 +18,7 @@ import { SettingsService } from '../../../servicios/global/settings.service';
 export class CitaPacienteRegistrarComponent implements OnInit {
 
   loading: boolean;
+  loading_hc: boolean;
 
   hora_inicio_consulta: any;
 
@@ -171,6 +172,7 @@ export class CitaPacienteRegistrarComponent implements OnInit {
 	pag_t_doc_emitido: number;
   pag_nro_doc_emitido: any;
   
+  finalizar_c: boolean;
 
 
 
@@ -512,6 +514,8 @@ export class CitaPacienteRegistrarComponent implements OnInit {
     this.pag_fecha = this.fecha_actual();
     this.pag_t_doc_emitido = 0;
     this.pag_nro_doc_emitido = "";
+
+    this.finalizar_c = false;
   }
 
   cambio_chk1(){
@@ -873,6 +877,7 @@ export class CitaPacienteRegistrarComponent implements OnInit {
   }
 
   abrir_mod_pdf(cita_id, cita_fech){
+    this.loading_hc = true;
     //console.log(cita_id);
     this.e_cita_fecha = cita_fech;
     //console.log(this.e_cita_fecha)
@@ -1625,6 +1630,8 @@ export class CitaPacienteRegistrarComponent implements OnInit {
       console.log(this.h_pag_t_doc_emitido)
       this.h_pag_nro_doc_emitido = data.recordSet.element.pag_nro_doc_emitido;
       */
+
+      this.loading_hc = false;
     });
 
     this.citaService.listar_diagnosticos(cita_id).then(data => {
@@ -2431,6 +2438,8 @@ export class CitaPacienteRegistrarComponent implements OnInit {
               if (this.tipo_sangre == 0 || this.tipo_sangre == null) {
                 this.settingsService.showNotification('top','right', this.settingsService.mensaje.campos_vacios, 4);
               }else{
+
+                this.finalizar_c = true;
 
                 this.pacienteService.modificar(this.paciente_id, this.departamento_dom_id, this.provincia_dom_id, this.distrito_dom_id, this.domicilio, this.estado_civil, this.profesion, this.tipo_sangre, this.email, this.celular)
                 .then((data) =>{

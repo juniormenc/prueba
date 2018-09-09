@@ -1263,7 +1263,7 @@
 
           <div class="form-group col-md-12" align="center">
             <br>
-            <button class="btn btn-azul" (click)="guardarEpisodioHistoria()">FINALIZAR CITA <i class="fa fa-save"></i></button>
+            <button class="btn btn-azul" (click)="guardarEpisodioHistoria()" [disabled]="finalizar_c">FINALIZAR CITA <i class="fa fa-save"></i></button>
           </div>
 
 
@@ -1329,7 +1329,11 @@
                 </div>
                 <div class="modal-body">
                   <div>
-                    <table class="table col-md-12">
+                    <div class="loading col-md-12" *ngIf="loading_hc" align="center">
+                      <img src="../../../../assets/img/loader.gif" />
+                    </div>
+
+                    <table class="table col-md-12" *ngIf="e_hc">
                       <thead>
                         <tr>
                           <th>DESCARGAR PDF</th>

@@ -18,6 +18,7 @@ import { ExternoService } from '../../../servicios/modulos/externo.services';
 export class ReporteHistoriasPacienteComponent implements OnInit {
 
   loading: boolean;
+  loading_hc: boolean;
 
   e_pacientes: Array<any>;
   e_cita: Array<any>;
@@ -177,6 +178,8 @@ export class ReporteHistoriasPacienteComponent implements OnInit {
   }
   
   abrir_mod_pdf(cita_id, cita_fech){
+    
+    this.loading_hc = true;
     //console.log(cita_id);
     this.e_cita_fecha = cita_fech;
     //console.log(this.e_cita_fecha)
@@ -929,12 +932,14 @@ export class ReporteHistoriasPacienteComponent implements OnInit {
       console.log(this.h_pag_t_doc_emitido)
       this.h_pag_nro_doc_emitido = data.recordSet.element.pag_nro_doc_emitido;
       */
+      this.loading_hc = false;
     });
 
     this.citaService.listar_diagnosticos(cita_id).then(data => {
       this.h_diagnostico = data.recordSet.element;
       //console.log(this.h_diagnostico)
     })
+    
     this.displayHPDF='block';
   }
 

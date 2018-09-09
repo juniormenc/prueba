@@ -105,7 +105,11 @@
                 </div>
                 <div class="modal-body">
                   <div>
-                    <table class="table col-md-12">
+                    <div class="loading col-md-12" *ngIf="loading_hc" align="center">
+                      <img src="../../../../assets/img/loader.gif" />
+                    </div>
+    
+                    <table class="table col-md-12" *ngIf="e_hc">
                       <thead>
                         <tr>
                           <th>DESCARGAR PDF</th>
