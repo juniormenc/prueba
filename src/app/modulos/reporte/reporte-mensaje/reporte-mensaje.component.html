@@ -20,11 +20,11 @@
                 <th>N° DOC</th>
                 <th>Paciente</th>
                 <th>Celular</th>
-                <th>Correo Electrónico</th>
+                <th class="col-md-3">Correo Electrónico</th>
                 <th>Diagnóstico</th>
                 <th>Medicamento</th>
                 <th>Médico</th>
-                <th>Estado</th>
+                <th>Atendido</th>
               </tr> 
             </thead>
             <tbody>
@@ -37,7 +37,9 @@
                 <td>{{e_t.diagnostico}}</td>
                 <td>{{e_t.medicamento}}</td>
                 <td>{{e_t.medico}}</td>
-                <td>{{e_t.estado}}</td>
+                <td>
+                    <button (click)="atendido(e_t.id)" class="btn-amarillo-icon"><i class="fa fa-edit"></i></button>
+                </td>
               </tr>
             </tbody>
           </table>

@@ -113,11 +113,27 @@ export class MensajeComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.loading = true;
+
     this.mensajeService.listar_mensajes_por_atender().then(data => {
       this.e_mensaje = data.recordSet.element;
-      console.log(this.e_mensaje)
+      this.loading = false;
+      //console.log(this.e_mensaje)
     });
     
+  }
+
+  atendido(id){
+    this.e_mensaje = null;
+    this.loading = true;
+    this.mensajeService.inhabilitar_mensaje(id).then(data => {
+      this.mensajeService.listar_mensajes_por_atender().then(data => {
+        this.e_mensaje = data.recordSet.element;
+        //console.log(this.e_mensaje)
+        this.loading = false;
+      });
+    });
   }
 
   validar_fecha(fecha){
