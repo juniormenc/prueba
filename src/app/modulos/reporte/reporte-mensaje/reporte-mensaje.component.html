@@ -16,10 +16,11 @@
           <table class="table col-md-12" *ngIf="e_mensaje">
             <thead>
               <tr>
+                <th>Fecha Atención</th>
                 <th>N° DOC</th>
                 <th>Paciente</th>
                 <th>Celular</th>
-                <th>Correo</th>
+                <th>Correo Electrónico</th>
                 <th>Diagnóstico</th>
                 <th>Medicamento</th>
                 <th>Médico</th>
@@ -28,6 +29,7 @@
             </thead>
             <tbody>
               <tr *ngFor = "let e_t of e_mensaje">
+                <td>{{e_t.fecha}}</td>
                 <td>{{e_t.doc_identidad}}</td>
                 <td>{{e_t.nombre}}</td>
                 <td>{{e_t.celular}}</td>
