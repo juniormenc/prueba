@@ -1,0 +1,91 @@
+
+    <div class="main-content">
+      <div class="container-fluid">
+        <div class="col-md-12" *ngIf="vistaPantalla">
+          <div class="card panel panel-azul">
+            <div class="panel-heading">
+              Usuarios
+            </div>
+
+            <div class="content table-responsive table-full-width panel-body">
+
+              
+              <div class="form-group col-md-4" align="left">
+                <button class="btn btn-verde" (click)="registrar()" [disabled]='hab_btn_registrar'>
+                  <i class="fa fa-plus"></i> Agregar Usuario
+                </button>
+              </div>
+          
+              <div class="form-group col-md-8" align="right">
+                <input type="text" autofocused class="buscar" placeholder="Buscar" (keyup)="filtro($event.target.value)" (keyup.escape)="limpiar()" [(ngModel)]="val_usu">
+              </div>
+
+              <div class="loading col-md-12" *ngIf="loading" align="center">
+                <img src="../../../../assets/img/loader.gif" />
+              </div>
+
+              <table class="table col-md-12" *ngIf="e_usuario">
+                <thead>
+                    <tr>
+                      <th>Habilitado</th>
+                      <th>Activado</th>
+                      <th>Nombre</th>
+                      <th>Usuario</th>
+                      <th>Correo</th>
+                      <th>Rol</th>
+                      <th>Última Visita</th>
+                      <th>Registrado</th>
+                      <th>Id</th>
+                      <th>Editar</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor = "let e_u of e_usuario">
+                      <td>
+                        <button (click)="deBaja(e_u.id)" class="btn-verde-icon" [hidden]="!e_u.estado_hab" [disabled]='hab_btn_habilitar'>
+                          <i class="fa fa-thumbs-up"></i>
+                        </button>
+                      
+                        <button (click)="deAlta(e_u.id)" class="btn-rojo-icon" [hidden]="e_u.estado_hab" [disabled]='hab_btn_habilitar'>
+                          <i class="fa fa-thumbs-down"></i>
+                        </button>
+                      </td>
+
+                      <td>
+                        <button (click)="desactivar(e_u.id)" class="btn-verde-icon" [hidden]="!e_u.estado_act" [disabled]='hab_btn_activar'>
+                          <i class="fa fa-thumbs-up"></i>
+                        </button>
+                      
+                        <button (click)="activar(e_u.id)" class="btn-rojo-icon" [hidden]="e_u.estado_act" [disabled]='hab_btn_activar'>
+                          <i class="fa fa-thumbs-down"></i>
+                        </button>
+                      </td>
+
+                      <td>{{e_u.nombre}}</td>
+                      <td>{{e_u.usuario}}</td>
+                      <td>{{e_u.correo}}</td>
+                      <td>{{e_u.rol}}</td>
+                      <td>{{e_u.updatedat}}</td>
+                      <td>{{e_u.createdat}}</td>
+                      <td>{{e_u.id}}</td>
+
+                      <td>
+                        <button (click)="modificar(e_u.id)" class="btn btn-amarillo-icon" [disabled]='hab_btn_editar'>
+                          <i class="fa fa-edit"></i>
+                        </button>
+                      </td>
+                      
+                    </tr>
+                  </tbody>
+                </table>
+                <mat-paginator 
+                  [length]="length"
+                  [pageSize]="limit"
+                  [pageSizeOptions]="pageSizeOptions"
+                  (page)="setPageSizeOptions($event)">
+                </mat-paginator>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

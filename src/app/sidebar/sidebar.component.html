@@ -1,8 +1,9 @@
+<!--div class="sidebar-wrapper" id="v_side"-->
 <div class="sidebar-wrapper">
-    <div class="logo" (click)="mandaInicio()">
-        <a class="simple-text">
+    <div class="logo">
+        <a class="simple-text" (click)="mandaInicio()">
             <div class="logo-img">
-                <img src="./assets/img/logo-healthinn-admin-blanco.png" />
+                <img src="./assets/img/logo-user.png" style="max-width: 200px; border-radius: 25px" />
             </div>
         </a>
     </div>
@@ -24,7 +25,7 @@
                     <li routerlinkactive="active" *ngFor="let children of menuItem.children; let j = index;">
 
                         <a [routerLink]="[children.path]" *ngIf="!children.children" class="a-children">
-                            <span class="sidebar-normal span-children" style="margin-left: 0px !important;color:#ffffff !important;">{{children.title}}</span>
+                            <span class="sidebar-normal span-children" style="margin-left: 0px !important; color:#ffffff !important;">{{children.title}}</span>
                         </a>
                         <a *ngIf="children.children && children.children.length > 0" data-toggle="collapse" href="#hijo-{{j}}" class="collapsed a-children"
                             aria-expanded="false">

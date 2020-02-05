@@ -9,8 +9,9 @@ import { AppRoutingModule } from './app.routing';
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { LoadingModule } from 'ngx-loading';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
 
 //MODULOS IMPORTADOS
 import { ModulesModule } from './modulos/modulos.module';
@@ -18,7 +19,6 @@ import { LoginModule } from './login/login.module';
 
 //SERVICIOS GENERALES
 import { UtilService } from './servicios/global/util.service';
-import { ValidacionService } from './servicios/global/validacion.service';
 import { SesionService } from './servicios/modulos/sesion.services';
 
 
@@ -38,7 +38,8 @@ import { SesionService } from './servicios/modulos/sesion.services';
     ModulesModule,
     LoginModule,
     LoadingModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    MatTooltipModule
   ],
   providers: [
     UtilService,

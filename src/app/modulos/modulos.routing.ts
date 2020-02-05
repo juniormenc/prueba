@@ -9,14 +9,7 @@ export const routes: Routes = [
         component: ModulosComponent,
         children: [
             { path: 'inicio', component: GlobalInicioComponent },
-            { path: 'paciente', loadChildren: './paciente/paciente.module#PacienteModule' },
-            { path: 'reserva', loadChildren: './reserva/reserva.module#ReservaModule' },
-            { path: 'consultorio', loadChildren: './consultorio/consultorio.module#ConsultorioModule' },
-            { path:'horario', loadChildren: './horario/horario.module#HorarioModule'},
-            { path: 'reporte', loadChildren: './reporte/reporte.module#ReporteModule'},
-            { path:'especialidad', loadChildren: './especialidad/especialidad.module#EspecialidadModule'},
-            { path:'cita-paciente', loadChildren: './cita-paciente/cita-paciente.module#AtencionPacienteModule'},
-            { path:'turno-atencion', loadChildren: './turno-atencion/turno-atencion.module#TurnoAtencionModule'}
+            { path: 'usuario', loadChildren: './usuario/usuario.module#UsuarioModule'}
         ]
     }
 ];

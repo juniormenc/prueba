@@ -1,14 +1,11 @@
 declare var SERVICIOS;
+declare var TIMER_SECONDS: any;
 
 let SERVER_PUERTO = (SERVICIOS.PUERTO == '') ? SERVICIOS.PUERTO : ':'+SERVICIOS.PUERTO;
 
-//SERVICIOS.URL="http://localhost:3000";
-SERVICIOS.URL="https://h-telemedica-bd.herokuapp.com";
-SERVICIOS.URL_1="https://ws-cie-1.herokuapp.com";
-SERVICIOS.URL_2="https://ws-cie-2.herokuapp.com";
-SERVICIOS.URL_3="https://ws-nac-ubi.herokuapp.com";
+SERVICIOS.URL="http://localhost:3001";
+// SERVICIOS.URL="http://192.168.1.5:3001";
 
 export const urlServidor = SERVICIOS.URL + SERVER_PUERTO;
-export const urlServidor_1 = SERVICIOS.URL_1 + SERVER_PUERTO;
-export const urlServidor_2 = SERVICIOS.URL_2 + SERVER_PUERTO;
-export const urlServidor_3 = SERVICIOS.URL_3 + SERVER_PUERTO;
+
+export const timerSeconds = TIMER_SECONDS;

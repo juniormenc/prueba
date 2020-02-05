@@ -12108,11 +12108,11 @@ h2.title {
     box-shadow: 0 10px 30px -12px rgba(0, 0, 0, .42), 0 4px 25px 0 rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .2)
 }
 .sidebar .logo-img {
-    width: 42px;
-    max-height: 42px
+    width: 12px;
+    max-height: 12px
 }
 .sidebar .logo-img img {
-    width: 42px;
+    width: 12px;
     top: 16px;
     left: 18px;
     position: absolute
@@ -19088,6 +19088,14 @@ form input[type="text"], form input[type="email"], form input[type="password"], 
 }
 
 .btn.btn-azul{
+    width: 100%;
+    padding: 9px 0px;
+    font-size: 13px;
+    margin-top: -6px;
+    margin-bottom: 25px;
+}
+
+.btn.btn-negro{
     width: 100%;
     padding: 9px 0px;
     font-size: 13px;

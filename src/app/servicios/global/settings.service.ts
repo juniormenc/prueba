@@ -23,8 +23,14 @@ export class SettingsService {
     enlazar: "Reserva enlazada correctamente",
     aprobar:"¡Ha sido aprobado correctamente!",
     debaja:"¡Ha sido dado de baja correctamente!",
+    dealta:"¡Ha sido dado de alta correctamente!",
     usuario_correcto:"¡Bienvenido al sistema!",
     usuario_error:"¡Usuario y/o clave inconrrecta!",
+    duplicidad:"¡Al parecer ya se encuentra registrado!",
+    acceso_restringido: "¡Alto, usted no tiene acceso a esta parte del sistema!",
+    varios_registros:"¡Al parecer no puede ingresar más registros!",
+    atender:"¡La acción ha sido atendida satisfactoriamente!",
+    no_eliminar:"¡No se puede eliminar este elemento!",
   }
   public nombre_dias: any[] = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado","Domingo"];
 

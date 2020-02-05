@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ToasterService } from 'angular2-toaster';
+import * as decode from 'jwt-decode';
 
 @Component({
     selector: 'global-inicio',
@@ -13,21 +12,23 @@ export class GlobalInicioComponent {
 
     cantidad: number;
     bandera: boolean = false;
+    tokenPayload: any;
     public permisos: any;
+    usuario: any;
+    id: any;
 
     constructor(
         private router: Router,
-        private toasterService: ToasterService,
     ) {
-        if (localStorage.getItem('id') == null) {
-            this.router.navigate(['login']);
+        if (localStorage.getItem('rol') == null) {
+            this.router.navigate(['/login']);
         }
+
+        this.usuario = localStorage.getItem('nombre_us');
+
      }
 
     ngOnInit() {
-        /*if(localStorage.getItem('id') == null){
-            this.router.navigate(['/login']);
-        }
-        console.log(localStorage.getItem('id'));*/
+        
     }
 }

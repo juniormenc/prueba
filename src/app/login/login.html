@@ -10,7 +10,7 @@
                         <form (ngSubmit)="logIn()">
                             <div class="card card-login">
                                 <div class="card-content" style="text-align:center;">
-                                    <img src="./assets/img/logo-healthinn-admin.png" style="width:50% !important;padding:20px 0px;">
+                                    <img src="./assets/img/logo-user.png" style="width:50% !important;padding:20px 0px;">
                                                                     
                                     <div class="form-group">
                                         <div class="fa fa-user input-icon"></div>
@@ -26,7 +26,7 @@
                                         <span *ngIf="showPassword" class="password-eye fa fa-eye-slash" (click)="ocultarContrasena()" title="Ocultar Contraseña"></span>
                                     </div>
                                    
-                                    <button class="btn btn-azul"
+                                    <button class="btn btn-negro"
                                     type="submit">Iniciar sesión</button>
 
                                 </div>
@@ -36,9 +36,6 @@
                     </div>
                 </div>
                 
-                <div class="copyright">
-                    {{anio}} Coded by <a href="http://livinn-tech.com" target="_blank">LIV-INN</a>
-                </div>
             </div>
         </div>
         <div class="full-page-background" [ngStyle]="fondo"></div>

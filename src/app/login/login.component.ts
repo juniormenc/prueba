@@ -13,15 +13,14 @@ import { SettingsService } from '../servicios/global/settings.service';
 export class LoginComponent implements OnInit {
 
     fondo:any = {
-        'background-image': 'url(./assets/img/fondo-login.jpg)',
+        'background-image': 'url(./assets/img/fondo.jpg)',
         '-webkit-filter': 'brightness(40%)'
     }
     typePassword: string = "password";
     showPassword: boolean = false;
     vcUsuario: string;
     vbClave: string;
-    //vcUsuario: string = "admin";
-    //vbClave: string = "123";
+    
     bandera: boolean = false;
     anio: any = new Date().getFullYear();
     
@@ -30,21 +29,24 @@ export class LoginComponent implements OnInit {
         private toaster: ToasterService,
         private settingsService: SettingsService,
         private sesionService: SesionService) {
+
+            this.vcUsuario = 'admin';
+            this.vbClave = 'admin';
     }
 
     ngOnInit() {
-    
+        
     }
 
     logIn() {
         this.sesionService.login(this.vcUsuario,this.vbClave)
         .then((data: any) =>{
-            //console.log(data);
+            // console.log(data);
             if(data.recordSet.count > 0){
-                //console.log(data);
-                localStorage.setItem("id", data.recordSet.element[0].id);
-                localStorage.setItem("jwt", data.recordSet.element.token);
-                localStorage.setItem("rolId", data.recordSet.element[0].rol_id);
+                console.log(data);
+                localStorage.setItem('rol', data.recordSet.element.results.ri);
+                localStorage.setItem('nombre_us', data.recordSet.element.results.nombre);
+
                 this.bandera = true;
                 this.router.navigate(['modulos/inicio']);
                 this.settingsService.showNotification('top','right', this.settingsService.mensaje.usuario_correcto, 1);

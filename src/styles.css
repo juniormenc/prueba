@@ -44,7 +44,7 @@ ngb-modal-window {
 
 .sidebar-wrapper {
     background: rgb(5, 5, 65) !important;
-    background-image: url("assets/img/sidebar-blue.jpg") !important;
+    background-image: url("assets/img/sidebar-gray.jpg") !important;
 }
 
 /*Color de letra del menu y sub menu*/
@@ -58,14 +58,14 @@ ngb-modal-window {
 /*Color de icono del menu inactivo */
 
 .sidebar .nav li a[data-toggle=collapse]>i {
-    color: #838FAC !important;
+    color: rgb(56, 58, 65) !important;
 }
 
 /*Fondo Activo en el Menu*/
 
 .sidebar .nav li.active>a,
 .bootstrap-navbar .nav li.active>a {
-    background: #2987d6 !important;
+    background: #000 !important;
     border-right: thick solid #fff;
     border-radius: 0px !important;
 }
@@ -255,8 +255,8 @@ a[data-toggle=collapse] {
 }
 
 .table>tbody>tr>td {
-    font-size: 15px !important;
-    padding: 5px 5px !important;
+    font-size: 13px !important;
+    padding: 3px 3px !important;
 }
 
 .table th {
@@ -352,8 +352,8 @@ button.btn-verde-icon {
     padding: 8px 8px;
     margin-top: 1px;
     margin-bottom: 1px;
-    width: 50px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     border-radius: 5px;
     background: rgb(12, 122, 18)!important;
     border: 1px solid rgb(6, 109, 52) !important;
@@ -373,6 +373,60 @@ button.btn-verde-large {
     color: white !important;
 }
 
+button.btn-negro {
+    background: #000 !important;
+    border: 1px solid #000 !important;
+    color: white !important;
+}
+
+button.btn-negro-icon {
+    padding: 8px 8px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    background: #000 !important;
+    border: 1px solid #000 !important;
+    color: white !important;
+}
+
+button.btn-azul-oscuro {
+    background: #20B2AA !important;
+    border: 1px solid #20B2AA !important;
+    color: white !important;
+}
+
+button.btn-azul-oscuro-icon {
+    padding: 8px 8px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    background: #20B2AA !important;
+    border: 1px solid #20B2AA !important;
+    color: white !important;
+}
+
+button.btn-violeta {
+    background: #C71585 !important;
+    border: 1px solid #C71585 !important;
+    color: white !important;
+}
+
+button.btn-violeta-icon {
+    padding: 8px 8px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    background: #C71585 !important;
+    border: 1px solid #C71585 !important;
+    color: white !important;
+}
+
 button.btn-azul {
     background: #0489B1 !important;
     border: 1px solid #0489B1 !important;
@@ -383,8 +437,8 @@ button.btn-azul-icon {
     padding: 8px 8px;
     margin-top: 1px;
     margin-bottom: 1px;
-    width: 50px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     border-radius: 5px;
     background: #0489B1 !important;
     border: 1px solid #0489B1 !important;
@@ -413,8 +467,8 @@ button.btn-amarillo-icon {
     padding: 8px 8px;
     margin-top: 1px;
     margin-bottom: 1px;
-    width: 50px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     border-radius: 5px;
     background: #F68D2C !important;
     border: 1px solid #F68D2C !important;
@@ -431,8 +485,8 @@ button.btn-rojo-icon {
     padding: 8px 8px;
     margin-top: 1px;
     margin-bottom: 1px;
-    width: 50px;
-    height: 40px;;
+    width: 35px;
+    height: 35px;;
     border-radius: 5px;
     background: #F60f00 !important;
     border: 1px solid #F68D2C !important;
@@ -449,8 +503,8 @@ button.btn-cancelar-icon {
     padding: 8px 8px;
     margin-top: 1px;
     margin-bottom: 1px;
-    width: 50px;
-    height: 40px;;
+    width: 35px;
+    height: 35px;;
     border-radius: 5px;
     background: #F68D2C !important;
     border: 1px solid #F68D2C !important;
@@ -666,7 +720,7 @@ button.btn-pdf {
 }
 .panel-azul>.panel-heading {
     color: #fff;
-    background-color: #2987d6;
+    background-color: #000;
     border-color: #346391
 }
 .panel-azul>.panel-heading+.panel-collapse>.panel-body {
@@ -697,7 +751,7 @@ button.btn-pdf {
 }
 .modal-body{
     min-height: 0px;
-    max-height: 200px;
+    max-height: 400px;
     overflow-y: auto;
 }
 .modal-contenido{

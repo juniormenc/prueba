@@ -78,6 +78,7 @@ export class NavbarComponent implements OnInit {
         localStorage.removeItem('jwt');
         localStorage.removeItem('id');
         localStorage.removeItem('rolId');
+        localStorage.clear();
         this.router.navigate(['/login']);
         
         /*
