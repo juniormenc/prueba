@@ -1,6 +1,5 @@
-# [Light Bootstrap Dashboard Angular CLI](http://lbd-angular2.creative-tim.com/)
-[![version][version-badge]][CHANGELOG]
 
+<<<<<<< HEAD
 ![alt text](src/assets/img/opt_lbd_angular_thumbnail.jpg)
 
 **[Light-Bootstrap-Dashboard-Angular-CLI](http://lbd-angular2.creative-tim.com/)** is an admin dashboard template designed to be beautiful and simple. It is built on top of Bootstrap 3, using [Light Bootstrap Dashboard](https://www.creative-tim.com/product/light-bootstrap-dashboard2) and it is fully responsive. It comes with a big collections of elements that will offer you multiple possibilities to create the app that best fits your needs. It can be used to create admin panels, project management systems, web applications backend, CMS or CRM.
@@ -162,3 +161,5 @@ Instagram: <https://instagram.com/creativetimofficial>
 
 [version-badge]: https://img.shields.io/badge/version-1.4.0-blue.svg
 # prueba
+=======
+>>>>>>> 8a9256b3bf6742f4db15cedcbd2b595dd903e086
